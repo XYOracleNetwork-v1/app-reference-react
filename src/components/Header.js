@@ -12,6 +12,11 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap'
+
+const navTextStyle = {
+  'color': 'white'
+}
+
 export default class Header extends Component {
   constructor(props) {
     super(props)
@@ -32,28 +37,25 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <div className='navbar'>
+        <Navbar expand="md" >
+          <NavbarBrand href="/" style={navTextStyle}>XYO Devs</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
+            <Nav navbar>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  Products
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    Archivist
                   </DropdownItem>
                   <DropdownItem>
-                    Option 2
+                    Bridge
+                  </DropdownItem>
+                  <DropdownItem>
+                    Sentinel
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
@@ -61,6 +63,29 @@ export default class Header extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+                <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Languages
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Kotlin
+                  </DropdownItem>
+                  <DropdownItem>
+                    Node
+                  </DropdownItem>
+                  <DropdownItem>
+                    Swift
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap" >GitHub</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
