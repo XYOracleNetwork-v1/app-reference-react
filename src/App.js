@@ -12,17 +12,16 @@ console.log(sdkBle[0].modules[0])
 class App extends Component {
   constructor(props) {
     super(props)
-
+    // the only state that should be managed is the products and languages
     this.state = {
-      supers: [],
-      methods: [],
+      products: [],
       languages: []
     }
   }
 
   componentDidMount() {
-    this.setState( state => ({supers: sdkBle.map((name, i) => (
-      <ul><li key={i}>{sdkBle[i].modules[i]}</li></ul>))
+    this.setState( state => ({languages: sdkBle.map((name, i) => (
+      <ul><li key={i}>{sdkBle[i].lang[i]}</li></ul>))
   }))
   }
 
@@ -30,9 +29,16 @@ class App extends Component {
     return (
       <div className='app'>
       <Layout>
-        <Header/>
-        <SideNav superClass={this.state.supers}/>
-        <MethodOutputView language={this.state.language}/>
+        <Header methods={this.state.methods} language={this.state.languages}/>
+        <SideNav 
+          methods={this.state.languages.methods} 
+          supers={this.state.languages.supers} 
+          functionNames={this.state.languages.functionNames}
+        />
+        <MethodOutputView 
+          language={this.state.languages}
+          output={this.state.languages.functionNames.output}
+        />
       </Layout>
       </div>
     );
