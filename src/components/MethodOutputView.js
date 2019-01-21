@@ -21,8 +21,8 @@ export default class MethodView extends Component {
             </thead>
             <tbody>
               <tr>
-                <th scope="row">{this.props.startName}</th>
                 <td>{this.props.name}</td>
+                <th scope="row">{this.props.supers}</th>
                 <td style={outputStyle}>sentinel</td>
               </tr>
               <tr>
