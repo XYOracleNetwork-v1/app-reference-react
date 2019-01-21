@@ -20,6 +20,7 @@ export default class SideNav extends Component {
   render() {
     return (
       <div style={sideNavStyle}>
+        <a href='#'>{this.props.methods}</a>
         <a href='#'>{this.props.supers}</a>
       </div>
     )

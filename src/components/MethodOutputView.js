@@ -17,6 +17,7 @@ export default class MethodView extends Component {
                 <th>Introduction</th>
                 <th>Description</th>
                 <th style={outputStyle}>english</th>
+                {this.props.language}
               </tr>
             </thead>
             <tbody>

@@ -15,14 +15,16 @@ class App extends Component {
     // the only state that should be managed is the products and languages
     this.state = {
       products: [],
-      languages: []
+      languages: [],
+      methods: []
     }
   }
 
   componentDidMount() {
     this.setState( state => ({languages: sdkBle.map((name, i) => (
-      <ul><li key={i}>{sdkBle[i].lang[i]}</li></ul>))
+      <ul><li key={i}>{sdkBle[i].lang[i]}</li></ul>)), methods: sdkBle.map((method, i) => (<p key={i}>{sdkBle[i].modules[i].name}</p>))
   }))
+
   }
 
   render() {
@@ -31,13 +33,13 @@ class App extends Component {
       <Layout>
         <Header methods={this.state.methods} language={this.state.languages}/>
         <SideNav 
-          methods={this.state.languages.methods} 
-          supers={this.state.languages.supers} 
+          methods={this.state.methods} 
+          supers={this.state.methods.objects} 
           functionNames={this.state.languages.functionNames}
         />
         <MethodOutputView 
           language={this.state.languages}
-          output={this.state.languages.functionNames.output}
+          output=''
         />
       </Layout>
       </div>

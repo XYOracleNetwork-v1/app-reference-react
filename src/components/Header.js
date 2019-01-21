@@ -24,8 +24,6 @@ export default class Header extends Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false,
-      language: '',
-      product: ''
     }
   }
 
@@ -69,13 +67,7 @@ export default class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Kotlin
-                  </DropdownItem>
-                  <DropdownItem>
-                    Node
-                  </DropdownItem>
-                  <DropdownItem>
-                    Swift
+                    {this.props.language.map((lang, i) => (<p key={i}>{this.props.language[i]}</p>))}
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
