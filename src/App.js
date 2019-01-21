@@ -5,6 +5,7 @@ import Header from './components/Header'
 import SideNav from './components/SideNav'
 import MethodOutputView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
+import { Container, Col, Row } from 'reactstrap'
 
 const productState = sdkBle.map(productId => (<li key={productId}>{productId.id}</li>))
 
@@ -49,19 +50,27 @@ class App extends Component {
       <div className='app'>
       <Layout>
         <Header methods={this.state.methods} language={this.state.languages} product={this.state.products}/>
-        <SideNav 
-          methods={this.state.methods} 
-          classes={this.state.classes}
-          functionNames={this.state.methods}
-          />
-        <MethodOutputView 
-          language={this.state.languages}
-          name={this.state.methods}
-          supers={this.state.superClasses} 
-          description={this.state.descriptions}
-          startName={this.state.mainNames}
-          output=''
-        />
+        <Container fluid>
+          <Row>
+            <Col xs='auto'>
+              <SideNav 
+                methods={this.state.methods} 
+                classes={this.state.classes}
+                functionNames={this.state.methods}
+                />
+            </Col>
+            <Col>
+              <MethodOutputView 
+                language={this.state.languages}
+                name={this.state.methods}
+                supers={this.state.superClasses} 
+                description={this.state.descriptions}
+                startName={this.state.mainNames}
+                output=''
+                />
+            </Col>
+          </Row>  
+        </Container>
       </Layout>
       </div>
     );
