@@ -17,23 +17,22 @@ export default class MethodView extends Component {
                 <th>Introduction</th>
                 <th>Description</th>
                 <th style={outputStyle}>english</th>
-                {this.props.language}
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row"></th>
-                <td>sentinel</td>
+                <th scope="row">{this.props.startName}</th>
+                <td>{this.props.name}</td>
                 <td style={outputStyle}>sentinel</td>
               </tr>
               <tr>
                 <th scope="row"></th>
-                <td>archivist</td>
+                <td>{this.props.description}</td>
                 <td style={outputStyle}></td>
               </tr>
               <tr>
                 <th scope="row"></th>
-                <td>diviner</td>
+                <td>{this.props.description}</td>
                 <td style={outputStyle}>diviner</td>
               </tr>
             </tbody>

@@ -7,10 +7,6 @@ const sideNavStyle = {
 export default class SideNav extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      class: this.props.supers
-    }
   }
 
   // showMethod = () => {
@@ -20,8 +16,8 @@ export default class SideNav extends Component {
   render() {
     return (
       <div style={sideNavStyle}>
-        <a href='#'>{this.props.methods}</a>
-        <a href='#'>{this.props.supers}</a>
+        <a href={this.props.methods}>{this.props.methods}</a>
+        <a href={this.props.supers}>{this.props.supers}</a>
       </div>
     )
   }

@@ -16,29 +16,51 @@ class App extends Component {
     this.state = {
       products: [],
       languages: [],
-      methods: []
+      methods: [],
+      superClasses: [],
+      descriptions: [],
+      mainNames: []
     }
   }
 
   componentDidMount() {
-    this.setState( state => ({languages: sdkBle.map((name, i) => (
-      <ul><li key={i}>{sdkBle[i].lang[i]}</li></ul>)), methods: sdkBle.map((method, i) => (<p key={i}>{sdkBle[i].modules[i].name}</p>))
+    this.setState( state => ({
+      products: sdkBle.map((productId, i) => (
+        <p key={i}>{productId.id}</p>)
+      ),
+      languages: sdkBle.map((lang, i) => (
+      <p key={i}>{lang.lang[i]}</p>)
+      ), 
+      methods: sdkBle.map((method, i) => (
+      <p key={i}>{method.modules[i].objects[i].name}</p>)
+      ), 
+      superClasses: sdkBle.map((superClass, i) => (
+        <p key={i}>{superClass.modules[i].objects[i].super}</p>)
+      ),
+      descriptions: sdkBle.map((desc, i) => (
+        <p key={i}>{desc.modules[i].objects[i].desc}</p>)
+      ),
+      mainNames: sdkBle.map((method, i) => (
+        <p key={i}>{method.modules[i].name}</p>)
+      )    
   }))
-
-  }
+}
 
   render() {
     return (
       <div className='app'>
       <Layout>
-        <Header methods={this.state.methods} language={this.state.languages}/>
+        <Header methods={this.state.methods} language={this.state.languages} product={this.state.products}/>
         <SideNav 
           methods={this.state.methods} 
-          supers={this.state.methods.objects} 
-          functionNames={this.state.languages.functionNames}
+          supers={this.state.superClasses} 
+          functionNames={this.state.methods}
         />
         <MethodOutputView 
           language={this.state.languages}
+          name={this.state.methods}
+          description={this.state.descriptions}
+          startName={this.state.mainNames}
           output=''
         />
       </Layout>

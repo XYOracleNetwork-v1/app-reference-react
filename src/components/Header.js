@@ -47,13 +47,7 @@ export default class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Archivist
-                  </DropdownItem>
-                  <DropdownItem>
-                    Bridge
-                  </DropdownItem>
-                  <DropdownItem>
-                    Sentinel
+                    {this.props.product.map((product, i) => (<p key={i}>{this.props.product[i]}</p>))}
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
