@@ -6,7 +6,17 @@ import SideNav from './components/SideNav'
 import MethodOutputView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
 
-console.log(sdkBle[0].modules)
+const productState = sdkBle.map(productId => (<li key={productId}>{productId.id}</li>))
+
+const languageState = sdkBle.map(lang => (<li key={lang}>{lang.lang}</li>))
+
+const methodState = sdkBle.map((method, i) => method.modules.map(mod => <p>{mod.name}</p>))
+
+const classState = sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => <p>{obj.name}</p>)))
+
+const superClassState = sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => <p>{obj.super}</p>)))
+
+const descriptionState = sdkBle.map((method, i) => (method.modules.map(mod => <p>{mod.desc}</p>)))
 
 class App extends Component {
   constructor(props) {
@@ -24,20 +34,12 @@ class App extends Component {
 
   componentDidMount() {
     this.setState( state => ({
-      products: sdkBle.map(productId => (
-        <li key={productId}>{productId.id}</li>)
-      ),
-      languages: sdkBle.map(lang => (
-      <li key={lang}>{lang.lang}</li>)
-      ), 
-      methods: sdkBle.map((method, i) => method.modules.map(mod => <p>{mod.name}</p>)
-      ), 
-      classes: sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => <p>{obj.name}</p>))
-      ),
-      superClasses: sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => <p>{obj.super}</p>))
-      ),
-      descriptions: sdkBle.map((method, i) => ( method.modules.map(mod => <p>{mod.desc}</p>))
-      )   
+      products: productState,
+      languages: languageState, 
+      methods: methodState, 
+      classes: classState,
+      superClasses: superClassState,
+      descriptions: descriptionState   
   }))
 }
 
