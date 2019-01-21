@@ -69,8 +69,22 @@ export default class Header extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+                <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Locale
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    English
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap" >GitHub</NavLink>
+                <NavLink href="https://github.com/XYOracleNetwork">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

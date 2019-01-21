@@ -8,6 +8,11 @@ const outputStyle = {
 
 export default class MethodView extends Component {
   render() {
+    const descriptionOutput = this.props.description.map((description, i) => (
+        <td key={i}>{this.props.description[i]}</td>
+      )
+    )
+
     return (
       <Container fluid>
         <Col sm='auto'>
@@ -15,20 +20,12 @@ export default class MethodView extends Component {
             <thead>
               <tr>
                 <th>Description</th>
-                <th style={outputStyle}>english</th>
+                <th style={outputStyle}>Output</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">{this.props.supers}</th>
-                <td style={outputStyle}>This will be the container for any object that gets returned from the particular method</td>
-              </tr>
-              <tr>
-                <td>{this.props.description}</td>
-                <td style={outputStyle}></td>
-              </tr>
-              <tr>
-                <td>{this.props.description}</td>
+                {descriptionOutput}
                 <td style={outputStyle}>diviner</td>
               </tr>
             </tbody>

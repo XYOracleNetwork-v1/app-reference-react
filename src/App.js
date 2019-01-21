@@ -19,6 +19,8 @@ const superClassState = sdkBle.map((method, i) => method.modules.map(mod => mod.
 
 const descriptionState = sdkBle.map((method, i) => (method.modules.map(mod => <p>{mod.desc}</p>)))
 
+// const enumerationState = sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => obj.enumerations.map(enums => <p>{enums.name}</p>))))
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -40,12 +42,11 @@ class App extends Component {
       methods: methodState, 
       classes: classState,
       superClasses: superClassState,
-      descriptions: descriptionState   
+      descriptions: descriptionState
   }))
 }
 
   render() {
-
     return (
       <div className='app'>
       <Layout>
@@ -66,7 +67,7 @@ class App extends Component {
                 supers={this.state.superClasses} 
                 description={this.state.descriptions}
                 startName={this.state.mainNames}
-                output=''
+                output={this.state.enumerations}
                 />
             </Col>
           </Row>  
