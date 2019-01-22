@@ -6,14 +6,27 @@ const sideNavStyle = {
 
 export default class SideNav extends Component {
 
+  renderNavItems = () => {
+    const { methods } = this.props
+
+    return methods.map((method, i) => (
+      <div>
+        <h3>{method.name}</h3>
+        <ul key={`${method.name}${i}`}>
+          { method.objects.map((object, i) => (
+            <li key={object.name}>
+              <a href={`#${object}`}>{object.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+  
   render() {
-    console.log(this.props.classes)
     return (
     <div style={sideNavStyle}>
-      {this.props.methods.map((method, i) => (
-        <ul key={method}><a href={method}>{method}</a>
-          <li key={this.props.classes[i]}>{this.props.classes}</li>
-        </ul>))}
+      {this.renderNavItems()}
         <h4>Class</h4>
         <div>
           <a href="#"></a>

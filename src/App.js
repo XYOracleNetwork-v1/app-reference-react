@@ -3,48 +3,35 @@ import './App.css';
 import Layout from './components/Layout'
 import Header from './components/Header'
 import SideNav from './components/SideNav'
-import MethodOutputView from './components/MethodOutputView'
+import MethodView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
 import { Container, Col, Row } from 'reactstrap'
 
 const productState = sdkBle.map(productId => (<li key={productId}>{productId.id}</li>))
 
-const languageState = sdkBle.map(lang => (<li key={lang}>{lang.lang}</li>))
+const languageState = sdkBle[0].lang
 
-const methodState = sdkBle.map((method, i) => method.modules.map(mod => <p>{mod.name}</p>))
+const methodState = sdkBle[0].modules
 
-const classState = sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => <p>{obj.name}</p>)))
-
-const superClassState = sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => <p>{obj.super}</p>)))
-
-const descriptionState = sdkBle.map((method, i) => (method.modules.map(mod => <p>{mod.desc}</p>)))
-
-// const enumerationState = sdkBle.map((method, i) => method.modules.map(mod => mod.objects.map(obj => obj.enumerations.map(enums => <p>{enums.name}</p>))))
 
 class App extends Component {
+
   constructor(props) {
     super(props)
-    // the only state that should be managed is the products and languages, but not there yet
     this.state = {
-      products: [],
-      languages: [],
-      methods: [],
-      classes: [],
-      superClasses: [],
-      descriptions: []
+      products: productState,
+      languages: languageState,
+      methods: methodState,
     }
   }
 
-  componentDidMount() {
-    this.setState( state => ({
-      products: productState,
-      languages: languageState, 
-      methods: methodState, 
-      classes: classState,
-      superClasses: superClassState,
-      descriptions: descriptionState
-  }))
-}
+  // componentDidMount() {
+  //   this.setState( state => ({
+  //     products: productState,
+  //     languages: languageState, 
+  //     methods: methodState
+  // }))
+// }
 
   render() {
     return (
@@ -56,19 +43,13 @@ class App extends Component {
             <Col xs='auto'>
               <SideNav 
                 methods={this.state.methods} 
-                classes={this.state.classes}
-                functionNames={this.state.methods}
-                />
+              />
             </Col>
             <Col>
-              <MethodOutputView 
+              <MethodView
+                methods={this.state.methods} 
                 language={this.state.languages}
-                name={this.state.methods}
-                supers={this.state.superClasses} 
-                description={this.state.descriptions}
-                startName={this.state.mainNames}
-                output={this.state.enumerations}
-                />
+              />
             </Col>
           </Row>  
         </Container>

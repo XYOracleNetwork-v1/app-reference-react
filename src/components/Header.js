@@ -33,6 +33,17 @@ export default class Header extends Component {
     })
   }
 
+  renderNavItems = () => {
+    const { methods } = this.props
+
+    return methods.map((method, i) => (
+      <div>
+        <p key={`${method}${i}`}>{method.name}</p>
+          ))}
+      </div>
+    ))
+  }
+
   render() {
     return (
       <div className='navbar'>
@@ -61,7 +72,7 @@ export default class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    {this.props.language.map((lang, i) => (<p key={i}>{this.props.language[i]}</p>))}
+                    {this.renderNavItems()}
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
