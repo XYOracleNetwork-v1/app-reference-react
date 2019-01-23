@@ -165,7 +165,7 @@ module.exports = [{
                   "name": "Unknown"
                 },
                 {
-                  "name": "Diconnected"
+                  "name": "Disconnected"
                 },
                 {
                   "name": "Connected"

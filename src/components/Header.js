@@ -34,14 +34,9 @@ export default class Header extends Component {
   }
 
   renderNavItems = () => {
-    const { methods } = this.props
+    const { language } = this.props
 
-    return methods.map((method, i) => (
-      <div>
-        <p key={`${method}${i}`}>{method.name}</p>
-          ))}
-      </div>
-    ))
+    return (<p>{language}</p>)
   }
 
   render() {
