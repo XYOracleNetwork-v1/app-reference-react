@@ -22,15 +22,11 @@ export default class SideNav extends Component {
       </div>
     ))
   }
-  
+
   render() {
     return (
     <div style={sideNavStyle}>
       {this.renderNavItems()}
-        <h4>Class</h4>
-        <div>
-          <a href="#"></a>
-        </div>
       </div>
     )
   }

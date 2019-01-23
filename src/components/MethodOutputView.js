@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Container, Col } from 'reactstrap'
+import { Table, Container, Col, Row } from 'reactstrap'
 
 const outputStyle = {
   'backgroundColor': 'black',
@@ -9,15 +9,38 @@ const outputStyle = {
 export default class MethodView extends Component {
   
   renderDescriptions = () => {
-    return this.props.methods.map(method => 
-      method.descriptions.map((desc, i) => (
-        <tr>
-          <td key={`${i}`}>{desc}</td>
-        </tr>
-      )))
+    const { methods } = this.props
+
+    return methods.map(method =>
+      <Col>
+        <p>{method.name}</p>
+        {method.desc}
+        {method.objects.map(object => (
+          <div>
+            <br></br>
+            <p className="text-primary">{object.name}</p>
+            <h6><strong>Super Class</strong></h6>
+            <p>{object.super}</p>
+          </div>
+        ))}
+      </Col> 
+    )
+  }
+
+  renderOutputs = () => {
+    const { methods } = this.props
+
+    return methods.map(method => method.objects.map(object => 
+    <Col>
+      <p>{object.name}</p>
+      <p>{object.super}</p>
+    </Col>
+      )
+    )
   }
 
   render() {
+    console.log(this.props.methods[1].objects[1].enumerations[0].values)
     return (
       <Container fluid>
         <Col sm='auto'>
@@ -31,7 +54,7 @@ export default class MethodView extends Component {
             <tbody>
               <tr>
                 {this.renderDescriptions()}
-                <td style={outputStyle}>This is where the ouptut and enumerations should go</td>
+                <td style={outputStyle}>{this.renderOutputs()}</td>
               </tr>
             </tbody>
           </Table>
