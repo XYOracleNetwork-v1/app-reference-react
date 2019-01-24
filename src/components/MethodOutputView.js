@@ -48,7 +48,7 @@ export default class MethodView extends Component {
           <div>
             <p>Enumerations</p>
             <p>name</p>
-            <code>{e.name}</code>
+            <code><a name={`${object.name}`}>{e.name}</a></code>
             <p>values</p>
             {(e.values || []).map(val => 
               <div>

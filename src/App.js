@@ -24,13 +24,26 @@ class App extends Component {
       languages: languageState,
       methods: methodState,
     }
+
+    this.handleProductChange = this.handleProductChange.bind(this)
+  }
+
+  handleProductChange(e) {
+    this.setState({
+      products: e.target.value
+    })
   }
 
   render() {
     return (
       <div className='app'>
       <Layout>
-        <Header methods={this.state.methods} language={this.state.languages} product={this.state.products}/>
+        <Header 
+          methods={this.state.methods} 
+          language={this.state.languages} 
+          product={this.state.products} 
+          onclick={this.handleProductChange}
+        />
         <Container fluid>
           <Row>
             <Col xs='auto'>
