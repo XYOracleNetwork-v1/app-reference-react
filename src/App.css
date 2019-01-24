@@ -2,6 +2,10 @@ a {
   color: #58a0d7;
 }
 
+p {
+  margin: -1px;
+}
+
 .App {
   text-align: center;
 }

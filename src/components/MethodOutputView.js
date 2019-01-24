@@ -64,7 +64,7 @@ export default class MethodView extends Component {
                           <code>{property.name}</code>
                           <p>Type</p> 
                           <code>{property.type}</code>
-                          <p>Description</p> 
+                          {property.desc ? <p>Description</p> : <p></p>} 
                           <code>{property.desc}</code>
                         </div>
                       ))}
@@ -98,7 +98,6 @@ export default class MethodView extends Component {
                                   <code> async ({param.name}: {param.type}) => {returns.desc}</code>
                                   <p>Returns</p>
                                   <code>{returns.type}</code>
-                                  <p>description</p>
                                 </div>
                               ))}
                             </div>
