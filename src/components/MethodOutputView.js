@@ -4,7 +4,12 @@ import Prism from 'prismjs'
 
 const outputStyle = {
   'backgroundColor': 'black',
-  'color': 'white'
+  'color': 'white',
+  'padding': '25px'
+}
+
+const colAppStyle = {
+  'padding': '25px'
 }
 
 const xyoBlueText = {
@@ -26,71 +31,79 @@ export default class MethodView extends Component {
 
     return methods.map(method =>
       <Container fluid>
-        <h4 style={xyoPinkText}>{method.name}</h4>
+        <h3 style={xyoPinkText}>{method.name}</h3>
             <strong>{method.desc}</strong>
-          {method.objects.map(object => (
-            <Row>
-            <Col>
-              <div>
-                <h2 key={`${method}`} style={xyoBlueText}>
-                  <a name={`${object.name}`}>{object.name}</a>
-                </h2>
-                  <h6 style={xyoOrangeText}>Super Class</h6>
-                <p key={`${object.name}`}>{object.super}</p>
-                <h6 className="text-info">What it does</h6>
-                <p key={`${object.super}`}>{object.desc}</p>
-              </div>
-            </Col>
-              <Col style={outputStyle}>
-                {object.properties ? <h3 style={xyoOrangeText}>Properties</h3> : <div></div>}
-                <div>
-                  {(object.properties || []).map(property => (
+            <div>
+              {method.objects.map(object => (
+                <Row className="border">
+                <Col style={colAppStyle}>
+                <br></br>
+                  <div>
+                    <h5 key={`${method}`} style={xyoBlueText}>
+                      <a name={`${object.name}`}>{object.name}</a>
+                    </h5>
+                      <h6 style={xyoOrangeText}>Super Class</h6>
+                    <p key={`${object.name}`}>{object.super}</p>
+                    <h6 className="text-info">What it does</h6>
+                    <p key={`${object.super}`}>{object.desc}</p>
+                  </div>
+                </Col>
+                  <Col style={outputStyle} Col>
+                    <br></br>
+                    {object.properties ? <h3 style={xyoOrangeText}>Properties</h3> : <div></div>}
                     <div>
-                      <p>Name</p> 
-                      <code>{property.name}</code>
-                      <p>Type</p> 
-                      <code>{property.type}</code>
-                      <p>Description</p> 
-                      <code>{property.desc}</code>
-                    </div>
-                  ))}
-                </div>
-              {(object.enumerations || []).map(e => (
-                <div style={xyoBlueText}>
-                  <h3>Enumerations</h3>
-                  <p>name</p>
-                  <code><a name={`${object.name}`}>{e.name}</a></code>
-                  <p>values</p>
-                  {(e.values || []).map(val =>
-                    <div>
-                      <code>{val.name}</code>
-                    </div>
-                  )}
-                </div>
-              ))}
-              {(object.functions || []).map(f => (
-                <div style={outputStyle}>
-                  <code>{f.name}</code>
-                  <br></br>
-                  {(f.parameters || []).map(param =>
-                    <div>
-                      <p>Functions</p>
-                      <code>{JSON.stringify(param.async)}</code>
-                      {(f.returns || []).map(returns => (
+                      {(object.properties || []).map(property => (
                         <div>
-                          <code> async ({param.name}: {param.type}) => {returns.desc}</code>
-                          <p>Returns</p>
-                          <code>{returns.type}</code>
-                          <p>description</p>
+                          <p>Name</p> 
+                          <code>{property.name}</code>
+                          <p>Type</p> 
+                          <code>{property.type}</code>
+                          <p>Description</p> 
+                          <code>{property.desc}</code>
                         </div>
                       ))}
                     </div>
-                  )}
-                </div>
-              ))}   
-            </Col>
-        </Row>
-      ))}
+                    <div>
+                      {(object.enumerations || []).map(e => (
+                        <div style={xyoBlueText}>
+                          <h3>Enumerations</h3>
+                          <p>name</p>
+                          <code><a name={`${object.name}`}>{e.name}</a></code>
+                          <p>values</p>
+                          {(e.values || []).map(val =>
+                            <div>
+                              <code>{val.name}</code>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                    {(object.functions || []).map(f => (
+                      <div style={outputStyle}>
+                        <code>{f.name}</code>
+                        <br></br>
+                        {(f.parameters || []).map(param =>
+                          <div>
+                            <p>Functions</p>
+                              <code>{JSON.stringify(param.async)}</code>
+                              {(f.returns || []).map(returns => (
+                                <div>
+                                  <code> async ({param.name}: {param.type}) => {returns.desc}</code>
+                                  <p>Returns</p>
+                                  <code>{returns.type}</code>
+                                  <p>description</p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}   
+                    </div>
+                </Col>
+            </Row>
+          ))}
+        </div>
       </Container>
     )
   }

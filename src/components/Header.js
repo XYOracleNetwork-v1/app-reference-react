@@ -92,7 +92,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="https://github.com/XYOracleNetwork" style={navTextStyle}>GitHub</NavLink>
+                <NavLink href="https://github.com/XYOracleNetwork" style={navTextStyle} target="_blank">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
