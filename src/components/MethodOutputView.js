@@ -24,6 +24,10 @@ const xyoOrangeText = {
   'color': '#f37047'
 }
 
+const smallPadding = {
+  'paddingTop': '15px'
+}
+
 export default class MethodView extends Component {
   
   renderDescriptionsandOutputs = () => {
@@ -31,16 +35,19 @@ export default class MethodView extends Component {
 
     return methods.map(method =>
       <Container fluid>
+        <br></br>
         <h3 style={xyoPinkText}>{method.name}</h3>
             <strong>{method.desc}</strong>
             <div>
+              <br></br>
               {method.objects.map(object => (
                 <Row className="border">
                 <Col style={colAppStyle}>
                 <br></br>
                   <div>
                     <h5 key={`${method}`} style={xyoBlueText}>
-                      <a name={`${object.name}`}>{object.name}</a>
+                      Object
+                      <a name={`${object.name}`}> {object.name} </a>
                     </h5>
                       <h6 style={xyoOrangeText}>Super Class</h6>
                     <p key={`${object.name}`}>{object.super}</p>
@@ -48,7 +55,7 @@ export default class MethodView extends Component {
                     <p key={`${object.super}`}>{object.desc}</p>
                   </div>
                 </Col>
-                  <Col style={outputStyle} Col>
+                  <Col style={outputStyle}>
                     <br></br>
                     {object.properties ? <h3 style={xyoOrangeText}>Properties</h3> : <div></div>}
                     <div>
@@ -63,7 +70,7 @@ export default class MethodView extends Component {
                         </div>
                       ))}
                     </div>
-                    <div>
+                    <div style={smallPadding}>
                       {(object.enumerations || []).map(e => (
                         <div style={xyoBlueText}>
                           <h3>Enumerations</h3>
@@ -78,7 +85,7 @@ export default class MethodView extends Component {
                         </div>
                       ))}
                     </div>
-                    <div>
+                    <div style={smallPadding}>
                     {(object.functions || []).map(f => (
                       <div style={outputStyle}>
                         <code>{f.name}</code>
