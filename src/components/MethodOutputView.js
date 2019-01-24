@@ -27,13 +27,17 @@ const smallPadding = {
   'paddingTop': '15px'
 }
 
+const newFont = {
+  'fontFamily': 'SF Mono'
+}
+
 export default class MethodView extends Component {
   
   renderDescriptionsandOutputs = () => {
     const { methods } = this.props
   
     return methods.map(method =>
-      <Container fluid>
+      <Container fluid style={newFont}>
         <br></br>
         <h3 style={xyoPinkText}>{method.name}</h3>
             <strong>{method.desc}</strong>

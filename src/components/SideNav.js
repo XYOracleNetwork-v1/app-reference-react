@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const sideNavStyle = {
-  'padding': '10px',
+  'fontFamily': 'SF Mono'
 }
 
 const textDecorationStyle = {
@@ -15,7 +15,7 @@ export default class SideNav extends Component {
 
     return methods.map((method, i) => (
       <div>
-        <h3>{method.name}</h3>
+        <h4>{method.name}</h4>
         <ul key={`${method.name}`} style={textDecorationStyle}>
           { method.objects.map((object, i) => (
             <li key={object.name} style={textDecorationStyle}>
