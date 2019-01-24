@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Header from './components/Header'
 import SideNav from './components/SideNav'
 import MethodView from './components/MethodOutputView'
+import ReferenceIntro from './components/ReferenceIntro'
 import sdkBle from './BLE_Schema'
 import { Container, Col, Row } from 'reactstrap'
 import ScrollArea from 'react-scrollbar'
@@ -44,6 +45,7 @@ class App extends Component {
           product={this.state.products} 
           onclick={this.handleProductChange}
         />
+        <ReferenceIntro />
         <Container fluid>
           <Row>
             <Col xs='auto'>
