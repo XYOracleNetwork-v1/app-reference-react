@@ -8,6 +8,7 @@ import ReferenceIntro from './components/ReferenceIntro'
 import sdkBle from './BLE_Schema'
 import { Container, Col, Row } from 'reactstrap'
 
+
 const productState = sdkBle[0].id
 
 const languageState = sdkBle[0].lang

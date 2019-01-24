@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Col, Row } from 'reactstrap'
+import { Helmet } from 'react-helmet'
 
 const outputStyle = {
   'backgroundColor': 'black',
@@ -56,6 +57,12 @@ export default class MethodView extends Component {
                     <p key={`${object.name}`}>{object.super}</p>
                     {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
                     <p key={`${object.super}`}>{object.desc}</p>
+                    <Helmet>
+                        <script>
+                          {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev' }`}
+                        </script>
+                        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+                    </Helmet>
                   </div>
                 </Col>
                   <Col style={outputStyle}>
