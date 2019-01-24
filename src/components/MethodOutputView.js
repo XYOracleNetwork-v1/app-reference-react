@@ -44,7 +44,7 @@ export default class MethodView extends Component {
                     </h5>
                       <h6 style={xyoOrangeText}>Super Class</h6>
                     <p key={`${object.name}`}>{object.super}</p>
-                    <h6 className="text-info">What it does</h6>
+                    {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
                     <p key={`${object.super}`}>{object.desc}</p>
                   </div>
                 </Col>
