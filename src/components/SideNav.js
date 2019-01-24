@@ -6,7 +6,7 @@ const sideNavStyle = {
 }
 
 const textDecorationStyle = {
-  'listStyle': 'none'
+  'listStyle': 'none',
 }
 
 export default class SideNav extends Component {

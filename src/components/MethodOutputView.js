@@ -7,6 +7,18 @@ const outputStyle = {
   'color': 'white'
 }
 
+const xyoBlueText = {
+  'color': '#58a0d7'
+}
+
+const xyoPinkText = {
+  'color': '#ec417b'
+}
+
+const xyoOrangeText = {
+  'color': '#f37047'
+}
+
 export default class MethodView extends Component {
   
   renderDescriptionsandOutputs = () => {
@@ -14,32 +26,37 @@ export default class MethodView extends Component {
 
     return methods.map(method =>
       <Container fluid>
-            <h4 className="text-success">{method.name}</h4>
+        <h4 style={xyoPinkText}>{method.name}</h4>
             <strong>{method.desc}</strong>
           {method.objects.map(object => (
             <Row>
             <Col>
               <br></br>
-              <h2 key={`${method}`} className="text-primary">
+              <h2 key={`${method}`} style={xyoBlueText}>
                 <a name={`${object.name}`}>{object.name}</a>
               </h2>
-              <h6 className="text-info">Super Class</h6>
+                <h6 style={xyoOrangeText}>Super Class</h6>
               <p key={`${object.name}`}>{object.super}</p>
               <h6 className="text-info">What it does</h6>
               <p key={`${object.super}`}>{object.desc}</p>
             </Col>
               <Col style={outputStyle}>
-              <p className="text-info">Properties</p>
-              {(object.properties || []).map(property => (
+                {object.properties ? <h3 style={xyoOrangeText}>Properties</h3> : <div></div>}
                 <div>
-                  <p key={`${object.property}`}><strong>Name</strong> <code>{property.name}</code></p>
-                    <p key={`${object}`}><strong>Type</strong> <code>{property.type}</code></p>
-                  <p key={`${object}`}><strong>Type</strong> <code>{property.desc}</code></p>
+                  {(object.properties || []).map(property => (
+                    <div>
+                      <p>Name</p> 
+                      <code>{property.name}</code>
+                      <p>Type</p> 
+                      <code>{property.type}</code>
+                      <p>Description</p> 
+                      <code>{property.desc}</code>
+                    </div>
+                  ))}
                 </div>
-              ))}
               {(object.enumerations || []).map(e => (
-                <div>
-                  <p>Enumerations</p>
+                <div style={xyoBlueText}>
+                  <h3>Enumerations</h3>
                   <p>name</p>
                   <code><a name={`${object.name}`}>{e.name}</a></code>
                   <p>values</p>
@@ -56,18 +73,14 @@ export default class MethodView extends Component {
                   <br></br>
                   {(f.parameters || []).map(param =>
                     <div>
+                      <p>Functions</p>
                       <code>{JSON.stringify(param.async)}</code>
-                      <p>Parameter</p>
-                      <code>{param.name}</code>
-                      <p>Type</p>
-                      <code>{param.type}</code>
                       {(f.returns || []).map(returns => (
                         <div>
+                          <code> async ({param.name}: {param.type}) => {returns.desc}</code>
                           <p>Returns</p>
-                          <p>type</p>
                           <code>{returns.type}</code>
                           <p>description</p>
-                          <code>{returns.desc}</code>
                         </div>
                       ))}
                     </div>

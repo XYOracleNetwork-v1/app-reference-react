@@ -17,6 +17,10 @@ const navTextStyle = {
   'color': 'white'
 }
 
+const xyoPurple = {
+  'backgroundColor': '#8d8fc6'
+}
+
 export default class Header extends Component {
   constructor(props) {
     super(props)
@@ -41,8 +45,8 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className='navbar'>
-        <Navbar expand="md" >
+      <div className='navbar' style={xyoPurple}>
+        <Navbar expand="md" style={xyoPurple}>
           <NavbarBrand href="/" style={navTextStyle}>XYO Devs</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

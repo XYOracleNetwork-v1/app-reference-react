@@ -22,6 +22,10 @@
   color: white;
 }
 
+a {
+  color: #58a0d7;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
