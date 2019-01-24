@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 const sideNavStyle = {
   'padding': '10px',
 }
@@ -27,11 +26,13 @@ export default class SideNav extends Component {
       </div>
     ))
   }
-
+  
   render() {
     return (
       <div style={sideNavStyle} className="side-nav">
-        {this.renderNavItems()}
+        <div>
+          {this.renderNavItems()}
+        </div>
       </div>
     )
   }

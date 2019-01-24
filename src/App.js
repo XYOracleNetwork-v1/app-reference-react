@@ -7,7 +7,6 @@ import MethodView from './components/MethodOutputView'
 import ReferenceIntro from './components/ReferenceIntro'
 import sdkBle from './BLE_Schema'
 import { Container, Col, Row } from 'reactstrap'
-import ScrollArea from 'react-scrollbar'
 
 const productState = sdkBle[0].id
 
@@ -49,11 +48,10 @@ class App extends Component {
         <Container fluid>
           <Row>
             <Col xs='auto'>
-              <ScrollArea speed={0.8} className="area" contentClassName="content" vertical={true}>
-                <SideNav 
-                  methods={this.state.methods} 
-                />
-              </ScrollArea>
+            
+              <SideNav 
+                methods={this.state.methods} 
+              />
             </Col>
             <Col>
               <MethodView

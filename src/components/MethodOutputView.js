@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Container, Col, Row } from 'reactstrap'
-import Prism from 'prismjs'
+import { Container, Col, Row } from 'reactstrap'
 
 const outputStyle = {
   'backgroundColor': 'black',
@@ -32,7 +31,7 @@ export default class MethodView extends Component {
   
   renderDescriptionsandOutputs = () => {
     const { methods } = this.props
-
+  
     return methods.map(method =>
       <Container fluid>
         <br></br>
