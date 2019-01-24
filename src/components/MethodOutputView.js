@@ -15,22 +15,24 @@ export default class MethodView extends Component {
     return methods.map(method =>
       <Col>
         <h4 className="text-success">{method.name}</h4>
-        {method.desc}
+        <strong>{method.desc}</strong>
         {method.objects.map(object => (
           <div>
             <br></br>
-            <p className="text-primary">{object.name}</p>
+            <p key={`${method}`} className="text-primary">
+              <a name={`${object.name}`}>{object.name}</a>
+            </p>
             <h6 className="text-info">Super Class</h6>
-            <p>{object.super}</p>
+            <p key={`${object.name}`}>{object.super}</p>
             <h6 className="text-info">What it does</h6>
-            <p>{object.desc}</p>
+            <p key={`${object.super}`}>{object.desc}</p>
             <h6 className="text-info">Properties</h6>
-            <p>{(object.properties || []).map(property => (
+            {(object.properties || []).map(property => (
               <div>
-                <p><strong>Name</strong> {property.name}</p>
-                <p><strong>Type</strong> {property.type}</p>
+                <p key={`${object.property}`}><strong>Name</strong> {property.name}</p>
+                <p key={`${object}`}><strong>Type</strong> {property.type}</p>
               </div>
-            ))}</p>
+            ))}
           </div>
         ))}
       </Col> 

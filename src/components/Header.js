@@ -48,21 +48,18 @@ export default class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret style={navTextStyle}>
                   Products
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    {this.props.product.map((product, i) => (<p key={i}>{this.props.product[i]}</p>))}
+                    {this.props.product}
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret style={navTextStyle}>
                   Languages
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -70,13 +67,10 @@ export default class Header extends Component {
                     {this.renderNavItems()}
                   </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret style={navTextStyle}>
                   Locale
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -85,12 +79,16 @@ export default class Header extends Component {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Reset
+                    Spanish
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Portuguese
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="https://github.com/XYOracleNetwork">GitHub</NavLink>
+                <NavLink href="https://github.com/XYOracleNetwork" style={navTextStyle}>GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

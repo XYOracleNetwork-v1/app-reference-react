@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 const sideNavStyle = {
   'padding': '10px',
 }
@@ -16,10 +17,10 @@ export default class SideNav extends Component {
     return methods.map((method, i) => (
       <div>
         <h3>{method.name}</h3>
-        <ul key={`${method.name}${i}`} style={textDecorationStyle}>
+        <ul key={`${method.name}`} style={textDecorationStyle}>
           { method.objects.map((object, i) => (
             <li key={object.name} style={textDecorationStyle}>
-              <a href={`#${object}`}>{object.name}</a>
+              <a href={`#${object.name}`}>{object.name}</a>
             </li>
           ))}
         </ul>
@@ -29,8 +30,8 @@ export default class SideNav extends Component {
 
   render() {
     return (
-    <div style={sideNavStyle}>
-      {this.renderNavItems()}
+      <div style={sideNavStyle} className="side-nav">
+        {this.renderNavItems()}
       </div>
     )
   }

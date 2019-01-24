@@ -6,8 +6,9 @@ import SideNav from './components/SideNav'
 import MethodView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
 import { Container, Col, Row } from 'reactstrap'
+import ScrollArea from 'react-scrollbar'
 
-const productState = sdkBle.map(productId => (<li key={productId}>{productId.id}</li>))
+const productState = sdkBle[0].id
 
 const languageState = sdkBle[0].lang
 
@@ -25,14 +26,6 @@ class App extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.setState( state => ({
-  //     products: productState,
-  //     languages: languageState, 
-  //     methods: methodState
-  // }))
-// }
-
   render() {
     return (
       <div className='app'>
@@ -41,9 +34,11 @@ class App extends Component {
         <Container fluid>
           <Row>
             <Col xs='auto'>
-              <SideNav 
-                methods={this.state.methods} 
-              />
+              <ScrollArea speed={0.8} className="area" contentClassName="content" vertical={true}>
+                <SideNav 
+                  methods={this.state.methods} 
+                />
+              </ScrollArea>
             </Col>
             <Col>
               <MethodView
