@@ -17,6 +17,7 @@
   "bugs": "https://github.com/xycorp/app-documentation-react/issues",
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "font-awesome": "^4.7.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
