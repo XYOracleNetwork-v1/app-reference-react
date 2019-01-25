@@ -14,6 +14,10 @@ const languageState = sdkBle[0].lang
 
 const methodState = sdkBle[0].modules
 
+const containerStyle = {
+  'margin-top': '6rem'
+}
+
 class App extends Component {
 
   constructor(props) {
@@ -43,16 +47,14 @@ class App extends Component {
           product={this.state.products} 
           onclick={this.handleProductChange}
         />
-        <ReferenceIntro />
-        <Container fluid>
+        <Container fluid style={containerStyle}>
           <Row>
             <Col xs='auto'>
-            
               <SideNav 
                 methods={this.state.methods} 
               />
             </Col>
-            <Col>
+            <Col className="border-left">
               <MethodView
                 methods={this.state.methods} 
                 language={this.state.languages}
