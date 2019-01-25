@@ -37,7 +37,7 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className='navbar' style={xyoPurple}>
+      <div className='navbar fixed-top' style={xyoPurple}>
         <Navbar expand="md" style={xyoPurple}>
           <NavbarBrand href="/" style={navTextStyle}>XYO Devs</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -99,5 +99,5 @@ const navTextStyle = {
 }
 
 const xyoPurple = {
-  'backgroundColor': '#8d8fc6'
+  'backgroundColor': '#232756'
 }
