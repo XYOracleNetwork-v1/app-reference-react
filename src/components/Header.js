@@ -13,14 +13,6 @@ import {
   DropdownItem
 } from 'reactstrap'
 
-const navTextStyle = {
-  'color': 'white'
-}
-
-const xyoPurple = {
-  'backgroundColor': '#8d8fc6'
-}
-
 export default class Header extends Component {
   constructor(props) {
     super(props)
@@ -100,4 +92,12 @@ export default class Header extends Component {
       </div>
     )
   }
+}
+
+const navTextStyle = {
+  'color': 'white'
+}
+
+const xyoPurple = {
+  'backgroundColor': '#8d8fc6'
 }

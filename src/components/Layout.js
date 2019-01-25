@@ -1,9 +1,5 @@
 import React from 'react'
 
-const layoutStyle = {
-  'fontFamily': 'Titillium Web'
-}
-
 const Layout = (props) => {
   return (
     <div style={layoutStyle}>
@@ -13,3 +9,7 @@ const Layout = (props) => {
 }
 
 export default Layout
+
+const layoutStyle = {
+  'fontFamily': 'Titillium Web'
+}

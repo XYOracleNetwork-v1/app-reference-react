@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
 
-const sideNavStyle = {
-  'fontFamily': 'SF Mono'
-}
-
-const textDecorationStyle = {
-  'listStyle': 'none',
-}
-
 export default class SideNav extends Component {
 
   renderNavItems = () => {
@@ -36,4 +28,12 @@ export default class SideNav extends Component {
       </div>
     )
   }
+}
+
+const sideNavStyle = {
+  'fontFamily': 'SF Mono'
+}
+
+const textDecorationStyle = {
+  'listStyle': 'none',
 }

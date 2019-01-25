@@ -2,36 +2,6 @@ import React, { Component } from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 
-const outputStyle = {
-  'backgroundColor': 'black',
-  'color': 'white',
-  'padding': '25px'
-}
-
-const colAppStyle = {
-  'padding': '25px'
-}
-
-const xyoBlueText = {
-  'color': '#58a0d7'
-}
-
-const xyoPinkText = {
-  'color': '#ec417b'
-}
-
-const xyoOrangeText = {
-  'color': '#f37047'
-}
-
-const smallPadding = {
-  'paddingTop': '15px'
-}
-
-const newFont = {
-  'fontFamily': 'SF Mono'
-}
-
 export default class MethodView extends Component {
   
   renderDescriptionsandOutputs = () => {
@@ -131,4 +101,34 @@ export default class MethodView extends Component {
       </div>
     )
   }
+}
+
+const outputStyle = {
+  'backgroundColor': 'black',
+  'color': 'white',
+  'padding': '25px'
+}
+
+const colAppStyle = {
+  'padding': '25px'
+}
+
+const xyoBlueText = {
+  'color': '#58a0d7'
+}
+
+const xyoPinkText = {
+  'color': '#ec417b'
+}
+
+const xyoOrangeText = {
+  'color': '#f37047'
+}
+
+const smallPadding = {
+  'paddingTop': '15px'
+}
+
+const newFont = {
+  'fontFamily': 'SF Mono'
 }

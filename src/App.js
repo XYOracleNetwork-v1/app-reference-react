@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Layout from './components/Layout'
 import Header from './components/Header'
 import SideNav from './components/SideNav'
@@ -8,13 +8,11 @@ import ReferenceIntro from './components/ReferenceIntro'
 import sdkBle from './BLE_Schema'
 import { Container, Col, Row } from 'reactstrap'
 
-
 const productState = sdkBle[0].id
 
 const languageState = sdkBle[0].lang
 
 const methodState = sdkBle[0].modules
-
 
 class App extends Component {
 
@@ -64,8 +62,8 @@ class App extends Component {
         </Container>
       </Layout>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
