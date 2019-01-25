@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Col, Row } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 
 const negativeMargin = {

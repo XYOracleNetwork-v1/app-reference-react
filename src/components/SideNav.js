@@ -21,9 +21,11 @@ export default class SideNav extends Component {
   
   render() {
     return (
-      <div style={sideNavStyle} className="px-3">
-        <div>
-          {this.renderNavItems()}
+      <div className="side-nav">
+        <div style={sideNavStyle} className="px-3">
+          <div>
+            {this.renderNavItems()}
+          </div>
         </div>
       </div>
     )
