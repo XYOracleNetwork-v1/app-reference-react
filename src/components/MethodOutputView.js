@@ -37,29 +37,29 @@ export default class MethodView extends Component {
                 </Col>
                   <Col style={outputStyle}>
                     <br></br>
-                    {object.properties ? <h3 style={xyoOrangeText}>Properties</h3> : <div></div>}
+                    {object.properties ? <h5 style={xyoOrangeText}>Properties</h5> : <div></div>}
                     <div>
                       {(object.properties || []).map(property => (
                         <div>
                           <p>Name</p> 
-                          <code>{property.name}</code>
+                          <CodeGrid>{property.name}</CodeGrid>
                           <p>Type</p> 
-                          <code>{property.type}</code>
+                          <CodeGrid>{property.type}</CodeGrid>
                           {property.desc ? <p>Description</p> : <p></p>} 
-                          <code>{property.desc}</code>
+                          <CodeGrid>{property.desc}</CodeGrid>
                         </div>
                       ))}
                     </div>
                     <div style={smallPadding}>
                       {(object.enumerations || []).map(e => (
                         <div style={xyoBlueText}>
-                          <h3>Enumerations</h3>
+                          <h5>Enumerations</h5>
                           <p>name</p>
-                          <code><a name={`${object.name}`}>{e.name}</a></code>
+                          <CodeGrid><a name={`${object.name}`}>{e.name}</a></CodeGrid>
                           <p>values</p>
                           {(e.values || []).map(val =>
                             <div>
-                              <code>{val.name}</code>
+                              <CodeGrid>{val.name}</CodeGrid>
                             </div>
                           )}
                         </div>
@@ -68,17 +68,17 @@ export default class MethodView extends Component {
                     <div style={smallPadding}>
                     {(object.functions || []).map(f => (
                       <div style={outputStyle}>
-                        <code>{f.name}</code>
+                        <CodeGrid>{f.name}</CodeGrid>
                         <br></br>
                         {(f.parameters || []).map(param =>
                           <div>
                             <p>Functions</p>
-                              <code>{JSON.stringify(param.async)}</code>
+                              <CodeGrid>{JSON.stringify(param.async)}</CodeGrid>
                               {(f.returns || []).map(returns => (
                                 <div>
-                                  <code> async ({param.name}: {param.type}) => {returns.desc}</code>
+                                  <CodeGrid> async ({param.name}: {param.type}) => {returns.desc}</CodeGrid>
                                   <p>Returns</p>
-                                  <code>{returns.type}</code>
+                                  <CodeGrid>{returns.type}</CodeGrid>
                                 </div>
                               ))}
                             </div>
@@ -101,6 +101,12 @@ export default class MethodView extends Component {
       </div>
     )
   }
+}
+
+const CodeGrid = props => {
+  return (
+    <code style={codePad}> {props.children} </code>
+  )
 }
 
 const outputStyle = {
@@ -131,4 +137,8 @@ const smallPadding = {
 
 const newFont = {
   'fontFamily': 'SF Mono'
+}
+
+const codePad = {
+  'padding-left': '25px'
 }
