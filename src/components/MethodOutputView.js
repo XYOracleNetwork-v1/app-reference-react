@@ -2,95 +2,96 @@ import React, { Component } from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 
+const negativeMargin = {
+  'margin-bottom':'-1em'
+}
+
 export default class MethodView extends Component {
   
   renderDescriptionsandOutputs = () => {
     const { methods } = this.props
   
     return methods.map(method =>
-      <Container fluid style={newFont}>
-        <br></br>
-        <h3 style={xyoPinkText}>{method.name}</h3>
-            <strong>{method.desc}</strong>
-            <div>
-              <br></br>
-              {method.objects.map(object => (
-                <Row className="border">
-                <Col style={colAppStyle}>
-                <br></br>
+      <div><Row className="pb-3 my-0 bg-dark text-light">
+        <Col className="col-6 bg-light text-dark pb-2" style={negativeMargin}>
+          <h3 className="font-weight-bold mt-3">{method.name}</h3>
+          <strong><i>{method.desc}</i></strong>
+        </Col>
+        <Col className="col-6 bg-dark text-light">
+        </Col>
+      </Row>
+      <div>
+        {method.objects.map(object => (
+          <Row className="border-bottom">
+            <Col style={colAppStyle}>
+              <div>
+                <h5 key={`${method}`} style={xyoBlueText}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
+                <h6 style={xyoOrangeText}>Super Class</h6>
+                <p key={`${object.name}`}>{object.super}</p>
+                {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
+                <p key={`${object.super}`}>{object.desc}</p>
+                  <Helmet>
+                    <script>
+                      {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev' }`}
+                    </script>
+                    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+                  </Helmet>
+              </div>
+            </Col>
+            <Col className="bg-dark" style={outputStyle}>
+              {object.properties ? <h5 style={xyoOrangeText}>Properties</h5> : <div></div>}
+              <div>
+                {(object.properties || []).map(property => (
                   <div>
-                    <h5 key={`${method}`} style={xyoBlueText}>
-                      Object
-                      <a name={`${object.name}`}> {object.name} </a>
-                    </h5>
-                      <h6 style={xyoOrangeText}>Super Class</h6>
-                    <p key={`${object.name}`}>{object.super}</p>
-                    {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
-                    <p key={`${object.super}`}>{object.desc}</p>
-                    <Helmet>
-                        <script>
-                          {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev' }`}
-                        </script>
-                        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-                    </Helmet>
+                    <p>Name</p> 
+                    <CodeGrid>{property.name}</CodeGrid>
+                    <p>Type</p> 
+                    <CodeGrid>{property.type}</CodeGrid>
+                    {property.desc ? <p>Description</p> : <p></p>} 
+                    <CodeGrid>{property.desc}</CodeGrid>
                   </div>
-                </Col>
-                  <Col style={outputStyle}>
-                    <br></br>
-                    {object.properties ? <h5 style={xyoOrangeText}>Properties</h5> : <div></div>}
-                    <div>
-                      {(object.properties || []).map(property => (
-                        <div>
-                          <p>Name</p> 
-                          <CodeGrid>{property.name}</CodeGrid>
-                          <p>Type</p> 
-                          <CodeGrid>{property.type}</CodeGrid>
-                          {property.desc ? <p>Description</p> : <p></p>} 
-                          <CodeGrid>{property.desc}</CodeGrid>
-                        </div>
-                      ))}
-                    </div>
-                    <div style={smallPadding}>
-                      {(object.enumerations || []).map(e => (
-                        <div style={xyoBlueText}>
-                          <h5>Enumerations</h5>
-                          <p>name</p>
-                          <CodeGrid><a name={`${object.name}`}>{e.name}</a></CodeGrid>
-                          <p>values</p>
-                          {(e.values || []).map(val =>
-                            <div>
-                              <CodeGrid>{val.name}</CodeGrid>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                    <div style={smallPadding}>
-                    {(object.functions || []).map(f => (
-                      <div style={outputStyle}>
-                        <CodeGrid>{f.name}</CodeGrid>
-                        <br></br>
-                        {(f.parameters || []).map(param =>
+                ))}
+              </div>
+              <div style={smallPadding}>
+                {(object.enumerations || []).map(e => (
+                  <div style={xyoBlueText}>
+                    <h5>Enumerations</h5>
+                    <p>name</p>
+                    <CodeGrid><a name={`${object.name}`}>{e.name}</a></CodeGrid>
+                    <p>values</p>
+                    {(e.values || []).map(val =>
+                      <div>
+                        <CodeGrid>{val.name}</CodeGrid>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div style={smallPadding}>
+                {(object.functions || []).map(f => (
+                  <div style={outputStyle}>
+                    <CodeGrid>{f.name}</CodeGrid>
+                    {(f.parameters || []).map(param =>
+                      <div>
+                        <p>Functions</p>
+                        <CodeGrid>{JSON.stringify(param.async)}</CodeGrid>
+                        {(f.returns || []).map(returns => (
                           <div>
-                            <p>Functions</p>
-                              <CodeGrid>{JSON.stringify(param.async)}</CodeGrid>
-                              {(f.returns || []).map(returns => (
-                                <div>
-                                  <CodeGrid> async ({param.name}: {param.type}) => {returns.desc}</CodeGrid>
-                                  <p>Returns</p>
-                                  <CodeGrid>{returns.type}</CodeGrid>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}   
-                    </div>
-                </Col>
-            </Row>
-          ))}
-        </div>
-      </Container>
+                            <CodeGrid> async ({param.name}: {param.type}) => {returns.desc}</CodeGrid>
+                            <p>Returns</p>
+                            <CodeGrid>{returns.type}</CodeGrid>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}   
+              </div>
+            </Col>
+          </Row>
+        ))}
+      </div>
+      </div>
     )
   }
 
@@ -136,7 +137,7 @@ const smallPadding = {
 }
 
 const newFont = {
-  'fontFamily': 'SF Mono'
+  'fontFamily': 'Titillium Web'
 }
 
 const codePad = {

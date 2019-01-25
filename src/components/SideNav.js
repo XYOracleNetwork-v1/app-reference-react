@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
 export default class SideNav extends Component {
-
+  
   renderNavItems = () => {
     const { methods } = this.props
 
     return methods.map((method, i) => (
       <div>
-        <h4>{method.name}</h4>
+        <h4><i className="fa fa-angle-down"></i> {method.name}</h4>
         <ul key={`${method.name}`} style={textDecorationStyle}>
           { method.objects.map((object, i) => (
             <li key={object.name} style={textDecorationStyle}>
@@ -21,7 +21,7 @@ export default class SideNav extends Component {
   
   render() {
     return (
-      <div style={sideNavStyle} className="side-nav">
+      <div style={sideNavStyle} className="px-3">
         <div>
           {this.renderNavItems()}
         </div>
@@ -31,7 +31,7 @@ export default class SideNav extends Component {
 }
 
 const sideNavStyle = {
-  'fontFamily': 'SF Mono'
+  'fontFamily': 'Titillium Web'
 }
 
 const textDecorationStyle = {
