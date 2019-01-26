@@ -33,9 +33,10 @@ export default class SideNav extends Component {
 }
 
 const sideNavStyle = {
-  'fontFamily': 'Titillium Web'
+  fontFamily: 'Titillium Web',
+  boxShadow: '2px 2px 6px - 2px #3f3b3b'
 }
 
 const textDecorationStyle = {
-  'listStyle': 'none',
+  listStyle: 'none',
 }

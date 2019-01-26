@@ -25,17 +25,11 @@ export default class MethodView extends Component {
           <Row className="border-bottom">
             <Col style={colAppStyle}>
               <div>
-                <h5 key={`${method}`} style={xyoBlueText}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
-                <h6 style={xyoOrangeText}>Super Class</h6>
+                <h5 key={`${method}`} style={{color: 'grey'}}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
+                <h6 style={xyoPinkText}>Super Class</h6>
                 <p key={`${object.name}`}>{object.super}</p>
                 {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
                 <p key={`${object.super}`}>{object.desc}</p>
-                  <Helmet>
-                    <script>
-                      {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev' }`}
-                    </script>
-                    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-                  </Helmet>
               </div>
             </Col>
             <Col className="bg-dark" style={outputStyle}>
@@ -53,6 +47,12 @@ export default class MethodView extends Component {
                 ))}
               </div>
               <div style={smallPadding}>
+                <Helmet>
+                  <script>
+                    {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev', preLoad: true}`}
+                  </script>
+                  <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+                </Helmet>
                 {(object.enumerations || []).map(e => (
                   <div style={xyoBlueText}>
                     <h5>Enumerations</h5>
@@ -111,35 +111,31 @@ const CodeGrid = props => {
 }
 
 const outputStyle = {
-  'backgroundColor': 'black',
-  'color': 'white',
-  'padding': '25px'
+  backgroundColor: 'black',
+  color: 'white',
+  padding: '25px'
 }
 
 const colAppStyle = {
-  'padding': '25px'
+  padding: '25px'
 }
 
 const xyoBlueText = {
-  'color': '#58a0d7'
+  color: '#58a0d7'
 }
 
 const xyoPinkText = {
-  'color': '#ec417b'
+  color: '#ec417b'
 }
 
 const xyoOrangeText = {
-  'color': '#f37047'
+  color: '#f37047'
 }
 
 const smallPadding = {
-  'paddingTop': '15px'
-}
-
-const newFont = {
-  'fontFamily': 'Titillium Web'
+  paddingTop: '15px'
 }
 
 const codePad = {
-  'padding-left': '25px'
+  paddingLeft: '25px'
 }

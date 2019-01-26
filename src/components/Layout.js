@@ -11,5 +11,5 @@ const Layout = (props) => {
 export default Layout
 
 const layoutStyle = {
-  'fontFamily': 'Titillium Web'
+  fontFamily: 'Titillium Web'
 }

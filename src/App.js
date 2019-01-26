@@ -14,7 +14,7 @@ const languageState = sdkBle[0].lang
 const methodState = sdkBle[0].modules
 
 const containerStyle = {
-  'margin-top': '6rem'
+  marginTop: '6rem'
 }
 
 class App extends Component {
