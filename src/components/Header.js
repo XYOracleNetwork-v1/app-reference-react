@@ -96,10 +96,10 @@ export default class Header extends Component {
 
 const navTextStyle = {
   color: 'white',
-  boxShadow: '2px 2px 6px - 2px #3f3b3b'
 }
 
 
 const xyoColor = {
   backgroundImage: 'linear-gradient(to right, #8A2BE2, #8d8fc6, #58a0d7)',
+  boxShadow: '2px 2px 8px -2px #3f3b3b'
 }
