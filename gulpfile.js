@@ -11,7 +11,7 @@ const exec = util.promisify(childProcess.exec)
 const { s3BucketName, region, cloudFrontDistributionId } = config
 
 const confirmProductionBranch = async () => {
-  const BRANCH_TO_TEST = 'master'
+  const BRANCH_TO_TEST = 'develop'
   console.log(`Confirming current branch is set to ${BRANCH_TO_TEST}`)
 
   try {
@@ -44,7 +44,7 @@ const publishProd = () => {
 
   return (
     gulp
-      .src('./public/**/*')
+      .src('./build/**/*')
       .pipe(parallel(publisher.publish(), 50))
       // create a transform stream that delete old files from the bucket.
       .pipe(parallel(publisher.sync(null, [/^images/]), 50))

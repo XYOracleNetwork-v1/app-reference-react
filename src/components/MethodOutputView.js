@@ -27,9 +27,9 @@ export default class MethodView extends Component {
               <div>
                 <h5 key={`${method}`} style={{color: 'grey'}}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
                 <h6 style={xyoPinkText}>Super Class</h6>
-                <p key={`${object.name}`}>{object.super}</p>
+                <p key={`${object.name}`} style={codePad}>{object.super}</p>
                 {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
-                <p key={`${object.super}`}>{object.desc}</p>
+                <p key={`${object.super}`} style={codePad}>{object.desc}</p>
               </div>
             </Col>
             <Col className="bg-dark" style={outputStyle}>
@@ -137,5 +137,6 @@ const smallPadding = {
 }
 
 const codePad = {
-  paddingLeft: '25px'
+  paddingLeft: '25px',
+  paddingBottom: '10px'
 }
