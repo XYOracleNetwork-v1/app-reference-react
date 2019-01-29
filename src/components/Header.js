@@ -13,6 +13,8 @@ import {
   DropdownItem
 } from 'reactstrap'
 
+import logo from '../XYODevelopers_XYO_Logo.png'
+
 export default class Header extends Component {
   constructor(props) {
     super(props)
@@ -52,7 +54,7 @@ export default class Header extends Component {
     return (
       <div className='navbar fixed-top' style={xyoColor}>
         <Navbar expand="md">
-          <NavbarBrand href="/" style={navTextStyle}>XYO Devs</NavbarBrand>
+          <NavbarBrand href="/" style={navTextStyle}><img src={logo} alt="logo"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
