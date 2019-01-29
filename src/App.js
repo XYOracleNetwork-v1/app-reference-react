@@ -5,13 +5,21 @@ import Header from './components/Header'
 import SideNav from './components/SideNav'
 import MethodView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
+import swiftObject from './Object_Swift_Schema'
 import { Container, Col, Row } from 'reactstrap'
 
 const productState = sdkBle[0].id
+const swiftState = swiftObject[0].id
 
-const languageState = sdkBle[0].lang
+const kotlinState = sdkBle[0].lang
+const swiftLangState = swiftObject[0].lang
 
 const methodState = sdkBle[0].modules
+
+const swiftMethodState = swiftObject[0].modules
+
+
+console.log(swiftState)
 
 const containerStyle = {
   marginTop: '6rem'
@@ -22,17 +30,24 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: productState,
-      languages: languageState,
-      methods: methodState,
+      products: [productState, swiftState],
+      languages: [kotlinState, swiftLangState],
+      methods: [],
     }
 
-    this.handleProductChange = this.handleProductChange.bind(this)
+    this.onClick = this.handleProductChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({
+      methods: methodState
+    })
   }
 
   handleProductChange(e) {
+    e.preventDefault();
     this.setState({
-      products: e.target.value
+      methods: e.target.value
     })
   }
 
@@ -44,7 +59,7 @@ class App extends Component {
           methods={this.state.methods} 
           language={this.state.languages} 
           product={this.state.products} 
-          onclick={this.handleProductChange}
+          onClick={this.onClick}
         />
         <Container fluid style={containerStyle}>
           <Row>

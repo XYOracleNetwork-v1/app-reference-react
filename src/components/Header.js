@@ -29,10 +29,22 @@ export default class Header extends Component {
     })
   }
 
-  renderNavItems = () => {
+  renderNavLangItems = () => {
     const { language } = this.props
 
-    return (<p>{language}</p>)
+    return language.map(lang => (
+        <DropdownItem>{lang}</DropdownItem>
+      )
+    )
+  }
+
+  renderNavProductItems = () => {
+    const { product } = this.props
+
+    return product.map(prod => (
+        <DropdownItem>{prod}</DropdownItem>
+      )
+    )
   }
 
   render() {
@@ -48,10 +60,7 @@ export default class Header extends Component {
                   Products
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    {this.props.product}
-                  </DropdownItem>
-                  <DropdownItem divider />
+                  {this.renderNavProductItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
@@ -59,10 +68,7 @@ export default class Header extends Component {
                   Languages
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    {this.renderNavItems()}
-                  </DropdownItem>
-                  <DropdownItem divider />
+                  {this.renderNavLangItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>

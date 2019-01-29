@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SideNavLayout from './SideNavLayout'
 
 export default class SideNav extends Component {
   
@@ -21,20 +22,11 @@ export default class SideNav extends Component {
   
   render() {
     return (
-      <div className="side-nav">
-        <div style={sideNavStyle} className="px-3">
-          <div>
-            {this.renderNavItems()}
-          </div>
-        </div>
-      </div>
+      <SideNavLayout>
+        {this.renderNavItems()}
+      </SideNavLayout>
     )
   }
-}
-
-const sideNavStyle = {
-  fontFamily: 'Titillium Web',
-  boxShadow: '2px 2px 6px - 2px #3f3b3b'
 }
 
 const textDecorationStyle = {
