@@ -30,19 +30,20 @@ export default class Header extends Component {
   }
 
   renderNavLangItems = () => {
-    const { language } = this.props
+    const { language, onClick } = this.props
+    console.log(this.props)
 
     return language.map(lang => (
-        <DropdownItem>{lang}</DropdownItem>
+        <DropdownItem onClick={onClick}>{lang}</DropdownItem>
       )
     )
   }
 
   renderNavProductItems = () => {
-    const { product } = this.props
+    const { product, onClick } = this.props
 
     return product.map(prod => (
-        <DropdownItem>{prod}</DropdownItem>
+        <DropdownItem onClick={onClick}>{prod}</DropdownItem>
       )
     )
   }

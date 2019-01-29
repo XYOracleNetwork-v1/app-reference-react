@@ -35,7 +35,7 @@ class App extends Component {
       methods: [],
     }
 
-    this.onClick = this.handleProductChange.bind(this)
+    // this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -44,12 +44,19 @@ class App extends Component {
     })
   }
 
-  handleProductChange(e) {
-    e.preventDefault();
-    this.setState({
-      methods: e.target.value
-    })
-  }
+  // handleClick() {
+  //   if (this.state.products === swiftState) {
+  //     this.setState({
+  //       methods: swiftMethodState
+  //     })
+  //   }
+
+  //   if (this.state.products === productState) {
+  //     this.setState({
+  //       methods: methodState
+  //     })
+  //   }
+  // }
 
   render() {
     return (
@@ -59,7 +66,8 @@ class App extends Component {
           methods={this.state.methods} 
           language={this.state.languages} 
           product={this.state.products} 
-          onClick={this.onClick}
+            onClick={() => this.state.products === productState 
+              ? this.setState({ methods: methodState}) : this.setState({methods: swiftMethodState})}
         />
         <Container fluid style={containerStyle}>
           <Row>
