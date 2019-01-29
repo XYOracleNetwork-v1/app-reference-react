@@ -34,7 +34,7 @@ export default class Header extends Component {
     console.log(this.props)
 
     return language.map(lang => (
-        <DropdownItem onClick={onClick}>{lang}</DropdownItem>
+        <DropdownItem onClick={onClick} id={lang}>{lang}</DropdownItem>
       )
     )
   }
@@ -43,7 +43,7 @@ export default class Header extends Component {
     const { product, onClick } = this.props
 
     return product.map(prod => (
-        <DropdownItem onClick={onClick}>{prod}</DropdownItem>
+        <DropdownItem onClick={onClick} id={prod}>{prod}</DropdownItem>
       )
     )
   }

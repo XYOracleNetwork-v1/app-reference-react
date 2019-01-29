@@ -35,7 +35,7 @@ class App extends Component {
       methods: [],
     }
 
-    // this.handleClick = this.handleClick.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
@@ -44,19 +44,19 @@ class App extends Component {
     })
   }
 
-  // handleClick() {
-  //   if (this.state.products === swiftState) {
-  //     this.setState({
-  //       methods: swiftMethodState
-  //     })
-  //   }
+  handleClick(e) {
+    if (e.target.id === swiftState) {
+      this.setState({
+        methods: swiftMethodState
+      })
+    }
 
-  //   if (this.state.products === productState) {
-  //     this.setState({
-  //       methods: methodState
-  //     })
-  //   }
-  // }
+    if (e.target.id === productState) {
+      this.setState({
+        methods: methodState
+      })
+    }
+  }
 
   render() {
     return (
@@ -66,8 +66,7 @@ class App extends Component {
           methods={this.state.methods} 
           language={this.state.languages} 
           product={this.state.products} 
-            onClick={() => this.state.products === productState 
-              ? this.setState({ methods: methodState}) : this.setState({methods: swiftMethodState})}
+          onClick={this.handleClick}
         />
         <Container fluid style={containerStyle}>
           <Row>
