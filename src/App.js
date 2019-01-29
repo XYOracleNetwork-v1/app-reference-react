@@ -8,18 +8,10 @@ import sdkBle from './BLE_Schema'
 import swiftObject from './Object_Swift_Schema'
 import { Container, Col, Row } from 'reactstrap'
 
-const productState = sdkBle[0].id
-const swiftState = swiftObject[0].id
+const kotlinBleProductState = sdkBle[0]
+const swiftCoreObjectState = swiftObject[0]
 
-const kotlinState = sdkBle[0].lang
-const swiftLangState = swiftObject[0].lang
-
-const methodState = sdkBle[0].modules
-
-const swiftMethodState = swiftObject[0].modules
-
-
-console.log(swiftState)
+console.log(kotlinBleProductState.modules)
 
 const containerStyle = {
   marginTop: '6rem'
@@ -30,8 +22,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [productState, swiftState],
-      languages: [kotlinState, swiftLangState],
+      products: [kotlinBleProductState.id, swiftCoreObjectState.id],
+      languages: [kotlinBleProductState.lang, swiftCoreObjectState.lang],
       methods: [],
     }
 
@@ -40,20 +32,20 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      methods: methodState
+      methods: kotlinBleProductState.modules
     })
   }
 
   handleClick(e) {
-    if (e.target.id === swiftState) {
+    if (e.target.id === swiftCoreObjectState.id) {
       this.setState({
-        methods: swiftMethodState
+        methods: swiftCoreObjectState.modules
       })
     }
 
-    if (e.target.id === productState) {
+    if (e.target.id === kotlinBleProductState.id) {
       this.setState({
-        methods: methodState
+        methods: kotlinBleProductState.modules
       })
     }
   }
