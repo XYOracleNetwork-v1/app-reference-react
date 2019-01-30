@@ -54,7 +54,7 @@ export default class Header extends Component {
     return (
       <div className='navbar fixed-top' style={xyoColor}>
         <Navbar expand="md">
-          <NavbarBrand href="/" style={navTextStyle}><img src={logo} alt="logo"/></NavbarBrand>
+          <NavbarBrand href="http://dev-developers.xyo.network.s3-website-us-east-1.amazonaws.com/" style={navTextStyle}><img src={logo} alt="logo"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
@@ -94,9 +94,6 @@ export default class Header extends Component {
               </UncontrolledDropdown>
               <NavItem>
                 <NavLink href="https://github.com/XYOracleNetwork" style={navTextStyle} target="_blank">GitHub</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="http://dev-developers.xyo.network.s3-website-us-east-1.amazonaws.com/" style={navTextStyle}>DevPortal</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
