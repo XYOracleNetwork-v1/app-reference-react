@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import SideNavLayout from './SideNavLayout'
+import { Link, animateScroll as scroll } from 'react-scroll'
 
 export default class SideNav extends Component {
+
+  scrollToTop = () => {
+    scroll.scrollToTop()
+  }
   
   renderNavItems = () => {
     const { methods } = this.props
@@ -12,7 +17,15 @@ export default class SideNav extends Component {
         <ul key={`${method.name}`} style={textDecorationStyle}>
           { method.objects.map((object, i) => (
             <li key={object.name} style={textDecorationStyle}>
-              <a href={`#${object.name}`}>{object.name}</a>
+              <Link 
+                to={`${object.name}`}
+                spy={true}
+                smooth={true}
+                duration={500}
+                offset={-100}
+              >
+                {object.name}
+              </Link>
             </li>
           ))}
         </ul>
@@ -31,4 +44,6 @@ export default class SideNav extends Component {
 
 const textDecorationStyle = {
   listStyle: 'none',
+  color: '#58a0d7',
+  cursor: 'pointer'
 }
