@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import SideNavLayout from './SideNavLayout'
+import { Button } from 'reactstrap'
 import { Link, animateScroll as scroll } from 'react-scroll'
+
+import logo from '../XYODevelopers_XYO_Logo.png'
 
 export default class SideNav extends Component {
 
@@ -37,6 +40,7 @@ export default class SideNav extends Component {
     return (
       <SideNavLayout>
         {this.renderNavItems()}
+        <Button onClick={this.scrollToTop}><img src={logo} alt="logo" /></Button>
       </SideNavLayout>
     )
   }
@@ -45,5 +49,6 @@ export default class SideNav extends Component {
 const textDecorationStyle = {
   listStyle: 'none',
   color: '#58a0d7',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  padding: '2px'
 }
