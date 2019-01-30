@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Layout = (props) => {
+const Layout = props => {
   return (
     <div style={layoutStyle}>
       {props.children}

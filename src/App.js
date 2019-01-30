@@ -36,6 +36,14 @@ class App extends Component {
     })
   }
 
+  // handleStateChange( targetId, event ) {
+  //   if (targetId === event.id) {
+  //     this.setState({
+  //       methods: event.modules
+  //     })
+  //   }
+  // }
+
   handleClick(e) {
     if (e.target.id === swiftCoreObjectState.id) {
       this.setState({
