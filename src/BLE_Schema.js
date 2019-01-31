@@ -13,9 +13,16 @@ module.exports = [{
       "objects": [
         {
           "name": "XYBleAd",
-          "super": "XYBase"
-        }
-      ]
+          "super": "XYBase",
+          "properties": [
+            {
+              "desc": "hash for the hashCode function.",
+              "name": "hash",
+              "type": "Int"
+            },              
+          ], 
+        },
+      ],
     },
     {
       "desc": "Device Specific Client Implementations",
@@ -87,7 +94,15 @@ module.exports = [{
         },
         {
           "name": "XYAppleBluetoothDevice",
-          "super": "XYBluetoothDevice"
+          "super": "XYBluetoothDevice",
+          "properties": [
+            {              
+              "desc": "The id of the device being used to get manufacturer specific data.",
+              "name": "Manufacturer id",
+              "static": true,
+              "type": "byte"
+            },
+          ],
         },
         {
           "name": "XYBluetoothDevice",
@@ -121,23 +136,89 @@ module.exports = [{
         },
         {
           "desc": "Abstract class for interface for self creating objects",
-          "name": "XYCreator"
+          "name": "XYCreator",
+          "functions": [
+            {
+              "async": "true",
+              "name": "getDevicesFromScanResult",
+              "parameters": [
+                {
+                  "name": "context : ",
+                  "type": "Context"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "XyBase",
+                  "desc": "device object of best fit"
+                }
+              ],
+              "template": true
+            },
+          ],
         },
         {
           "name": "XYFinderBluetoothDevice",
-          "super": "XYIBeaconBluetoothDevice"
+          "super": "XYIBeaconBluetoothDevice",
+          "enumerations": [
+            {
+              "name": "ButtonPress",
+              "values": [
+                {
+                  "name": "Single"
+                },
+                {
+                  "name": "Double"
+                },
+                {
+                  "name": "Long"
+                }
+              ],
+            },
+            {
+              "name": "Family",
+            },
+            {
+              "name": "Proximity",
+            },
+          ],
         },
         {
           "name": "XYGpsBluetoothDevice",
-          "super": "XYFinderBluetoothDevice"
+          "super": "XYFinderBluetoothDevice",
+          "enumerations": [
+            {
+              "name": "StayAwake",
+              "values": [
+                {
+                  "name": "Off"
+                },
+                {
+                  "name": "On"
+                }
+              ]
+            }
+          ],
         },
         {
           "name": "XYIBeaconBluetoothDevice",
-          "super": "XYBluetoothDevice"
+          "super": "XYBluetoothDevice",
+          "properties": [
+            {
+              "name": "Apple_Beacon_ID",
+              "type": "byte",
+            },
+          ],
         },
         {
           "name": "XYMobileBluetoothDevice",
-          "super": "XYFinderBluetoothDevice"
+          "super": "XYFinderBluetoothDevice",
+          "properties": [
+            {
+              "name": "FAMILY_UUID",
+              "type": "string",
+            },
+          ],
         }
       ]
     },
