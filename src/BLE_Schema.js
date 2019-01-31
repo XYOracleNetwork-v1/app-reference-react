@@ -181,11 +181,11 @@ module.exports = [{
           ],
           "functions": [
             {
-              "async": true,
+              "async": "true",
               "name": "connection",
               "parameters": [
                 {
-                  "name": "closure",
+                  "name": "closure : ",
                   "type": "function"
                 }
               ],

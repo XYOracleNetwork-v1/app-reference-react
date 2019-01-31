@@ -15,11 +15,173 @@ module.exports = [{
           "super": "XyoIterableStructure",
           "desc": "creates a bound Witness ",
           "name": "XyoBoundWitness",
+          "functions": [
+            {
+              "async": "false",
+              "name": "getIsCompleted",
+              "parameters": [
+                {
+                  "name": "",
+                  "type": ""
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Bool",
+                  "desc": "XyoIterableStructure"
+                }
+              ],
+              "template": true
+            },
+            {
+              "name": "getNumberOfFetters",
+              "parameters": [
+                {
+                  "name": "",
+                  "type": ""
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Int",
+                  "desc": "XyoSchemas.FETTER.id count"
+                }
+              ]
+            },
+            {
+              "name": "getNumberOfWitnesses",
+              "parameters": [
+                {
+                  "name": "",
+                  "type": ""
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Int",
+                  "desc": "XyoSchemas.WITNESS.id count"
+                }
+              ]
+            },
+            {
+              "name": "getHash",
+              "parameters": [
+                {
+                  "name": "hasher : ",
+                  "type": "XyoHasher"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "XyoObjectStructure",
+                  "desc": "hasher.hash(data: getSigningData())"
+                }
+              ]
+            },
+            {
+              "name": "signCurrent",
+              "parameters": [
+                {
+                  "name": "signer : ",
+                  "type": "XyoSigner"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "XyoObjectStructure",
+                  "desc": "signer.sign(data: getSigningData())"
+                }
+              ]
+            },
+            {
+              "name": "addToLedger",
+              "parameters": [
+                {
+                  "name": "item : ",
+                  "type": "XyoObjectStructure"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "addElement()",
+                  "desc": "addElement(element: item)"
+                }
+              ]
+            },
+            {
+              "name": "getNumberOfParties",
+              "parameters": [
+                {
+                  "name": " ",
+                  "type": ""
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Int",
+                  "desc": "numberOfFetters"
+                }
+              ]
+            },
+            {
+              "name": "getFetterOfParty",
+              "parameters": [
+                {
+                  "name": "partyIndex : ",
+                  "type": "Int"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "XyoIterableStructure",
+                  "desc": "fetterOfParty"
+                }
+              ]
+            },
+            {
+              "name": "getWitnessOfParty",
+              "parameters": [
+                {
+                  "name": "partyIndex : ",
+                  "type": "Int"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "XyoIterableStructure",
+                  "desc": "witnessOfParty"
+                }
+              ]
+            },
+          ],
         },
         {
           "super": "XyoBoundWitness",
           "desc": "creates a ZigZag bound Witness ",
           "name": "XyoZigZagBoundWitness",
+          "functions": [
+            {
+              "async": "true",
+              "name": "incomingData",
+              "parameters": [
+                {
+                  "name": "transfer : ",
+                  "type": "XyoIterableStructure",
+                },
+                {
+                  "name": "endpoint : ",
+                  "type": "Bool"
+                },
+              ],
+              "returns": [
+                {
+                  "type": "XyoIterableStructure",
+                  "desc": "getReturnFromIncoming"
+                }
+              ],
+              "template": true
+            },
+          ]
         }
       ]
     },

@@ -68,16 +68,17 @@ export default class MethodView extends Component {
                 ))}
               </div>
               <div style={smallPadding}>
+              {object.functions ? <p>Functions</p> : <p></p>}
                 {(object.functions || []).map(f => (
                   <div style={outputStyle}>
+                    <p>name</p>
                     <CodeGrid>{f.name}</CodeGrid>
                     {(f.parameters || []).map(param =>
                       <div>
-                        <p>Functions</p>
                         <CodeGrid>{JSON.stringify(param.async)}</CodeGrid>
                         {(f.returns || []).map(returns => (
                           <div>
-                            <CodeGrid> async ({param.name}: {param.type}) => {returns.desc}</CodeGrid>
+                            <CodeGrid> ({param.name} {param.type}) => {returns.desc}</CodeGrid>
                             <p>Returns</p>
                             <CodeGrid>{returns.type}</CodeGrid>
                           </div>
