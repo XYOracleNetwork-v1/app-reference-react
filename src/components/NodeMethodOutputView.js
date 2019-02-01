@@ -7,7 +7,7 @@ const negativeMargin = {
 }
 
 export default class NodeMethodOutputView extends Component {
-  
+
   renderDescriptionsandOutputs = () => {
     const { methods } = this.props
 
@@ -101,9 +101,9 @@ export default class NodeMethodOutputView extends Component {
         <div>
           {this.renderDescriptionsandOutputs()}
         </div>
-        <div>
+        <Row>
           <iframe title="nodeSandbox" src="https://codesandbox.io/s/github/pllearns/lorenzo-site" style={sandboxStyle} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-        </div>
+        </Row>
       </div>
     )
   }
@@ -117,10 +117,10 @@ const CodeGrid = props => {
 
 const sandboxStyle = {
   "width":"100%",
-  "height":"500px",
+  "height":"700px",
   "border":"0", 
-  "border-radius": "4px",
-  "overflow": "hidden"
+  "overflow": "hidden",
+  "backgroundColor": "black"
 }
 
 const outputStyle = {
