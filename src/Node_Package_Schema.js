@@ -8,7 +8,15 @@ module.exports = [{
   "desc": "Core Library with support for all XYO devices",
   "modules": [
     {
-      
+      "desc": "diviner package",
+      "name": "app-divinver",
+      "objects": [
+        {
+          "super": "XyoBaseNode",
+          "desc": "Launches a diviner",
+          "name": "DivinerLauncher",
+        },
+      ]
     },
   ],
 }]
