@@ -6,10 +6,13 @@ import SideNav from './components/SideNav'
 import MethodView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
 import swiftObject from './Object_Swift_Schema'
+import nodeObject from './Node_Package_Schema'
 import { Container, Col, Row } from 'reactstrap'
+import NodeMethodOutputView from './components/NodeMethodOutputView';
 
 const kotlinBleProductState = sdkBle[0]
 const swiftCoreObjectState = swiftObject[0]
+const nodePkgObjectState = nodeObject[0]
 
 console.log(kotlinBleProductState.modules)
 
@@ -22,7 +25,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [kotlinBleProductState.id, swiftCoreObjectState.id],
+      products: [kotlinBleProductState.id, swiftCoreObjectState.id, nodePkgObjectState.id],
       languages: [kotlinBleProductState.lang, swiftCoreObjectState.lang],
       methods: [],
     }
@@ -56,6 +59,12 @@ class App extends Component {
         methods: kotlinBleProductState.modules
       })
     }
+
+    if (e.target.id === nodePkgObjectState.id) {
+      this.setState({
+        methods: nodePkgObjectState.modules
+      })
+    }
   }
 
   render() {
@@ -76,10 +85,17 @@ class App extends Component {
               />
             </Col>
             <Col className="border-left">
-              <MethodView
-                methods={this.state.methods} 
-                language={this.state.languages}
-              />
+                {
+                  this.state.methods === nodePkgObjectState.modules ? 
+                    <NodeMethodOutputView
+                      methods={this.state.methods}
+                      language={this.state.language}
+                    /> : 
+                    <MethodView
+                      methods={this.state.methods} 
+                      language={this.state.languages}
+                    />
+                }
             </Col>
           </Row>  
         </Container>

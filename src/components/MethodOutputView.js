@@ -3,7 +3,7 @@ import { Col, Row } from 'reactstrap'
 import { Helmet } from 'react-helmet'
 
 const negativeMargin = {
-  'margin-bottom':'-1em'
+  'marginBottom':'-1em'
 }
 
 export default class MethodView extends Component {
