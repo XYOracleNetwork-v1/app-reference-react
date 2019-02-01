@@ -7,6 +7,7 @@ const negativeMargin = {
 }
 
 export default class NodeMethodOutputView extends Component {
+  
   renderDescriptionsandOutputs = () => {
     const { methods } = this.props
 

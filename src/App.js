@@ -14,14 +14,9 @@ const kotlinBleProductState = sdkBle[0]
 const swiftCoreObjectState = swiftObject[0]
 const nodePkgObjectState = nodeObject[0]
 
-console.log(kotlinBleProductState.modules)
-
-const containerStyle = {
-  marginTop: '6rem'
-}
 
 class App extends Component {
-
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -29,44 +24,36 @@ class App extends Component {
       languages: [kotlinBleProductState.lang, swiftCoreObjectState.lang],
       methods: [],
     }
-
+    
     this.handleClick = this.handleClick.bind(this)
   }
-
+  
   componentDidMount() {
     this.setState({
       methods: kotlinBleProductState.modules
     })
   }
-
-  // handleStateChange( targetId, event ) {
-  //   if (targetId === event.id) {
-  //     this.setState({
-  //       methods: event.modules
-  //     })
-  //   }
-  // }
-
+  
   handleClick(e) {
     if (e.target.id === swiftCoreObjectState.id) {
       this.setState({
         methods: swiftCoreObjectState.modules
       })
     }
-
+    
     if (e.target.id === kotlinBleProductState.id) {
       this.setState({
         methods: kotlinBleProductState.modules
       })
     }
-
+    
     if (e.target.id === nodePkgObjectState.id) {
       this.setState({
         methods: nodePkgObjectState.modules
       })
     }
   }
-
+  
   render() {
     return (
       <div className='app'>
@@ -76,25 +63,25 @@ class App extends Component {
           language={this.state.languages} 
           product={this.state.products} 
           onClick={this.handleClick}
-        />
+          />
         <Container fluid style={containerStyle}>
           <Row>
             <Col xs='auto'>
               <SideNav 
                 methods={this.state.methods} 
-              />
+                />
             </Col>
             <Col className="border-left">
                 {
                   this.state.methods === nodePkgObjectState.modules ? 
-                    <NodeMethodOutputView
-                      methods={this.state.methods}
-                      language={this.state.language}
-                    /> : 
-                    <MethodView
-                      methods={this.state.methods} 
-                      language={this.state.languages}
-                    />
+                  <NodeMethodOutputView
+                  methods={this.state.methods}
+                  language={this.state.language}
+                  /> : 
+                  <MethodView
+                  methods={this.state.methods} 
+                  language={this.state.languages}
+                  />
                 }
             </Col>
           </Row>  
@@ -103,6 +90,10 @@ class App extends Component {
       </div>
     )
   }
+}
+
+const containerStyle = {
+  marginTop: '6rem'
 }
 
 export default App
