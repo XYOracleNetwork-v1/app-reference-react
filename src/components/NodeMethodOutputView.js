@@ -97,8 +97,12 @@ export default class NodeMethodOutputView extends Component {
   render() {
     return (
       <div>
-        {this.renderDescriptionsandOutputs()}
-        {/* <iframe style={ negativeMargin } title="nodeSandbox" src="https://codesandbox.io/embed/new?codemirror=1" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe> */}
+        <div>
+          {this.renderDescriptionsandOutputs()}
+        </div>
+        <div>
+          <iframe title="nodeSandbox" src="https://codesandbox.io/s/8pkylx1919" style={sandboxStyle} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+        </div>
       </div>
     )
   }
@@ -108,6 +112,14 @@ const CodeGrid = props => {
   return (
     <code style={codePad}> {props.children} </code>
   )
+}
+
+const sandboxStyle = {
+  "width":"100%",
+  "height":"500px",
+  "border":"0", 
+  "border-radius": "4px",
+  "overflow": "hidden"
 }
 
 const outputStyle = {
