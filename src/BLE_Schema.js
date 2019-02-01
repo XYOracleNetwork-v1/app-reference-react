@@ -544,7 +544,23 @@ module.exports = [{
               "template": true
             },
           ]
-        }
+        },
+        {
+          "name": "XYSmartScanModern",
+          "super": "XYSmartScan"
+        },
+        {
+          "name": "XYScanRecord",
+          "super": "XYBase"
+        },
+        {
+          "name": "XYScanResult",
+          "super": "XYBase"
+        },
+        {
+          "name": "XYScanResultModern",
+          "super": "XyScanResult"
+        },
       ]
     }
   ]
