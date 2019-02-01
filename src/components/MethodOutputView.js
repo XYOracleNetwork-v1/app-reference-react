@@ -53,9 +53,9 @@ export default class MethodView extends Component {
                   </script>
                   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
                 </Helmet>
+                <h5>Enumerations</h5>
                 {(object.enumerations || []).map(e => (
                   <div style={xyoBlueText}>
-                    <h5>Enumerations</h5>
                     <p>name</p>
                     <CodeGrid><a name={`${object.name}`}>{e.name}</a></CodeGrid>
                     <p>values</p>

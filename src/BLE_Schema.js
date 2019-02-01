@@ -232,11 +232,16 @@ module.exports = [{
           "super": "XYBase"
         },
         {
+          "desc": "causes all ble calls to be initiated in a single thread",
+          "name": "XYBluetoothDeferred"
+        },
+        {
           "desc": "Bluetooth specific errors",
           "name": "XYBluetoothError",
           "super": "XYBase"
         },
         {
+          "name": "XYBluetoothGattClient",
           "desc": "Access a BLE peripheral from a central",
           "enumerations": [
             {
@@ -285,7 +290,6 @@ module.exports = [{
               "interface": true
             }
           ],
-          "name": "XYBluetoothGattClient",
           "properties": [
             {
               "name": "closed",
@@ -305,7 +309,128 @@ module.exports = [{
         {
           "desc": "Act as a peripheral server",
           "name": "XYBluetoothGattServer",
-          "super": "XYBluetoothBase"
+          "super": "XYBluetoothBase",
+          "functions": [
+            {
+              "async": "false",
+              "name": "startServer",
+              "parameters": [
+                {
+                  "name": " ",
+                  "type": " "
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Boolean",
+                  "desc": "androidGattServer"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "false",
+              "name": "stopServer",
+              "parameters": [
+                {
+                  "name": " ",
+                  "type": " "
+                }
+              ],
+              "returns": [
+                {
+                  "type": "",
+                  "desc": "null - stops the androidGattServer"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "false",
+              "name": "addListener",
+              "parameters": [
+                {
+                  "name": ["key : ", "listener : "],
+                  "type": [" String ", " BluetoothGattServerCallback "]
+                }
+              ],
+              "returns": [
+                {
+                  "type": "synchronized(listeners)",
+                  "desc": "synchronized(listeners)"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "false",
+              "name": "removeListener",
+              "parameters": [
+                {
+                  "name": "key : ",
+                  "type": "String"
+                },
+              ],
+              "returns": [
+                {
+                  "type": "listener",
+                  "desc": "remove synchronized(listeners)"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "false",
+              "name": "getServices",
+              "parameters": [
+                {
+                  "name": "",
+                  "type": ""
+                },
+              ],
+              "returns": [
+                {
+                  "type": "typed array",
+                  "desc": "Array<BlueToothGattService>"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "false",
+              "name": "isDeviceConnected",
+              "parameters": [
+                {
+                  "name": "bluetoothDevice",
+                  "type": "BluetoothDevice"
+                },
+              ],
+              "returns": [
+                {
+                  "type": "Boolean",
+                  "desc": "bluetoothDevice.address == device.address ? true : false"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "addService",
+              "parameters": [
+                {
+                  "name": "serviceToAdd",
+                  "type": "XYBluetoothService"
+                },
+              ],
+              "returns": [
+                {
+                  "type": "asyncBle",
+                  "desc": "@asyncBle XYBluetoothResult(XYGattStatus(addCallback))"
+                }
+              ],
+              "template": true
+            },
+          ],
         },
         {
           "desc": "Bluetooth specific results",
@@ -320,7 +445,105 @@ module.exports = [{
       "objects": [
         {
           "desc": "Allows scanning for peripherals from a central",
-          "name": "XYSmartScan"
+          "name": "XYSmartScan",
+          "enumerations": [
+            {
+              "name": "Status",
+              "values": [
+                {
+                  "name": "Enabled"
+                },
+                {
+                  "name": "BluetoothDisabled"
+                },
+                {
+                  "name": "BluetoothUnavailable"
+                },
+                {
+                  "name": "LocationDisabled"
+                },
+              ]
+            },
+            {
+              "name": "BluetoothStatus",
+              "values": [
+                {
+                  "name": "None"
+                },
+                {
+                  "name": "Enabled"
+                },
+                {
+                  "name": "BluetoothUnavailable"
+                },
+                {
+                  "name": "BluetoothUnstable"
+                },
+                {
+                  "name": "BluetoothDisabled"
+                },
+                {
+                  "name": "LocationDisabled"
+                },
+              ]
+            },
+            {
+              "name": "ScanFailed",
+              "values": [
+                {
+                  "name": "Unknown"
+                },
+                {
+                  "name": "AlreadyStarted"
+                },
+                {
+                  "name": "ApplicationRegistrationFailed"
+                },
+                {
+                  "name": "FeatureUnsupported"
+                },
+                {
+                  "name": "InternalError"
+                },
+              ]
+            },
+          ],
+          "functions": [
+            {
+              "async": "true",
+              "name": "enableBluetooth",
+              "parameters": [
+                {
+                  "name": "enable",
+                  "type": "Boolean"
+                },
+              ],
+              "returns": [
+                {
+                  "type": "Boolean",
+                  "desc": "bluetoothManager?.adapter?.enable()"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "deviceFromId",
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": "String"
+                },
+              ],
+              "returns": [
+                {
+                  "type": "XYBluetoothDevice",
+                  "desc": "device"
+                }
+              ],
+              "template": true
+            },
+          ]
         }
       ]
     }
