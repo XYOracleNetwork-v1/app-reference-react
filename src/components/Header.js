@@ -54,7 +54,7 @@ export default class Header extends Component {
     return (
       <div className='navbar fixed-top' style={xyoColor}>
         <Navbar expand="md">
-          <NavbarBrand href="http://dev-developers.xyo.network.s3-website-us-east-1.amazonaws.com/" style={navTextStyle}><img src={logo} alt="logo"/></NavbarBrand>
+          <NavbarBrand href="http://dev-developers.xyo.network.s3-website-us-east-1.amazonaws.com/" style={navTextStyle}><img src={logo} alt="XYO Dev Portal"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
