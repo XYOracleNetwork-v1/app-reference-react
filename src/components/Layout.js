@@ -6,7 +6,7 @@ const Layout = props => {
     <div style={layoutStyle}>
     <Helmet>
       <title>XYO Reference Portal</title>
-      <meta name="XYO Reference Portal" content="XYO Reference" />
+      <meta name="description" content="XYO Reference"/>
     </Helmet>
       {props.children}
     </div>
