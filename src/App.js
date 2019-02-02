@@ -8,7 +8,7 @@ import sdkBle from './BLE_Schema'
 import swiftObject from './Object_Swift_Schema'
 import nodeObject from './Node_Package_Schema'
 import { Container, Col, Row } from 'reactstrap'
-import NodeMethodOutputView from './components/NodeMethodOutputView';
+import NodeMethodOutputView from './components/NodeMethodOutputView'
 
 const kotlinBleProductState = sdkBle[0]
 const swiftCoreObjectState = swiftObject[0]
