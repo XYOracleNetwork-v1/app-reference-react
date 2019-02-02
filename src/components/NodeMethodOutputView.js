@@ -47,12 +47,6 @@ export default class NodeMethodOutputView extends Component {
                   ))}
                 </div>
                 <div style={smallPadding}>
-                  <Helmet>
-                    <script>
-                      {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev', preLoad: true}`}
-                    </script>
-                    <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-                  </Helmet>
                   <h5>Enumerations</h5>
                   {(object.enumerations || []).map(e => (
                     <div style={xyoBlueText}>
