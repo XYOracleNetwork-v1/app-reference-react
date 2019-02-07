@@ -93,6 +93,109 @@ module.exports = [{
           "super": "XYFinderBluetoothDevice"
         },
         {
+          "name": "XY4BluetoothDevice",
+          "super": "XYFinderBluetoothDevice",
+          "properties": [
+            {
+              "desc": "A Global Listener for XYO.",
+              "name": "Listener",
+              "static": true,
+              "type": "XYFinderBluetoothDevice Listener"
+            },
+          ],
+          "enumerations": [
+            {
+              "name": "StayAwake",
+              "values": [
+                {
+                  "name": "Off"
+                },
+                {
+                  "name": "On"
+                },
+              ],
+            },
+          ],
+          "functions": [
+            {
+              "async": "true",
+              "name": "enable",
+              "parameters": [
+                {
+                  "name": "enable : ",
+                  "type": "Boolean"
+                }
+              ],
+              "returns": [
+                {
+                  "desc": "addCreator"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "addGlobalListener",
+              "parameters": [
+                {
+                  "name": "key : ",
+                  "type": "String"
+                },
+                {
+                  "name": "listener : ",
+                  "type": "Listener"
+                },
+              ],
+              "returns": [
+                {
+                  "desc": "GlobalScope launch synchronized(globalListeners) then put"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "removeGlobalListener",
+              "parameters": [
+                {
+                  "name": "key : ",
+                  "type": "String"
+                },
+                {
+                  "name": "listener : ",
+                  "type": "Listener"
+                },
+              ],
+              "returns": [
+                {
+                  "desc": "GlobalScope launch synchronized(globalListeners) then remove"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "reportGlobalButtonPressed",
+              "parameters": [
+                {
+                  "name": "device : ",
+                  "type": "XY4BluetoothDevice"
+                },
+                {
+                  "name": "state : ",
+                  "type": "ButtonPress"
+                },
+              ],
+              "returns": [
+                {
+                  "desc": "GlobalScope launch synchronized(globalListeners) then remove"
+                }
+              ],
+              "template": true
+            }
+          ],
+        },
+        {
           "name": "XYAppleBluetoothDevice",
           "super": "XYBluetoothDevice",
           "properties": [

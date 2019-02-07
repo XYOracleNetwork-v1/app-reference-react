@@ -67,18 +67,16 @@ export default class NodeMethodOutputView extends Component {
                     <div style={outputStyle}>
                       <p>name</p>
                       <CodeGrid>{f.name}</CodeGrid>
-                      {(f.parameters || []).map(param =>
+                      <div>
+                        <CodeGrid>({f.parameters.name} {f.parameters.type}) => </CodeGrid>
+                      </div>
+                      {(f.returns || []).map(returns => (
                         <div>
-                          <CodeGrid>{JSON.stringify(param.async)}</CodeGrid>
-                          {(f.returns || []).map(returns => (
-                            <div>
-                              <CodeGrid> ({param.name} {param.type}) => {returns.desc}</CodeGrid>
-                              <p>Returns</p>
-                              <CodeGrid>{returns.type}</CodeGrid>
-                            </div>
-                          ))}
+                          <p>Returns</p>
+                          <CodeGrid>{returns.desc}</CodeGrid>
+                          <CodeGrid>{returns.type}</CodeGrid>
                         </div>
-                      )}
+                      ))}
                     </div>
                   ))}
                 </div>

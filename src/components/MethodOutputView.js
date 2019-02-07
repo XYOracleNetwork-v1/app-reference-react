@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Row } from 'reactstrap'
 import { Helmet } from 'react-helmet'
-import CodeGrid from './CodeGrid'
 
 const negativeMargin = {
   'marginBottom':'-1em'
@@ -105,11 +104,11 @@ export default class MethodView extends Component {
   }
 }
 
-// const CodeGrid = props => {
-//   return (
-//     <code style={codePad}> {props.children} </code>
-//   )
-// }
+const CodeGrid = props => {
+  return (
+    <code style={codePad}> {props.children} </code>
+  )
+}
 
 const outputStyle = {
   backgroundColor: 'black',
