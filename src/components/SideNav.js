@@ -17,7 +17,11 @@ export default class SideNav extends Component {
     return methods.map((method, i) => (
       <div>
         <UncontrolledDropdown setActiveFromChild>
-          <DropdownToggle>
+          <DropdownToggle
+            tag="span"
+            nav={true}
+            style={textDecorationStyle}
+          >
             <i className="fa fa-angle-down"></i> {method.name}
           </DropdownToggle>
             <ul key={`${method.name}`} style={textDecorationStyle}>
@@ -45,11 +49,8 @@ export default class SideNav extends Component {
   }
   
   render() {
-    const { product } = this.props
-    console.log(product)
     return (
-      <div>
-        <h1>{product.name}</h1>
+      <div className="side-nav-sticky">
           <SideNavLayout>
             {this.renderNavItems()}
             <Button onClick={this.scrollToTop}>Zoom To Top</Button>
@@ -62,6 +63,6 @@ export default class SideNav extends Component {
 const textDecorationStyle = {
   listStyle: 'none',
   color: '#58a0d7',
-  cursor: 'pointer',
+  cursor: 'url(../favicon.ico) 5 5, auto',
   padding: '2px'
 }

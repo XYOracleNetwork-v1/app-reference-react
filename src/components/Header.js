@@ -51,13 +51,13 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className='navbar fixed-top' style={xyoColor}>
+      <div className='navbar fixed-top' style={xyoNav}>
         <Navbar expand="md">
           <NavbarBrand href="http://dev-developers.xyo.network.s3-website-us-east-1.amazonaws.com/" style={navTextStyle}><img src={logo} alt="XYO Dev Portal"/></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
-              <UncontrolledDropdown nav inNavbar>
+              <UncontrolledDropdown nav inNavbar setActiveFromChild>
                 <DropdownToggle nav caret style={navTextStyle}>
                   Products
                 </DropdownToggle>
@@ -106,7 +106,9 @@ const navTextStyle = {
   color: 'white',
 }
 
-const xyoColor = {
-  backgroundImage: 'linear-gradient(to right, #8A2BE2, #8d8fc6, #58a0d7)',
-  boxShadow: '2px 2px 8px -2px #3f3b3b'
+const xyoNav = {
+  backgroundColor: '#232756',
+  boxShadow: '2px 2px 8px -2px #3f3b3b',
+  padding: '0',
+  margin: '0'
 }

@@ -33,7 +33,7 @@ img {
   color: white;
 }
 
-.side-nav {
+.side-nav-sticky {
   width: 320px;
   margin: 0 auto;
   position: -webkit-sticky;
@@ -43,5 +43,9 @@ img {
 
 .item {
   margin: 30px 0;
+}
+
+.fixed-top {
+  z-index: 100;
 }
 
