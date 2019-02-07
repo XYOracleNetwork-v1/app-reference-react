@@ -33,7 +33,6 @@ export default class Header extends Component {
 
   renderNavPlatformItems = () => {
     const { platform, onClick } = this.props
-    console.log(this.props)
 
     return platform.map(platform => (
         <DropdownItem onClick={onClick} id={platform}>{platform}</DropdownItem>

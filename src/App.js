@@ -69,6 +69,7 @@ class App extends Component {
             <Col xs='auto'>
               <SideNav 
                 methods={this.state.methods} 
+                product={this.state.products}
                 />
             </Col>
             <Col className="border-left">
