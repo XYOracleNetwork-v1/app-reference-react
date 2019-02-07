@@ -21,7 +21,7 @@ class App extends Component {
     super(props)
     this.state = {
       products: [kotlinBleProductState.id, swiftCoreObjectState.id, nodePkgObjectState.id],
-      languages: [kotlinBleProductState.lang, swiftCoreObjectState.lang],
+      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform],
       methods: [],
     }
     
@@ -60,7 +60,7 @@ class App extends Component {
       <Layout>
         <Header 
           methods={this.state.methods} 
-          language={this.state.languages} 
+          platform={this.state.platforms} 
           product={this.state.products} 
           onClick={this.handleClick}
           />
@@ -76,11 +76,11 @@ class App extends Component {
                   this.state.methods === nodePkgObjectState.modules ? 
                   <NodeMethodOutputView
                   methods={this.state.methods}
-                  language={this.state.language}
+                  platform={this.state.platforms}
                   /> : 
                   <MethodView
                   methods={this.state.methods} 
-                  language={this.state.languages}
+                  platform={this.state.platforms}
                   />
                 }
             </Col>

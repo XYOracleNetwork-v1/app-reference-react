@@ -40,7 +40,7 @@ export default class SideNav extends Component {
     return (
       <SideNavLayout>
         {this.renderNavItems()}
-        <Button onClick={this.scrollToTop}><img src={logo} alt="logo" /></Button>
+        <Button onClick={this.scrollToTop}>Zoom To Top</Button>
       </SideNavLayout>
     )
   }

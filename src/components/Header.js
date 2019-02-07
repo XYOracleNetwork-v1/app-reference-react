@@ -31,12 +31,12 @@ export default class Header extends Component {
     })
   }
 
-  renderNavLangItems = () => {
-    const { language, onClick } = this.props
+  renderNavPlatformItems = () => {
+    const { platform, onClick } = this.props
     console.log(this.props)
 
-    return language.map(lang => (
-        <DropdownItem onClick={onClick} id={lang}>{lang}</DropdownItem>
+    return platform.map(platform => (
+        <DropdownItem onClick={onClick} id={platform}>{platform}</DropdownItem>
       )
     )
   }
@@ -68,10 +68,10 @@ export default class Header extends Component {
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret style={navTextStyle}>
-                  Languages
+                  Platforms
                 </DropdownToggle>
                 <DropdownMenu right>
-                  {this.renderNavLangItems()}
+                  {this.renderNavPlatformItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>

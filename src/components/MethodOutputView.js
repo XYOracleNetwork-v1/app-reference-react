@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Row } from 'reactstrap'
 import { Helmet } from 'react-helmet'
+import CodeGrid from './CodeGrid'
 
 const negativeMargin = {
   'marginBottom':'-1em'
@@ -30,22 +31,21 @@ export default class MethodView extends Component {
                 <p key={`${object.name}`} style={codePad}>{object.super}</p>
                 {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
                 <p key={`${object.super}`} style={codePad}>{object.desc}</p>
+                {object.properties ? <h5 style={xyoOrangeText}>Properties</h5> : <div></div>}
+                <div>
+                  {(object.properties || []).map(property => (
+                    <div>
+                      <p style={{paddingTop: '20px', paddingBottom: '20px', fontWeight: 'bold'}}>{property.name}</p>
+                      <h5 style={xyoPinkText}>Type</h5>
+                      <p style={{paddingLeft: '20px'}}>{property.type}</p>
+                      {property.desc ? <h5 style={xyoPinkText}>Description</h5> : <p></p>}
+                      <p style={{ paddingLeft: '20px', paddingBottom: '30px' }}>{property.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </Col>
             <Col className="bg-dark" style={outputStyle}>
-              {object.properties ? <h5 style={xyoOrangeText}>Properties</h5> : <div></div>}
-              <div>
-                {(object.properties || []).map(property => (
-                  <div>
-                    <p>Name</p> 
-                    <CodeGrid>{property.name}</CodeGrid>
-                    <p>Type</p> 
-                    <CodeGrid>{property.type}</CodeGrid>
-                    {property.desc ? <p>Description</p> : <p></p>} 
-                    <CodeGrid>{property.desc}</CodeGrid>
-                  </div>
-                ))}
-              </div>
               <div style={smallPadding}>
                 <Helmet>
                   <script>
@@ -105,11 +105,11 @@ export default class MethodView extends Component {
   }
 }
 
-const CodeGrid = props => {
-  return (
-    <code style={codePad}> {props.children} </code>
-  )
-}
+// const CodeGrid = props => {
+//   return (
+//     <code style={codePad}> {props.children} </code>
+//   )
+// }
 
 const outputStyle = {
   backgroundColor: 'black',
@@ -122,11 +122,13 @@ const colAppStyle = {
 }
 
 const xyoBlueText = {
-  color: '#58a0d7'
+  color: '#58a0d7',
+  padding: '10px'
 }
 
 const xyoPinkText = {
-  color: '#ec417b'
+  color: '#ec417b',
+  padding: '10px'
 }
 
 const xyoOrangeText = {
@@ -139,5 +141,5 @@ const smallPadding = {
 
 const codePad = {
   paddingLeft: '25px',
-  paddingBottom: '10px'
+  paddingBottom: '20px'
 }
