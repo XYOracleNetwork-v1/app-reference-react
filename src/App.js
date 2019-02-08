@@ -22,7 +22,8 @@ class App extends Component {
     this.state = {
       products: [kotlinBleProductState.id, swiftCoreObjectState.id, nodePkgObjectState.id],
       platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform],
-      methods: [],
+      platformViews: [],
+      methods: []
     }
     
     this.handleClick = this.handleClick.bind(this)
@@ -50,6 +51,18 @@ class App extends Component {
     if (e.target.id === nodePkgObjectState.id) {
       this.setState({
         methods: nodePkgObjectState.modules
+      })
+    }
+
+    if (e.target.id === 'Android') {
+      this.setState({
+        methods: kotlinBleProductState.modules
+      })
+    }
+
+    if (e.target.id === 'iOS') {
+      this.setState({
+        methods: swiftCoreObjectState.modules
       })
     }
   }
