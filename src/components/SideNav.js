@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SideNavLayout from './SideNavLayout'
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap'
+import { UncontrolledCollapse, Button } from 'reactstrap'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
 export default class SideNav extends Component {
@@ -14,19 +14,13 @@ export default class SideNav extends Component {
 
     return methods.map((method, i) => (
       <div>
-        <UncontrolledDropdown setActiveFromChild>
-          <DropdownToggle
-            tag="span"
-            nav={true}
-            style={textDecorationStyle}
-          >
+          <h4 id="toggler">
             <i className="fa fa-angle-down"></i> {method.name}
-          </DropdownToggle>
+          </h4>
+          <UncontrolledCollapse toggler="#toggler">
             <ul key={`${method.name}`} style={textDecorationStyle}>
-              <DropdownMenu>
                 { method.objects.map((object, i) => (
                   <li key={object.name} style={textDecorationStyle}>
-                  <DropdownItem>
                     <Link 
                       to={`${object.name}`}
                       spy={true}
@@ -36,12 +30,10 @@ export default class SideNav extends Component {
                     >
                       {object.name}
                     </Link>
-                  </DropdownItem>
                   </li>
                 ))}
-              </DropdownMenu>
             </ul>
-        </UncontrolledDropdown>
+          </UncontrolledCollapse>
       </div>
     ))
   }
