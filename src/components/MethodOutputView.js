@@ -71,20 +71,22 @@ export default class MethodView extends Component {
               {object.functions ? <h5>Functions</h5> : <p></p>}
                 {(object.functions || []).map(f => (
                   <div style={outputStyle}>
-                    <p>name</p>
-                    <CodeGrid>{f.name}</CodeGrid>
-                    {(f.parameters || []).map(param =>
-                      <div>
-                        <CodeGrid>{JSON.stringify(param.async)}</CodeGrid>
+                    <div>
+                      <h6>name</h6>
+                      <CodeGrid>{f.name}</CodeGrid>
+                      ({(f.parameters || []).map(param => <CodeGrid>{param.name} {param.type},</CodeGrid>)})
+                        <div>
+                    </div>
+                    <div style={returnGrid}>
+                      <h6>returns</h6>
                         {(f.returns || []).map(returns => (
                           <div>
-                            <CodeGrid> ({param.name} {param.type}) => {returns.desc}</CodeGrid>
-                            <p>Returns</p>
+                            <CodeGrid> => {returns.desc}</CodeGrid>
                             <CodeGrid>{returns.type}</CodeGrid>
                           </div>
                         ))}
+                    </div>
                       </div>
-                    )}
                   </div>
                 ))}   
               </div>
@@ -141,6 +143,9 @@ const smallPadding = {
 }
 
 const codePad = {
-  paddingLeft: '25px',
-  paddingBottom: '20px'
+  paddingBottom: '30px'
+}
+
+const returnGrid = {
+  paddingTop: '40px'
 }
