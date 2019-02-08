@@ -3,8 +3,6 @@ import SideNavLayout from './SideNavLayout'
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
-import logo from '../XYODevelopers_XYO_Logo.png'
-
 export default class SideNav extends Component {
 
   scrollToTop = () => {
@@ -63,6 +61,6 @@ export default class SideNav extends Component {
 const textDecorationStyle = {
   listStyle: 'none',
   color: '#58a0d7',
-  cursor: 'url(../favicon.ico) 5 5, auto',
+  cursor: 'pointer',
   padding: '2px'
 }

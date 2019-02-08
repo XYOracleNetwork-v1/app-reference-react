@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Col, Row } from 'reactstrap'
-import { Helmet } from 'react-helmet'
 
 const negativeMargin = {
   'marginBottom': '-1em'
