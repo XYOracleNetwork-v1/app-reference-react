@@ -43,7 +43,7 @@ export default class SideNav extends Component {
       <div className="side-nav-sticky">
           <SideNavLayout>
             {this.renderNavItems()}
-            <Button onClick={this.scrollToTop}>Zoom To Top</Button>
+            <Button className="sideNavButton" onClick={this.scrollToTop}>Zoom To Top</Button>
           </SideNavLayout>
       </div>
     )
@@ -56,3 +56,4 @@ const textDecorationStyle = {
   cursor: 'pointer',
   padding: '2px'
 }
+

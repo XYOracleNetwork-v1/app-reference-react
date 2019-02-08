@@ -12,7 +12,8 @@ export default class MethodView extends Component {
     const { methods } = this.props
   
     return methods.map(method =>
-      <div><Row className="pb-3 my-0 bg-dark text-light">
+      <div className="outputContainer">
+        <Row className="pb-3 my-0 bg-dark text-light">
         <Col className="col-6 bg-light text-dark pb-2" style={negativeMargin}>
           <h3 className="font-weight-bold mt-3">{method.name}</h3>
           <strong><i>{method.desc}</i></strong>

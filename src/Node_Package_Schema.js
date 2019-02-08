@@ -197,28 +197,8 @@ module.exports = [{
         "objects": []
       },
       {
-        "desc": "signing ecdsa package",
-        "name": "signing.ecdsa",
-        "objects": []
-      },
-      {
-        "desc": "signing rsa package",
-        "name": "signing.rsa ",
-        "objects": []
-      },
-      {
         "desc": "signing package",
         "name": "signing",
-        "objects": []
-      },
-      {
-        "desc": "storage level db package",
-        "name": "storage.leveldb",
-        "objects": []
-      },
-      {
-        "desc": "storage package",
-        "name": "storage package",
         "objects": []
       },
       {
