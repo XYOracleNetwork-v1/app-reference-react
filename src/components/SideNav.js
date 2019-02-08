@@ -14,10 +14,10 @@ export default class SideNav extends Component {
 
     return methods.map((method, i) => (
       <div>
-          <h4 id="toggler">
+        <h4 id={`${method.name}`}>
             <i className="fa fa-angle-down"></i> {method.name}
           </h4>
-          <UncontrolledCollapse toggler="#toggler">
+        <UncontrolledCollapse toggler={`${method.name}`}>
             <ul key={`${method.name}`} style={textDecorationStyle}>
                 { method.objects.map((object, i) => (
                   <li key={object.name} style={textDecorationStyle}>
