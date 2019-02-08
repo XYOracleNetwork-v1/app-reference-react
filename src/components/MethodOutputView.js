@@ -26,7 +26,7 @@ export default class MethodView extends Component {
             <Col style={colAppStyle}>
               <div>
                 <h5 key={`${method}`} style={{color: 'grey'}}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
-                <h6 style={xyoPinkText}>Super Class</h6>
+                {object.super ? <h6 style={xyoPinkText}>Super Class</h6> : <p></p>}
                 <p key={`${object.name}`} style={codePad}>{object.super}</p>
                 {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
                 <p key={`${object.super}`} style={codePad}>{object.desc}</p>
@@ -52,7 +52,7 @@ export default class MethodView extends Component {
                   </script>
                   <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
                 </Helmet>
-                <h5>Enumerations</h5>
+                {object.enumerations ? <h5>Enumerations</h5> : <p></p>}
                 {(object.enumerations || []).map(e => (
                   <div style={xyoBlueText}>
                     <p>name</p>
@@ -67,7 +67,7 @@ export default class MethodView extends Component {
                 ))}
               </div>
               <div style={smallPadding}>
-              {object.functions ? <p>Functions</p> : <p></p>}
+              {object.functions ? <h5>Functions</h5> : <p></p>}
                 {(object.functions || []).map(f => (
                   <div style={outputStyle}>
                     <p>name</p>
@@ -127,6 +127,7 @@ const xyoBlueText = {
 
 const xyoPinkText = {
   color: '#ec417b',
+  fontSize: '16px',
   padding: '10px'
 }
 

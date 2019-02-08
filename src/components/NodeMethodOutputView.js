@@ -25,7 +25,7 @@ export default class NodeMethodOutputView extends Component {
             <Row className="border-bottom">
               <Col style={colAppStyle}>
                 <div>
-                  <h5 key={`${method}`} style={{ color: 'grey' }}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
+                  <h5 key={`${method}`} style={{ color: 'grey' }}> Object  <a name={`${object.name}`}> {object.name} </a> </h5>
                   <h6 style={xyoPinkText}>Super Class</h6>
                   <p key={`${object.name}`} style={codePad}>{object.super}</p>
                   {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}

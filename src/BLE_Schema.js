@@ -209,6 +209,7 @@ module.exports = [{
         },
         {
           "name": "XYBluetoothDevice",
+          "super": "XYBluetoothGattClient",
           "properties": [
             {
               "desc": "Mapping for device creators that key off manufacturer id",
@@ -235,7 +236,46 @@ module.exports = [{
               "type": "HashMap"
             }
           ],
-          "super": "XYBluetoothGattClient"
+          "functions": [
+            {
+              "async": "true",
+              "name": "addListener",
+              "parameters": [
+                {
+                  "name": "key : ",
+                  "type": "String"
+                },
+                {
+                  "name": "listener : ",
+                  "type": "Listener"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "GlobalScope.launch { synchronized(listeners) { listeners.put(key, listener ) } }",
+                  "desc": "added Listener"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "removeListener",
+              "parameters": [
+                {
+                  "name": "key : ",
+                  "type": "String"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "GlobalScope.launch { synchronized(listeners) { listeners.remove(key, listener ) } }",
+                  "desc": "removed Listener"
+                }
+              ],
+              "template": true
+            },
+          ]
         },
         {
           "desc": "Abstract class for interface for self creating objects",
@@ -263,6 +303,23 @@ module.exports = [{
         {
           "name": "XYFinderBluetoothDevice",
           "super": "XYIBeaconBluetoothDevice",
+          "properties": [
+            {
+              "desc": "The XYO family for the ble device.",
+              "name": "Family",
+              "type": "An XY Bluetooth Device"
+            },
+            {
+              "desc": "The promximity of the ble device.",
+              "name": "Proximity",
+              "type": "Distance to an XY Bluetooth device"
+            },
+            {
+              "desc": "Device listeners.",
+              "name": "Listener",
+              "type": "XYIBeaconBluetoothDevice"
+            },
+          ],
           "enumerations": [
             {
               "name": "ButtonPress",
@@ -280,9 +337,64 @@ module.exports = [{
             },
             {
               "name": "Family",
+              "values": [
+                {
+                  "name": "Unknown"
+                },
+                {
+                  "name": "XY1"
+                },
+                {
+                  "name": "XY2"
+                },
+                {
+                  "name": "XY3"
+                },
+                {
+                  "name": "Mobile"
+                },
+                {
+                  "name": "Gps"
+                },
+                {
+                  "name": "Near"
+                },
+                {
+                  "name": "XY4"
+                },
+                {
+                  "name": "Webble"
+                },
+              ],
             },
             {
               "name": "Proximity",
+              "values": [
+                {
+                  "name": "None"
+                },
+                {
+                  "name": "OutOfRange"
+                },
+                {
+                  "name": "VeryFar"
+                },
+                {
+                  "name": "Far"
+                },
+                {
+                  "name": "Medium"
+                },
+                {
+                  "name": "Near"
+                },
+                {
+                  "name": "VeryNear"
+                },
+                {
+                  "name": "Touching"
+                },
+              ],
             },
           ],
         },
@@ -311,7 +423,51 @@ module.exports = [{
               "name": "Apple_Beacon_ID",
               "type": "byte",
             },
+            {
+              "name": "Listener",
+              "type": "XYAppleBluetoothDevice",
+            },
+            {
+              "name": "uuidToCreator",
+              "type": "HashMap<UUID, XYCreator>()",
+            },
           ],
+          "functions": [
+            {
+              "async": "true",
+              "name": "enable",
+              "parameters": [
+                {
+                  "name": "enable : ",
+                  "type": "Boolean"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "XYAppleBluetoothDevice",
+                  "desc": "XYAppleBluetoothDevice.enable(true)"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "iBeaconUuidFromScanResult",
+              "parameters": [
+                {
+                  "name": "scanResult : ",
+                  "type": "XYScanResult"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "UUID(high, low)",
+                  "desc": "UUID"
+                }
+              ],
+              "template": true
+            }
+          ]
         },
         {
           "name": "XYMobileBluetoothDevice",
@@ -547,8 +703,30 @@ module.exports = [{
       "name": "scanner",
       "objects": [
         {
-          "desc": "Allows scanning for peripherals from a central",
+          "desc": "Allows scanning for peripherals from a central. This is the starting point for all functionality in the BLE family",
           "name": "XYSmartScan",
+          "properties": [
+            {
+              "name": "resultsPerSecond",
+              "type": "Float"
+            },
+            {
+              "name": "uptime",
+              "type": "Long"
+            },
+            {
+              "name": "uptimeSeconds",
+              "type": "Float"
+            },
+            {
+              "name": "hostDevice",
+              "type": "XYMobileBluetoothDevice"
+            },
+            {
+              "name": "devices",
+              "type": "ConcurrentHashMap"
+            }
+          ],
           "enumerations": [
             {
               "name": "Status",
@@ -650,21 +828,159 @@ module.exports = [{
         },
         {
           "name": "XYSmartScanModern",
-          "super": "XYSmartScan"
+          "super": "XYSmartScan",
+          "properties": [
+            {
+              "name": "result",
+              "type": "asyncBle",
+            },
+            {
+              "name": "bluetoothAdapter",
+              "type": "bluetoothManager adapter",
+            },
+          ],
+          "functions": [
+            {
+              "async": "true",
+              "name": "start",
+              "parameters": [
+                {
+
+                },
+              ],
+              "returns": [
+                {
+                  "type": "return@asyncBle XYBluetoothResult(Boolean)",
+                  "desc": "XYBluetoothResult(Boolean) and start scan"
+                }
+              ],
+              "template": true
+            },
+            {
+              "async": "true",
+              "name": "stop",
+              "parameters": [
+                {
+
+                },
+              ],
+              "returns": [
+                {
+                  "type": "return@async result?value ?: Boolean",
+                  "desc": "XYBluetoothResult(Boolean) and stop scan"
+                }
+              ],
+              "template": true
+            },
+          ]
         },
         {
           "name": "XYScanRecord",
-          "super": "XYBase"
+          "super": "XYBase",
+          "desc": "inherited abstract class for recorded data from a scan"
         },
         {
           "name": "XYScanResult",
-          "super": "XYBase"
+          "super": "XYBase",
+          "desc": "Serves as a Kotlin wrapper and returns a device address and other data from an XY Bluetooth device"
         },
         {
           "name": "XYScanResultModern",
-          "super": "XyScanResult"
+          "super": "XyScanResult",
+          "desc": "improves upon the XYScanResult Kotlin wrapper with hashed data and a function to stringify scanned results"
         },
+      ],
+    },
+    {
+      "desc": "Services for XY Bluetooth Devices",
+      "name": "services",
+      "objects": [ 
+        {
+          "desc": "Provides Primary Service for XY4 (Sentinel X)",
+          "name": "PrimaryService",
+          "super": "Service",
+          "properties": [
+            {
+              "name": "uuid",
+              "type": "UUID",
+              "desc": "It is a UUID from string"
+            },
+          ],  
+          "enumerations": [
+            {
+              "name": "Characteristics (UUID)",
+              "values": [
+                {
+                  "name": "StayAwake"
+                },
+                {
+                  "name": "Unlock"
+                },
+                {
+                  "name": "Lock"
+                },
+                {
+                  "name": "Major"
+                },
+                {
+                  "name": "Minor"
+                },
+                {
+                  "name": "Uuid"
+                },
+                {
+                  "name": "ButtonState"
+                },
+                {
+                  "name": "Buzzer"
+                },
+                {
+                  "name": "BuzzerConfig"
+                },
+                {
+                  "name": "AdConfig"
+                },
+                {
+                  "name": "ButtonConfig"
+                },
+                {
+                  "name": "LastError"
+                },
+                {
+                  "name": "Uptime"
+                },
+                {
+                  "name": "Reset"
+                },
+                {
+                  "name": "SelfTest"
+                },
+                {
+                  "name": "Debug"
+                },
+                {
+                  "name": "LeftBehind"
+                },
+                {
+                  "name": "EddystoneUID"
+                },
+                {
+                  "name": "EddystoneURL"
+                },
+                {
+                  "name": "EddystoneEID"
+                },
+                {
+                  "name": "Color"
+                },
+                {
+                  "name": "HardwareCreateDate"
+                },
+              ]
+            }
+          ]          
+        }
       ]
-    }
+    }   
   ]
 }]
