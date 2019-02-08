@@ -21,7 +21,7 @@ class App extends Component {
     super(props)
     this.state = {
       products: [kotlinBleProductState.id, swiftCoreObjectState.id, nodePkgObjectState.id],
-      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform],
+      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform, nodePkgObjectState.platform],
       platformViews: [],
       methods: []
     }
@@ -63,6 +63,12 @@ class App extends Component {
     if (e.target.id === 'iOS') {
       this.setState({
         methods: swiftCoreObjectState.modules
+      })
+    }
+
+    if (e.target.id === 'web') {
+      this.setState({
+        methods: nodePkgObjectState.modules
       })
     }
   }
