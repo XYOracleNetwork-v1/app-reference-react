@@ -65,3 +65,12 @@ img {
   padding: 0;
 }
 
+.side-nav-sticky {
+  width: 320px;
+  margin: 0 auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  padding-top: 20px;
+}
+

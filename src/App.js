@@ -113,7 +113,7 @@ class App extends Component {
 }
 
 const containerStyle = {
-  marginTop: '6rem'
+  marginTop: '3rem'
 }
 
 export default App
