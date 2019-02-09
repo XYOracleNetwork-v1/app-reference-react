@@ -9,17 +9,164 @@ module.exports = [{
       {
         "desc": "identity package ",
         "name": "about-me ",
-        "objects": []
+        "objects": [
+          {
+            "name": "XyoAboutMeService",
+            "properties": [],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "getAboutMe",
+                "async": "true",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "me",
+                    "desc": "IXyoPeerDescriptionWithPeers"
+                  }
+                ]
+              },
+              {
+                "name": "startDiscoveringPeers",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "start",
+                    "desc": "Boolean"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
-        "desc": "diviner package",
+        "desc": "diviner id package",
         "name": "about-diviner",
-        "objects": []
+        "objects": [
+          {
+            "name": "IXyoAboutDiviner",
+            "properties": [
+              {
+                "name": "name",
+                "desc": "String"
+              },
+              {
+                "name": "version",
+                "desc": "String"
+              },
+              {
+                "name": "url",
+                "desc": "String"
+              },
+              {
+                "name": "address",
+                "desc": "String "
+              },
+              {
+                "name": "seeds",
+                "desc": "string[]"
+              },
+              {
+                "name": "scsc",
+                "desc": "IXyoSCSCDescription"
+              }
+            ],
+            "enumerations": [],
+            "functions": []
+          }
+        ]
       },
       {
         "desc": "archivist api package ",
         "name": "api-archivist-graphql",
-        "objects": []
+        "objects": [
+          {
+            "name": "XyoAboutMeResolver",
+            "properties": [],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "resolve",
+                "parameters": [
+                  {
+                    "name": "obj",
+                    "type": "any"
+                  },
+                  {
+                    "name": "args",
+                    "type": "any"
+                  },
+                  {
+                    "name": "context",
+                    "type": "any"
+                  },
+                  {
+                    "name": "info",
+                    "type": "GraphQLResolveInfo"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "this.aboutMeService.getAboutMe",
+                    "desc": "aboutMeService"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "XyoGetBlockByHashResolver",
+            "properties": [],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "resolve",
+                "async": "true",
+                "parameters": [
+                  {
+                    "name": "obj",
+                    "type": "any"
+                  },
+                  {
+                    "name": "args",
+                    "type": "any"
+                  },
+                  {
+                    "name": "context",
+                    "type": "any"
+                  },
+                  {
+                    "name": "info",
+                    "type": "GraphQLResolveInfo"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "humanReadableValue",
+                    "desc": "humanReadable"
+                  },
+                  {
+                    "type": "serializeHex",
+                    "desc": "bytes"
+                  },
+                  {
+                    "type": "signatures.map",
+                    "desc": "sigSet"
+                  },
+                  {
+                    "type": "heuristics",
+                    "desc": "heuristicSet"
+                  },
+                  {
+                    "type": "this.hashProvider.createHash",
+                    "desc": "signedHash"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "desc": "archivist app package ",
