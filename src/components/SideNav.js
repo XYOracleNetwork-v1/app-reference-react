@@ -14,9 +14,9 @@ export default class SideNav extends Component {
 
     return methods.map((method, i) => (
       <div>
-        <h4 id={`${method.name}`}>
-            <i className="fa fa-angle-down"></i> {method.name}
-          </h4>
+        <h5 id={`${method.name}`}>
+            <i style={iconSize} className="fa fa-angle-down"></i> {method.name}
+          </h5>
         <UncontrolledCollapse toggler={`${method.name}`}>
             <ul key={`${method.name}`} style={textDecorationStyle}>
                 { method.objects.map((object, i) => (
@@ -55,5 +55,9 @@ const textDecorationStyle = {
   color: '#58a0d7',
   cursor: 'pointer',
   padding: '2px'
+}
+
+const iconSize = {
+  fontSize: '14px'
 }
 
