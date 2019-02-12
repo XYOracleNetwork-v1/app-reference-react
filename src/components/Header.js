@@ -51,12 +51,12 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className='navbar fixed-top' style={xyoNav}>
+      <div style={xyoNav}>
         <Navbar expand="md">
-          <NavbarBrand href="http://dev-developers.xyo.network.s3-website-us-east-1.amazonaws.com/" style={navTextStyle}><img src={logo} alt="XYO Dev Portal"/></NavbarBrand>
+          <NavbarBrand href="https://developers.xyo.network/" style={navTextStyle}>REFERENCE</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav navbar>
+            <Nav navbar className="navbar-inverse bg-inverse">
               <UncontrolledDropdown nav inNavbar setActiveFromChild>
                 <DropdownToggle nav caret style={navTextStyle}>
                   Products
@@ -109,6 +109,6 @@ const navTextStyle = {
 const xyoNav = {
   backgroundColor: '#232756',
   boxShadow: '2px 2px 8px -2px #3f3b3b',
-  padding: '0',
+  paddingLeft: '50px',
   margin: '0'
 }

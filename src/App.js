@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Layout from './components/Layout'
 import Header from './components/Header'
+import MainHeader from './components/MainHeader'
 import SideNav from './components/SideNav'
 import MethodView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
@@ -77,12 +78,15 @@ class App extends Component {
     return (
       <div className='app'>
       <Layout>
-        <Header 
-          methods={this.state.methods} 
-          platform={this.state.platforms} 
-          product={this.state.products} 
-          onClick={this.handleClick}
-          />
+        <div className="fixed-top">
+          <MainHeader />
+          <Header 
+            methods={this.state.methods} 
+            platform={this.state.platforms} 
+            product={this.state.products} 
+            onClick={this.handleClick}
+            />
+        </div>
         <Container fluid style={containerStyle}>
           <Row>
             <Col xs='auto'>

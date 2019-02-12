@@ -92,9 +92,6 @@ export default class NodeMethodOutputView extends Component {
         <div>
           {this.renderDescriptionsandOutputs()}
         </div>
-        <Row>
-          <iframe title="nodeSandbox" src="https://codesandbox.io/s/github/pllearns/lorenzo-site" style={sandboxStyle} sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-        </Row>
       </div>
     )
   }

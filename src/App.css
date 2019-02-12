@@ -53,6 +53,10 @@ img {
   z-index: 100;
 }
 
+.fixed-top-2 {
+  margin-top: 56px;
+}
+
 .navbar {
   padding: 0;
 }
@@ -63,6 +67,22 @@ img {
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
+.outputContainer {
+  padding-top: 40px;
+}
+
+.navbar-nav {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.navbar-toggler-icon {
+  color: 'white'
+}
