@@ -60,7 +60,8 @@ const navTextStyle = {
 }
 
 const navBrandStyle = {
-  color: 'white'
+  color: 'white',
+  paddingLeft: '200px'
 }
 
 const xyoNav = {
@@ -70,4 +71,5 @@ const xyoNav = {
   padding: '0',
   width: '100%',
   zIndex: '9999',
+  paddingRight: '200px'
 }

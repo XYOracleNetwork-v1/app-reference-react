@@ -109,6 +109,6 @@ const navTextStyle = {
 const xyoNav = {
   backgroundColor: '#232756',
   boxShadow: '2px 2px 8px -2px #3f3b3b',
-  paddingLeft: '50px',
+  paddingLeft: '250px',
   margin: '0'
 }
