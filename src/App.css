@@ -62,8 +62,12 @@ img {
 }
 
 .side-nav-sticky {
+  width: 320px;
+  margin: 0 auto;
+  position: -webkit-sticky;
+  position: sticky;
   top: 50px;
-  padding-top: 50px;
+  padding-top: 62px;
 }
 
 .outputContainer {
