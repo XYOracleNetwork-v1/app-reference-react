@@ -25,7 +25,7 @@ export default class Header extends Component {
     }
   }
 
-  toggle() {
+  toggle(e) {
     this.setState({
       isOpen: !this.state.isOpen
     })
@@ -52,13 +52,14 @@ export default class Header extends Component {
   render() {
     return (
       <div style={xyoNav}>
-        <Navbar expand="md">
-          <NavbarBrand href="https://developers.xyo.network/" style={navTextStyle}>REFERENCE</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
+        <Navbar className="container navbar-dark" expand="md">
+          <button onClick={this.toggle} className="btn text-white d-md-none d-lg-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="">OPTIONS  <i className="fa fa-angle-down text-white"></i></span>
+          </button>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar className="navbar-inverse bg-inverse">
               <UncontrolledDropdown nav inNavbar setActiveFromChild>
-                <DropdownToggle nav caret style={navTextStyle}>
+                <DropdownToggle nav caret className="text-white">
                   Products
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -66,7 +67,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret style={navTextStyle}>
+                <DropdownToggle nav caret className="text-white">
                   Platforms
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -74,7 +75,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret style={navTextStyle}>
+                <DropdownToggle nav caret className="text-white">
                   Locale
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -92,7 +93,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="https://github.com/XYOracleNetwork" style={navTextStyle} target="_blank">GitHub</NavLink>
+                <NavLink href="https://github.com/XYOracleNetwork" className="text-white" target="_blank">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -102,13 +103,8 @@ export default class Header extends Component {
   }
 }
 
-const navTextStyle = {
-  color: 'white',
-}
-
 const xyoNav = {
   backgroundColor: '#232756',
   boxShadow: '2px 2px 8px -2px #3f3b3b',
-  paddingLeft: '250px',
   margin: '0'
 }

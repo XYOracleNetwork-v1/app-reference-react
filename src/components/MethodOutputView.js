@@ -12,19 +12,19 @@ export default class MethodView extends Component {
     const { methods } = this.props
   
     return methods.map(method =>
-      <div className="outputContainer">
+      <div>
         <Row className="pb-3 my-0 bg-dark text-light">
-        <Col className="col-6 bg-light text-dark pb-2" style={negativeMargin}>
+        <Col className="col-12 col-sm-6 bg-light text-dark pb-2" style={negativeMargin}>
           <h3 className="font-weight-bold mt-3">{method.name}</h3>
           <strong><i>{method.desc}</i></strong>
         </Col>
-        <Col className="col-6 bg-dark text-light">
+          <Col className="col-12 col-sm-6 bg-dark text-light">
         </Col>
       </Row>
       <div>
         {method.objects.map(object => (
           <Row className="border-bottom">
-            <Col style={colAppStyle}>
+            <Col className="col-12 col-sm-6" style={colAppStyle}>
               <div>
                 <h5 key={`${method}`} style={{color: 'grey'}}> Object <a name={`${object.name}`}> {object.name} </a> </h5>
                 {object.super ? <h6 style={xyoPinkText}>Super Class</h6> : <p></p>}

@@ -89,13 +89,13 @@ class App extends Component {
         </div>
         <Container fluid style={containerStyle}>
           <Row>
-            <Col xs='auto'>
+              <Col xs="auto" className="d-none d-sm-block">
               <SideNav 
                 methods={this.state.methods} 
                 product={this.state.products}
                 />
             </Col>
-            <Col className="border-left">
+            <Col className="xs-6 border-left">
                 {
                   this.state.methods === nodePkgObjectState.modules ? 
                   <NodeMethodOutputView
@@ -117,7 +117,7 @@ class App extends Component {
 }
 
 const containerStyle = {
-  marginTop: '3rem'
+  marginTop: '5rem'
 }
 
 export default App

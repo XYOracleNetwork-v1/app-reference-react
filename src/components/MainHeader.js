@@ -29,23 +29,23 @@ export default class MainHeader extends Component {
 
   render() {
     return (
-      <div style={xyoNav}>
-        <Navbar expand="md">
-          <NavbarBrand href="http://developers.xyo.network/" style={navBrandStyle}><img src={logo} alt="XYO Dev Portal" /></NavbarBrand>
+      <div className="bg-navy">
+        <Navbar expand="md" className="container navbar-dark">
+          <NavbarBrand href="http://developers.xyo.network/" className="text-white"><img src={logo} alt="XYO Dev Portal" /></NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>  
                 <Nav navbar className="ml-auto navbar-inverse bg-inverse">
                   <NavItem>
-                  <NavLink href="https://developers.xyo.network/docs/en/getting-started/" style={navTextStyle} >Getting Started</NavLink>
+                  <NavLink href="https://developers.xyo.network/docs/en/getting-started/" className="text-white" >Getting Started</NavLink>
                   </NavItem>
                   <NavItem>
-                  <NavLink href="https://developers.xyo.network/docs/en/Introduction/" style={navTextStyle}>Guides</NavLink>
+                  <NavLink href="https://developers.xyo.network/docs/en/Introduction/" className="text-white">Guides</NavLink>
                   </NavItem>
                   <NavItem>
-                  <NavLink href="http://reference.xyo.network/" style={navTextStyle}>Reference</NavLink>
+                  <NavLink href="http://reference.xyo.network/" className="text-white">Reference</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="https://developers.xyo.network/help/" style={navTextStyle} target="_blank">Help</NavLink>
+                    <NavLink href="https://developers.xyo.network/help/" className="text-white" target="_blank">Help</NavLink>
                   </NavItem>
                 </Nav>
             </Collapse>
@@ -53,23 +53,4 @@ export default class MainHeader extends Component {
       </div>
     )
   }
-}
-
-const navTextStyle = {
-  color: 'white',
-}
-
-const navBrandStyle = {
-  color: 'white',
-  paddingLeft: '200px'
-}
-
-const xyoNav = {
-  background: '#141631',
-  color: '#fff',
-  minHeight: '50px',
-  padding: '0',
-  width: '100%',
-  zIndex: '9999',
-  paddingRight: '200px'
 }

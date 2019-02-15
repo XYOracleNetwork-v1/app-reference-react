@@ -17,7 +17,7 @@ export default class SideNav extends Component {
         <h5 id={`${method.name}`}>
             <i style={iconSize} className="fa fa-angle-down"></i> {method.name}
           </h5>
-        <UncontrolledCollapse toggler={`${method.name}`}>
+        <UncontrolledCollapse className="ml-3" toggler={`${method.name}`}>
             <ul key={`${method.name}`} style={textDecorationStyle}>
                 { method.objects.map((object, i) => (
                   <li key={object.name} style={textDecorationStyle}>

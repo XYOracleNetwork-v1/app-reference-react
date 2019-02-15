@@ -66,7 +66,7 @@ img {
   margin: 0 auto;
   position: -webkit-sticky;
   position: sticky;
-  top: 50px;
+  top: 5rem;
   padding-top: 62px;
 }
 
@@ -85,4 +85,8 @@ img {
 
 .navbar-toggler-icon {
   color: 'white'
+}
+
+.bg-navy {
+  background: #141631
 }
