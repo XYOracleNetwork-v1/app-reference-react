@@ -1,5 +1,9 @@
 # XYO Developer Docs 2.0
 
+<a href="">
+  <img alt="Travis Status" src="https://travis-ci.com/xycorp/app-documentation-react.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master">
+</a>
+
 #### Welcome to XYO's API Reference Portal
 
 **These instructions are for contribution to API reference only. If you want to contribute to the XYO Dev Portal, please go to [this repository]**
