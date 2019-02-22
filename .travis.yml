@@ -1,3 +1,11 @@
 language: node_js
 nvm:
-  -10.15.0
+  -"10"
+install: 
+  - yarn 
+  - yarn build
+
+test:
+  - yarn test
+
+
