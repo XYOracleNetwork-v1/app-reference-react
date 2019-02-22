@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -12,8 +10,6 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap'
-
-import logo from '../XYODevelopers_XYO_Logo.png'
 
 export default class Header extends Component {
   constructor(props) {

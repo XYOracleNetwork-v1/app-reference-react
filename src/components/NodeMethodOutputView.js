@@ -24,7 +24,7 @@ export default class NodeMethodOutputView extends Component {
             <Row className="border-bottom">
               <Col style={colAppStyle}>
                 <div>
-                  <h5 key={`${method}`} style={{ color: 'grey' }}> Object  <a name={`${object.name}`}> {object.name} </a> </h5>
+                  <h5 key={`${method}`} style={{ color: 'grey' }}> Object  <a name={`${object.name}`} href='https://reference.xyo.network/'> {object.name} </a> </h5>
                   <h6 style={xyoPinkText}>Super Class</h6>
                   <p key={`${object.name}`} style={codePad}>{object.super}</p>
                   {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
@@ -50,7 +50,7 @@ export default class NodeMethodOutputView extends Component {
                   {(object.enumerations || []).map(e => (
                     <div style={xyoBlueText}>
                       <p>name</p>
-                      <CodeGrid><a name={`${object.name}`}>{e.name}</a></CodeGrid>
+                      <CodeGrid><a name={`${object.name}`} href='https://reference.xyo.network/'>{e.name}</a></CodeGrid>
                       <p>values</p>
                       {(e.values || []).map(val =>
                         <div>
@@ -101,14 +101,6 @@ const CodeGrid = props => {
   return (
     <code style={codePad}> {props.children} </code>
   )
-}
-
-const sandboxStyle = {
-  "width":"100%",
-  "height":"700px",
-  "border":"0", 
-  "overflow": "hidden",
-  "backgroundColor": "black"
 }
 
 const outputStyle = {
