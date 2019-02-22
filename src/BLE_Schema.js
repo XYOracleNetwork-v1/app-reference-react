@@ -543,12 +543,11 @@ module.exports = [{
               "template": true
             }
           ],
-          "objects": [
-            {
-              "name": "XYBluetoothGattCallback",
-              "interface": true
-            }
-          ],
+        },
+        {
+          "name": "XYBluetoothGattCallback",
+          "super": "XYBluetoothBase",
+          "interface": true,
           "properties": [
             {
               "name": "closed",
@@ -563,7 +562,6 @@ module.exports = [{
               "type": "Boolean"
             }
           ],
-          "super": "XYBluetoothBase"
         },
         {
           "desc": "Act as a peripheral server",
