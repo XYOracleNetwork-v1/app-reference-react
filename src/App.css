@@ -1,3 +1,15 @@
+a {
+  color: #58a0d7;
+}
+
+p {
+  margin: -1px;
+}
+
+img {
+  height: 40px;
+}
+
 .App {
   text-align: center;
 }
@@ -17,11 +29,64 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+  color: white;
+}
+
+.sideNavButton:hover {
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);  
+}
+
+/* a.dropdown-toggle.nav-link:hover {
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  box-shadow: 0 12px 16px 0 rgba(255,255,255), 0 17px 50px 0 rgba(255,255,255); 
+} */
+
+.item {
+  margin: 30px 0;
+}
+
+.fixed-top {
+  z-index: 100;
+}
+
+.fixed-top-2 {
+  margin-top: 56px;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.side-nav-sticky {
+  width: 320px;
+  margin: 0 auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5rem;
+  padding-top: 62px;
+}
+
+.outputContainer {
+  padding-top: 40px;
+}
+
+.navbar-nav {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.navbar-toggler-icon {
+  color: 'white'
+}
+
+.bg-navy {
+  background: #141631
 }
