@@ -48,4 +48,5 @@ While this API reference site is MIT licensed, at this time we will only accept 
 
 ## Credits
 
+
 <p align="center">Made with  ❤️  by [<b>XY - The Persistent Company</b>] (https://xy.company)</p>
