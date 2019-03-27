@@ -8,6 +8,7 @@ import MethodView from './components/MethodOutputView'
 import sdkBle from './BLE_Schema'
 import swiftObject from './Object_Swift_Schema'
 import nodeObject from './Node_Package_Schema'
+
 import kotlinObject from './Core_Kotlin_Schema'
 import { Container, Col, Row } from 'reactstrap'
 import NodeMethodOutputView from './components/NodeMethodOutputView'
@@ -16,6 +17,7 @@ const kotlinBleProductState = sdkBle[0]
 const swiftCoreObjectState = swiftObject[0]
 const nodePkgObjectState = nodeObject[0]
 const kotlinObjectState = kotlinObject[0]
+
 
 
 class App extends Component {
@@ -56,13 +58,12 @@ class App extends Component {
         methods: nodePkgObjectState.modules
       })
     }
-
     if (e.target.id === kotlinObjectState.id) {
       this.setState({
         methods: kotlinObjectState.modules
       })
     }
-
+    
     if (e.target.id === 'Android') {
       this.setState({
         methods: kotlinBleProductState.modules

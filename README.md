@@ -1,3 +1,7 @@
+[logo]: https://cdn.xy.company/img/brand/XY_Logo_GitHub.png
+
+[![logo]](https://xy.company)
+
 # XYO Developer Docs 2.0
 
 <a href="">
@@ -43,5 +47,6 @@ yarn start
 While this API reference site is MIT licensed, at this time we will only accept contributions and pull requests from XYO staff.  
 
 ## Credits
+
 
 <p align="center">Made with  ❤️  by [<b>XY - The Persistent Company</b>] (https://xy.company)</p>
