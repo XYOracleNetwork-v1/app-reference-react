@@ -2,7 +2,7 @@ module.exports = [{
   "id": "sdk-core-kotlin",
     "name": "Core XYO Kotlin SDK",
     "locale": "EN",
-    "platform": "Java",
+    "platform": "java",
     "lang": "Kotlin",
     "type": "SDK",
     "desc": "Generalized Bluetooth Library with additional support for XY and XYO devices",
@@ -13,7 +13,18 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoBoundWitness",
-            "properties": [],
+            "properties": [
+              {
+                "name": "completed ",
+                "desc": "Is the bound witness completed or not.",
+                "type": "boolean"
+              },
+              {
+                "name": "numberOfParties",
+                "desc": "The number of parties in the bound witness ",
+                "type": "Int"
+              }
+            ],
             "enumerations": [],
             "functions": [
               {
@@ -24,7 +35,12 @@ module.exports = [{
                     "type": "XyoHashProvider"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoIterableObject",
+                    "desc": "Returns the party's fetter as an XyoIterableObject."
+                  }
+                ]
               },
               {
                 "name": "getWitnessOfParty",
@@ -34,7 +50,12 @@ module.exports = [{
                     "type": "XyoHashProvider"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoIterableObject",
+                    "desc": "Returns the party's witness, if out of index, will return null."
+                  }
+                ]
               },
               {
                 "name": "createFetter",
@@ -72,7 +93,12 @@ module.exports = [{
                     "type": "ByteArray"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoHash",
+                    "desc": "asynchronously returns a deferred XyoHash\n"
+                  }
+                ]
               },
               {
                 "name": "signCurrent",
@@ -82,7 +108,12 @@ module.exports = [{
                     "type": "Int"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoSigner",
+                    "desc": "asynchronously returns a deferred XyoObject (signature)"
+                  }
+                ]
               },
               {
                 "name": "removeAllUnsigned",
@@ -128,7 +159,7 @@ module.exports = [{
           },
           {
             "name": "XyoBoundWitnessUtil",
-            "desc": "A Helper object to preform operations on bound witnesses. Will most likely replace certain helpers in XyoBoundWitness",
+            "desc": "A helper object to preform operations on bound witnesses. Will most likely replace certain helpers in XyoBoundWitness",
             "properties": [],
             "enumerations": [],
             "functions": [
@@ -179,6 +210,44 @@ module.exports = [{
                   }
                 ],
                 "returns": []
+              },
+              {
+                "name": "removeTypeFromUnsignedPayload",
+                "parameters": [
+                  {
+                    "name": "type",
+                    "type": "Byte"
+                  },
+                  {
+                    "name": "boundWitness",
+                    "type": "XyoIterableObject"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoIterableObject",
+                    "desc": "Returns a bound witness without the type specified"
+                  }
+                ]
+              },
+              {
+                "name": "getPartyNumberFromPublicKey",
+                "parameters": [
+                  {
+                    "name": "boundWitness",
+                    "type": "XyoBoundWitness"
+                  },
+                  {
+                    "name": "publicKey",
+                    "type": "XyoBuff"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Int",
+                    "desc": "Returns the index of the party"
+                  }
+                ]
               }
             ]
           },
@@ -196,7 +265,12 @@ module.exports = [{
                     "type": "XyoBoundWitness"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "Boolean",
+                    "desc": "Bound Witness Success"
+                  }
+                ]
               },
               {
                 "name": "checkAllSignatures",
@@ -246,15 +320,20 @@ module.exports = [{
                 "name": "incomingData",
                 "parameters": [
                   {
-                    "name": "signatureReceivedSize",
-                    "type": "Int"
-                  },
-                  {
                     "name": "endPoint",
                     "type": "Boolean"
+                  },
+                  {
+                    "name": "transfer",
+                    "type": "XyoIterableObject"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoBoundWitnessTransfer",
+                    "desc": "transfer to send to other party"
+                  }
+                ]
               },
               {
                 "name": "getNumberOfSignaturesFromTransfer",
@@ -378,34 +457,25 @@ module.exports = [{
           {
             "name": "XyoZigZagBoundWitnessSession",
             "desc": "Creates an XyoZigZagBoundWitness session",
-            "properties": [],
-            "enumerations": [],
-            "functions": [
+            "properties": [
               {
-                "name": "doBoundWitness ",
-                "parameters": [
-                  {
-                    "name": "signatureReceivedSize",
-                    "type": "Int"
-                  }
-                ],
-                "returns": []
+                "name": "signedPayload",
+                "desc": "Signed Payload ",
+                "type": "Array<XyoBuff>"
               },
               {
-                "name": "sendAndReceive",
-                "parameters": [
-                  {
-                    "name": "signedPayload",
-                    "type": "Array<XyoBuff>"
-                  },
-                  {
-                    "name": "signatureReceivedSize",
-                    "type": "Int"
-                  }
-                ],
-                "returns": []
+                "name": "unsignedPayload",
+                "desc": "Payload that is unsigned",
+                "type": "Array<XyoBuff>"
+              },
+              {
+                "name": "signers",
+                "desc": "All signers in a session",
+                "type": "Array<XyoSigner>"
               }
-            ]
+            ],
+            "enumerations": [],
+            "functions": []
           }
         ]
       },
@@ -529,12 +599,138 @@ module.exports = [{
       {
         "desc": "Exceptions",
         "name": "exceptions",
-        "objects": []
+        "objects": [
+          {
+            "name": "XyoBoundWitnessCreationException",
+            "desc": "Thrown when an error happens during the creation of a bound witness.",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoCorruptDataException",
+            "desc": "Exception is thrown whenever data is malformed.",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoException",
+            "desc": "Base class for XYO Exceptions",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoNoObjectException",
+            "desc": "Exception is trowed whenever data contains a major and minor it does not understand.",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          }
+        ]
       },
       {
         "desc": "Hashing",
         "name": "hashing",
-        "objects": []
+        "objects": [
+          {
+            "name": "XyoHash",
+            "desc": "Base class for containing and encoding hashes.",
+            "properties": [
+              {
+                "name": "hash",
+                "desc": "encoded hash",
+                "type": "byteArray"
+              }
+            ],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoHashProvider",
+            "desc": "Base class for creating hashes",
+            "properties": [
+              {
+                "name": "createHash",
+                "desc": "Creates a hash given a ByteArray",
+                "type": "ByteArray"
+              }
+            ],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "createHash",
+                "async": "true",
+                "parameters": [
+                  {
+                    "name": "GlobalScope",
+                    "type": "XyoBasicHashBase"
+                  }
+                ],
+                "returns": []
+              },
+              {
+                "name": "getInstance",
+                "parameters": [
+                  {
+                    "name": "byteArray",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoBasicHashBase",
+                    "desc": "object"
+                  }
+                ]
+              },
+              {
+                "name": "createHashType",
+                "parameters": [
+                  {
+                    "name": "schema",
+                    "type": "XyoObjectSchema"
+                  },
+                  {
+                    "name": "standardDigestKey",
+                    "type": "String"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoBasicHashBaseProvider",
+                    "desc": "object"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "XyoBasicHashBase",
+            "desc": "Base class for creating Standard Java hashes supported by MessageDigest",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoBasicHashBaseProvider",
+            "desc": "Base class for creating Standard Java hashes supported by MessageDigest",
+            "properties": [
+              {
+                "name": "standardDigestKey",
+                "desc": "The MessageDigest instance key. e.g. \"SHA-256\"",
+                "type": "String"
+              },
+              {
+                "name": "schema",
+                "type": "XyoObjectSchema"
+              }
+            ],
+            "enumerations": [],
+            "functions": []
+          }
+        ]
       },
       {
         "desc": "Log",
