@@ -1,8 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import './Layout.css'
+
 const Layout = props => {
   return (
-    <div style={layoutStyle}>
+    <div>
     <Helmet>
       <title>XYO Reference Portal</title>
       <meta name="description" content="XYO Reference"/>
@@ -13,7 +15,3 @@ const Layout = props => {
 }
 
 export default Layout
-
-const layoutStyle = {
-  fontFamily: 'Titillium Web'
-}
