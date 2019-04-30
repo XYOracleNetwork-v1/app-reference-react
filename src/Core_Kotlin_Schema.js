@@ -181,7 +181,7 @@ module.exports = [{
                     "type": "XyoBoundWitness"
                   },
                   {
-                    "name": "signatures",
+                    "name": "signature",
                     "type": "XyoBuff"
                   }
                 ],
@@ -205,7 +205,7 @@ module.exports = [{
                     "type": "XyoIterableObject"
                   },
                   {
-                    "name": "signatures",
+                    "name": "signature",
                     "type": "XyoBuff"
                   }
                 ],
@@ -480,11 +480,6 @@ module.exports = [{
         ]
       },
       {
-        "desc": "XYO Object Provider",
-        "name": "object provider",
-        "objects": []
-      },
-      {
         "desc": "Crypto Encrypt",
         "name": "crypto - encrypt",
         "objects": [
@@ -566,31 +561,61 @@ module.exports = [{
           {
             "name": "XyoEncrypter",
             "desc": "Interface that takes a encrypt and decrypt function. Is used in XyoAES",
-            "properties": [],
-            "enumerations": [],
-            "functions": []
-          }
-        ]
-      },
-      {
-        "desc": "Crypto Decrypt",
-        "name": "crypto - decrypt",
-        "objects": [
-          {
-            "name": "XyoSigner",
-            "desc": "Abstract class performing public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
-            "properties": [],
+            "properties": [
+              {
+                "name": "iVSize",
+                "type": "Int"
+              },
+              {
+                "name": "algorithmName",
+                "type": "String"
+              }
+            ],
             "enumerations": [],
             "functions": [
               {
-                "name": "signData",
+                "name": "encrypt",
                 "parameters": [
                   {
-                    "name": "bytes",
+                    "name": "iV",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "value",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "password",
                     "type": "ByteArray"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "ByteArray"
+                  }
+                ]
+              },
+              {
+                "name": "decrypt",
+                "parameters": [
+                  {
+                    "name": "iV",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "encryptedValue",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "password",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "ByteArray"
+                  }
+                ]
               }
             ]
           }
@@ -841,7 +866,7 @@ module.exports = [{
                     "type": "XyoBuff"
                   },
                   {
-                    "name": "iV",
+                    "name": "byteArray",
                     "type": "ByteArray"
                   }
                 ],
@@ -1998,6 +2023,128 @@ module.exports = [{
                 "name": "getAllKeys",
                 "parameters": [],
                 "returns": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "desc": "Crypto Signing",
+        "name": "signing",
+        "objects": [
+          {
+            "name": "XyoSigner",
+            "desc": "Abstract class performing public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
+            "properties": [
+              {
+                "name": "privateKey",
+                "desc": "The private key of the XyoSigner, this can be used to restore signer state",
+                "type": "XyoPrivateKey"
+              },
+              {
+                "name": "publicKey",
+                "desc": "The public key of the XyoSigner",
+                "type": "XyoPublicKey"
+              }
+            ],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "signData",
+                "parameters": [
+                  {
+                    "name": "bytes",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Deferred<XyoBuff>",
+                    "desc": "deferred cryptographic signature of the data field"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "XyoSignerProvider",
+            "desc": "Gives access to a XyoSigner that can preform public key cryptographic functions. Note: all functions in this class are abstract. ",
+            "properties": [
+              {
+                "name": "supportedSignatures",
+                "desc": "signaturePacking types the signer supports",
+                "type": "Array<Byte>"
+              },
+              {
+                "name": "supportedKeys",
+                "desc": "keys types the signer supports",
+                "type": "Array<Byte>"
+              },
+              {
+                "name": "key",
+                "desc": "Key to identify the signer provider by so it can be added to a mapping",
+                "type": "Byte"
+              }
+            ],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "disable",
+                "parameters": [],
+                "returns": []
+              },
+              {
+                "name": "enable",
+                "parameters": [],
+                "returns": []
+              },
+              {
+                "name": "verifySign",
+                "parameters": [
+                  {
+                    "name": "publicKey",
+                    "type": "XyoBuff"
+                  },
+                  {
+                    "name": "byteArray",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "signature",
+                    "type": "XyoBuff"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Deferred<Boolean>",
+                    "desc": "valid signature? deferred true : false"
+                  }
+                ]
+              },
+              {
+                "name": "newInstance",
+                "parameters": [
+                  {
+                    "name": "privateKey",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoSigner",
+                    "desc": "new instance of a XyoSigner for the given algorithm, generates a keypair with given private key"
+                  }
+                ]
+              },
+              {
+                "name": "newInstance",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XyoSigner",
+                    "desc": "Provides a new instance of a XyoSigner for the given algorithm and generates a keypair"
+                  }
+                ]
               }
             ]
           }

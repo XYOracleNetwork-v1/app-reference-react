@@ -31,7 +31,7 @@ export default class Header extends Component {
     const { platform, onClick } = this.props
 
     return platform.map(platform => (
-        <DropdownItem onClick={onClick} id={platform}>{platform}</DropdownItem>
+      <DropdownItem key={platform} onClick={onClick} id={platform}>{platform}</DropdownItem>
       )
     )
   }
@@ -40,7 +40,7 @@ export default class Header extends Component {
     const { product, onClick } = this.props
 
     return product.map(prod => (
-        <DropdownItem onClick={onClick} id={prod}>{prod}</DropdownItem>
+        <DropdownItem key={prod} onClick={onClick} id={prod}>{prod}</DropdownItem>
       )
     )
   }
