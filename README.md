@@ -6,7 +6,7 @@
 
 [![Build Status](https://travis-ci.com/XYOracleNetwork/app-documentation-react.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master)](https://travis-ci.com/) [![DepShield Badge](https://depshield.sonatype.org/badges/XYOracleNetwork/app-documentation-react/depshield.svg)](https://depshield.github.io)
 [![David Badge](https://david-dm.org/xyoraclenetwork/app-documentation-react.svg)](https://david-dm.org/xyoraclenetwork/app-documentation-react) [![David Badge](https://david-dm.org/xyoraclenetwork/app-documentation-react/dev-status.svg)](https://david-dm.org/xyoraclenetwork/app-documentation-react)
-[![Codacy Badge]() [![Maintainability]()
+[![Codacy Badge]() [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-documentation-react/maintainability)
 
 #### Welcome to XYO's API Reference Portal
 
