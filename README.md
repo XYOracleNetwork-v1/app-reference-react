@@ -5,8 +5,11 @@
 # XYO Developer Docs 2.0
 
 [![Build Status](https://travis-ci.com/XYOracleNetwork/app-documentation-react.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master)](https://travis-ci.com/) [![DepShield Badge](https://depshield.sonatype.org/badges/XYOracleNetwork/app-documentation-react/depshield.svg)](https://depshield.github.io)
+
 [![David Badge](https://david-dm.org/xyoraclenetwork/app-documentation-react.svg)](https://david-dm.org/xyoraclenetwork/app-documentation-react) [![David Badge](https://david-dm.org/xyoraclenetwork/app-documentation-react/dev-status.svg)](https://david-dm.org/xyoraclenetwork/app-documentation-react)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/app-documentation-react&amp;utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-documentation-react/maintainability)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=XYOracleNetwork/app-documentation-react&amp;utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-documentation-react/maintainability)[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/app-documentation-react?branch=master)](https://bettercodehub.com/results/XYOracleNetwork/app-documentation-react)
+
 
 #### Welcome to XYO's API Reference Portal
 
