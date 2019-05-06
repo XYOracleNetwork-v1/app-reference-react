@@ -8,7 +8,7 @@
   <img alt="Travis Status" src="https://travis-ci.com/XYOracleNetwork/app-documentation-react.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master">
 </a>
 
-[![Build Status](https://travis-ci.com/XYOracleNetwork/app-documentation-react-nodejs.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/app-documentation-react) [![DepShield Badge](https://depshield.sonatype.org/badges/XYOracleNetwork/app-documentation-react/depshield.svg)](https://depshield.github.io)
+[![Build Status](https://travis-ci.com/XYOracleNetwork/app-documentation-react-nodejs.svg?branch=master)](https://travis-ci.com/) [![DepShield Badge](https://depshield.sonatype.org/badges/XYOracleNetwork/app-documentation-react/depshield.svg)](https://depshield.github.io)
 
 #### Welcome to XYO's API Reference Portal
 
