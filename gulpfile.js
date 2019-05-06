@@ -11,7 +11,7 @@ const exec = util.promisify(childProcess.exec)
 const { s3BucketName, region, cloudFrontDistributionId } = config
 
 const confirmProductionBranch = async () => {
-  const BRANCH_TO_TEST = 'master'
+  const BRANCH_TO_TEST = 'develop'
   console.log(`Confirming current branch is set to ${BRANCH_TO_TEST}`)
 
   try {

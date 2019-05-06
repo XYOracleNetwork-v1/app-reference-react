@@ -2,7 +2,7 @@ module.exports = [{
   "id": "sdk-core-kotlin",
     "name": "Core XYO Kotlin SDK",
     "locale": "EN",
-    "platform": "Java",
+    "platform": "java",
     "lang": "Kotlin",
     "type": "SDK",
     "desc": "Generalized Bluetooth Library with additional support for XY and XYO devices",
@@ -13,7 +13,18 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoBoundWitness",
-            "properties": [],
+            "properties": [
+              {
+                "name": "completed ",
+                "desc": "Is the bound witness completed or not.",
+                "type": "boolean"
+              },
+              {
+                "name": "numberOfParties",
+                "desc": "The number of parties in the bound witness ",
+                "type": "Int"
+              }
+            ],
             "enumerations": [],
             "functions": [
               {
@@ -24,7 +35,12 @@ module.exports = [{
                     "type": "XyoHashProvider"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoIterableObject",
+                    "desc": "Returns the party's fetter as an XyoIterableObject."
+                  }
+                ]
               },
               {
                 "name": "getWitnessOfParty",
@@ -34,7 +50,12 @@ module.exports = [{
                     "type": "XyoHashProvider"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoIterableObject",
+                    "desc": "Returns the party's witness, if out of index, will return null."
+                  }
+                ]
               },
               {
                 "name": "createFetter",
@@ -72,7 +93,12 @@ module.exports = [{
                     "type": "ByteArray"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoHash",
+                    "desc": "asynchronously returns a deferred XyoHash\n"
+                  }
+                ]
               },
               {
                 "name": "signCurrent",
@@ -82,7 +108,12 @@ module.exports = [{
                     "type": "Int"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoSigner",
+                    "desc": "asynchronously returns a deferred XyoObject (signature)"
+                  }
+                ]
               },
               {
                 "name": "removeAllUnsigned",
@@ -128,7 +159,7 @@ module.exports = [{
           },
           {
             "name": "XyoBoundWitnessUtil",
-            "desc": "A Helper object to preform operations on bound witnesses. Will most likely replace certain helpers in XyoBoundWitness",
+            "desc": "A helper object to preform operations on bound witnesses. Will most likely replace certain helpers in XyoBoundWitness",
             "properties": [],
             "enumerations": [],
             "functions": [
@@ -150,7 +181,7 @@ module.exports = [{
                     "type": "XyoBoundWitness"
                   },
                   {
-                    "name": "signatures",
+                    "name": "signature",
                     "type": "XyoBuff"
                   }
                 ],
@@ -174,11 +205,49 @@ module.exports = [{
                     "type": "XyoIterableObject"
                   },
                   {
-                    "name": "signatures",
+                    "name": "signature",
                     "type": "XyoBuff"
                   }
                 ],
                 "returns": []
+              },
+              {
+                "name": "removeTypeFromUnsignedPayload",
+                "parameters": [
+                  {
+                    "name": "type",
+                    "type": "Byte"
+                  },
+                  {
+                    "name": "boundWitness",
+                    "type": "XyoIterableObject"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoIterableObject",
+                    "desc": "Returns a bound witness without the type specified"
+                  }
+                ]
+              },
+              {
+                "name": "getPartyNumberFromPublicKey",
+                "parameters": [
+                  {
+                    "name": "boundWitness",
+                    "type": "XyoBoundWitness"
+                  },
+                  {
+                    "name": "publicKey",
+                    "type": "XyoBuff"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Int",
+                    "desc": "Returns the index of the party"
+                  }
+                ]
               }
             ]
           },
@@ -196,7 +265,12 @@ module.exports = [{
                     "type": "XyoBoundWitness"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "Boolean",
+                    "desc": "Bound Witness Success"
+                  }
+                ]
               },
               {
                 "name": "checkAllSignatures",
@@ -246,15 +320,20 @@ module.exports = [{
                 "name": "incomingData",
                 "parameters": [
                   {
-                    "name": "signatureReceivedSize",
-                    "type": "Int"
-                  },
-                  {
                     "name": "endPoint",
                     "type": "Boolean"
+                  },
+                  {
+                    "name": "transfer",
+                    "type": "XyoIterableObject"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "XyoBoundWitnessTransfer",
+                    "desc": "transfer to send to other party"
+                  }
+                ]
               },
               {
                 "name": "getNumberOfSignaturesFromTransfer",
@@ -378,34 +457,25 @@ module.exports = [{
           {
             "name": "XyoZigZagBoundWitnessSession",
             "desc": "Creates an XyoZigZagBoundWitness session",
-            "properties": [],
-            "enumerations": [],
-            "functions": [
+            "properties": [
               {
-                "name": "doBoundWitness ",
-                "parameters": [
-                  {
-                    "name": "signatureReceivedSize",
-                    "type": "Int"
-                  }
-                ],
-                "returns": []
+                "name": "signedPayload",
+                "desc": "Signed Payload ",
+                "type": "Array<XyoBuff>"
               },
               {
-                "name": "sendAndReceive",
-                "parameters": [
-                  {
-                    "name": "signedPayload",
-                    "type": "Array<XyoBuff>"
-                  },
-                  {
-                    "name": "signatureReceivedSize",
-                    "type": "Int"
-                  }
-                ],
-                "returns": []
+                "name": "unsignedPayload",
+                "desc": "Payload that is unsigned",
+                "type": "Array<XyoBuff>"
+              },
+              {
+                "name": "signers",
+                "desc": "All signers in a session",
+                "type": "Array<XyoSigner>"
               }
-            ]
+            ],
+            "enumerations": [],
+            "functions": []
           }
         ]
       },
@@ -496,31 +566,61 @@ module.exports = [{
           {
             "name": "XyoEncrypter",
             "desc": "Interface that takes a encrypt and decrypt function. Is used in XyoAES",
-            "properties": [],
-            "enumerations": [],
-            "functions": []
-          }
-        ]
-      },
-      {
-        "desc": "Crypto Decrypt",
-        "name": "crypto - decrypt",
-        "objects": [
-          {
-            "name": "XyoSigner",
-            "desc": "Abstract class performing public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
-            "properties": [],
+            "properties": [
+              {
+                "name": "iVSize",
+                "type": "Int"
+              },
+              {
+                "name": "algorithmName",
+                "type": "String"
+              }
+            ],
             "enumerations": [],
             "functions": [
               {
-                "name": "signData",
+                "name": "encrypt",
                 "parameters": [
                   {
-                    "name": "bytes",
+                    "name": "iV",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "value",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "password",
                     "type": "ByteArray"
                   }
                 ],
-                "returns": []
+                "returns": [
+                  {
+                    "type": "ByteArray"
+                  }
+                ]
+              },
+              {
+                "name": "decrypt",
+                "parameters": [
+                  {
+                    "name": "iV",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "encryptedValue",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "password",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "ByteArray"
+                  }
+                ]
               }
             ]
           }
@@ -529,12 +629,138 @@ module.exports = [{
       {
         "desc": "Exceptions",
         "name": "exceptions",
-        "objects": []
+        "objects": [
+          {
+            "name": "XyoBoundWitnessCreationException",
+            "desc": "Thrown when an error happens during the creation of a bound witness.",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoCorruptDataException",
+            "desc": "Exception is thrown whenever data is malformed.",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoException",
+            "desc": "Base class for XYO Exceptions",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoNoObjectException",
+            "desc": "Exception is trowed whenever data contains a major and minor it does not understand.",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          }
+        ]
       },
       {
         "desc": "Hashing",
         "name": "hashing",
-        "objects": []
+        "objects": [
+          {
+            "name": "XyoHash",
+            "desc": "Base class for containing and encoding hashes.",
+            "properties": [
+              {
+                "name": "hash",
+                "desc": "encoded hash",
+                "type": "byteArray"
+              }
+            ],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoHashProvider",
+            "desc": "Base class for creating hashes",
+            "properties": [
+              {
+                "name": "createHash",
+                "desc": "Creates a hash given a ByteArray",
+                "type": "ByteArray"
+              }
+            ],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "createHash",
+                "async": "true",
+                "parameters": [
+                  {
+                    "name": "GlobalScope",
+                    "type": "XyoBasicHashBase"
+                  }
+                ],
+                "returns": []
+              },
+              {
+                "name": "getInstance",
+                "parameters": [
+                  {
+                    "name": "byteArray",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoBasicHashBase",
+                    "desc": "object"
+                  }
+                ]
+              },
+              {
+                "name": "createHashType",
+                "parameters": [
+                  {
+                    "name": "schema",
+                    "type": "XyoObjectSchema"
+                  },
+                  {
+                    "name": "standardDigestKey",
+                    "type": "String"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoBasicHashBaseProvider",
+                    "desc": "object"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "XyoBasicHashBase",
+            "desc": "Base class for creating Standard Java hashes supported by MessageDigest",
+            "properties": [],
+            "enumerations": [],
+            "functions": []
+          },
+          {
+            "name": "XyoBasicHashBaseProvider",
+            "desc": "Base class for creating Standard Java hashes supported by MessageDigest",
+            "properties": [
+              {
+                "name": "standardDigestKey",
+                "desc": "The MessageDigest instance key. e.g. \"SHA-256\"",
+                "type": "String"
+              },
+              {
+                "name": "schema",
+                "type": "XyoObjectSchema"
+              }
+            ],
+            "enumerations": [],
+            "functions": []
+          }
+        ]
       },
       {
         "desc": "Log",
@@ -645,7 +871,7 @@ module.exports = [{
                     "type": "XyoBuff"
                   },
                   {
-                    "name": "iV",
+                    "name": "byteArray",
                     "type": "ByteArray"
                   }
                 ],
@@ -1802,6 +2028,128 @@ module.exports = [{
                 "name": "getAllKeys",
                 "parameters": [],
                 "returns": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "desc": "Crypto Signing",
+        "name": "signing",
+        "objects": [
+          {
+            "name": "XyoSigner",
+            "desc": "Abstract class performing public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
+            "properties": [
+              {
+                "name": "privateKey",
+                "desc": "The private key of the XyoSigner, this can be used to restore signer state",
+                "type": "XyoPrivateKey"
+              },
+              {
+                "name": "publicKey",
+                "desc": "The public key of the XyoSigner",
+                "type": "XyoPublicKey"
+              }
+            ],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "signData",
+                "parameters": [
+                  {
+                    "name": "bytes",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Deferred<XyoBuff>",
+                    "desc": "deferred cryptographic signature of the data field"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "XyoSignerProvider",
+            "desc": "Gives access to a XyoSigner that can preform public key cryptographic functions. Note: all functions in this class are abstract. ",
+            "properties": [
+              {
+                "name": "supportedSignatures",
+                "desc": "signaturePacking types the signer supports",
+                "type": "Array<Byte>"
+              },
+              {
+                "name": "supportedKeys",
+                "desc": "keys types the signer supports",
+                "type": "Array<Byte>"
+              },
+              {
+                "name": "key",
+                "desc": "Key to identify the signer provider by so it can be added to a mapping",
+                "type": "Byte"
+              }
+            ],
+            "enumerations": [],
+            "functions": [
+              {
+                "name": "disable",
+                "parameters": [],
+                "returns": []
+              },
+              {
+                "name": "enable",
+                "parameters": [],
+                "returns": []
+              },
+              {
+                "name": "verifySign",
+                "parameters": [
+                  {
+                    "name": "publicKey",
+                    "type": "XyoBuff"
+                  },
+                  {
+                    "name": "byteArray",
+                    "type": "ByteArray"
+                  },
+                  {
+                    "name": "signature",
+                    "type": "XyoBuff"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Deferred<Boolean>",
+                    "desc": "valid signature? deferred true : false"
+                  }
+                ]
+              },
+              {
+                "name": "newInstance",
+                "parameters": [
+                  {
+                    "name": "privateKey",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoSigner",
+                    "desc": "new instance of a XyoSigner for the given algorithm, generates a keypair with given private key"
+                  }
+                ]
+              },
+              {
+                "name": "newInstance",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XyoSigner",
+                    "desc": "Provides a new instance of a XyoSigner for the given algorithm and generates a keypair"
+                  }
+                ]
               }
             ]
           }

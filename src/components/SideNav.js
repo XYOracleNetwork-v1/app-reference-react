@@ -5,6 +5,8 @@ import { Link, animateScroll as scroll } from 'react-scroll'
 
 export default class SideNav extends Component {
 
+  // consider changing this to a functional component without class expression
+
   scrollToTop = () => {
     scroll.scrollToTop()
   }
