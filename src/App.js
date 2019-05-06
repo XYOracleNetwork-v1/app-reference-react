@@ -18,12 +18,6 @@ const swiftCoreObjectState = swiftObject[0]
 const nodePkgObjectState = nodeObject[0]
 const kotlinObjectState = kotlinObject[0]
 
-
-// think about adding hooks...
-
-// look at matrix project
-
-
 class App extends Component {
   
   // something like const [methods] = useState(kotlinBleProductState.modules) ???

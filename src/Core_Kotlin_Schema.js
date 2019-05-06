@@ -480,6 +480,11 @@ module.exports = [{
         ]
       },
       {
+        "desc": "XYO Object Provider",
+        "name": "object provider",
+        "objects": []
+      },
+      {
         "desc": "Crypto Encrypt",
         "name": "crypto - encrypt",
         "objects": [
