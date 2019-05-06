@@ -5,7 +5,7 @@
 # XYO Developer Docs 2.0
 
 <a href="">
-  <img alt="Travis Status" src="https://travis-ci.com/xycorp/app-documentation-react.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master">
+  <img alt="Travis Status" src="https://travis-ci.com/XYOracleNetwork/app-documentation-react.svg?token=DwLaRUVjarU2ZypyaHXe&branch=master">
 </a>
 
 #### Welcome to XYO's API Reference Portal
