@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - "stable"
+  - "10"
+cache: yarn
 install: 
-  - yarn 
+  - yarn install
+script:
   - yarn build
 test:
   - yarn test
-cache: yarn
