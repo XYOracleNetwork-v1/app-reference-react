@@ -1,9 +1,17 @@
 language: node_js
 node_js:
   - "stable"
+cache:
+  yarn: true
+  directories:
+  - node_modules
+addons:
+  sonarcloud:
+    organization: "xyo-network"
 install: 
-  - yarn 
+  - yarn install
+script:
   - yarn build
+  - sonar-scanner
 test:
   - yarn test
-cache: yarn
