@@ -5,9 +5,13 @@ cache:
   yarn: true
   directories:
   - node_modules
+addons:
+  sonarcloud:
+    organization: "xyo-network"
 install: 
-  - yarn
+  - yarn install
 script:
   - yarn build
+  - sonar-scanner
 test:
   - yarn test
