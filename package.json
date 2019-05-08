@@ -19,8 +19,6 @@
     "bootstrap": "^4.2.1",
     "child_process": "^1.0.2",
     "concurrent-transform": "^1.0.0",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.8.0",
     "font-awesome": "^4.7.0",
     "gulp": "^4.0.0",
     "gulp-awspublish": "^4.0.0",
@@ -57,6 +55,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "prop-types": "^15.7.2",
     "typescript": "^3.4.5"
   }
