@@ -12,8 +12,6 @@ Table of Contents
 
 -   [Title](#xyo-developer-docs-2.0)
 -   [Description](#description)
--   [Long Description](#long-description)
--   [Security](#security)
 -   [Install](#install)
 -   [Usage](#usage)
 -   [Maintainers](#maintainers)
