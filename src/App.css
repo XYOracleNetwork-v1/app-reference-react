@@ -33,6 +33,10 @@ img {
   color: white;
 }
 
+.sideNavButton {
+  border-radius: 0;
+}
+
 .sideNavButton:hover {
   -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s;
@@ -83,6 +87,10 @@ img {
 
 .bg-navy {
   background: #141631
+}
+
+.btn.btn-square {
+  border-radius: 0;
 }
 
 
