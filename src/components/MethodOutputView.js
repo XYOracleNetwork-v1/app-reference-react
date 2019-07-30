@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Col, Row } from 'reactstrap'
-import { Helmet } from 'react-helmet'
 
 const negativeMargin = {
   'marginBottom':'-1em'
@@ -47,12 +46,6 @@ export default class MethodView extends Component {
             </Col>
             <Col className="bg-dark" style={outputStyle}>
               <div style={smallPadding}>
-                <Helmet>
-                  <script>
-                    {`((window.gitter = {}).chat = {}).options = {room: 'XYOracleNetwork/Dev', preLoad: true}`}
-                  </script>
-                  <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-                </Helmet>
                 {object.enumerations ? <h5>Enumerations</h5> : <p></p>}
                 {(object.enumerations || []).map(e => (
                   <div style={xyoBlueText}>

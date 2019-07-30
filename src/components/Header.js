@@ -48,48 +48,48 @@ export default class Header extends Component {
   render() {
     return (
       <div style={xyoNav}>
-        <Navbar className="container navbar-dark" expand="md">
+        <Navbar className="container navbar-light" expand="md">
           <button onClick={this.toggle} className="btn text-white d-md-none d-lg-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="">OPTIONS  <i className="fa fa-angle-down text-white"></i></span>
+            <span className="text-dark">OPTIONS  <i className="fa fa-angle-down text-dark"></i></span>
           </button>
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav navbar className="navbar-inverse bg-inverse">
+            <Nav navbar className="navbar-inverse">
               <UncontrolledDropdown nav inNavbar setActiveFromChild>
-                <DropdownToggle nav caret className="text-white">
-                  Products
+                <DropdownToggle nav caret className="text-dark">
+                  PRODUCTS
                 </DropdownToggle>
                 <DropdownMenu right>
                   {this.renderNavProductItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="text-white">
-                  Platforms
+                <DropdownToggle nav caret className="text-dark">
+                  PLATFORMS
                 </DropdownToggle>
                 <DropdownMenu right>
                   {this.renderNavPlatformItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
                 <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="text-white">
-                  Locale
+                <DropdownToggle nav caret className="text-dark">
+                  LOCALE
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    English
+                    ENGLISH
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Spanish
+                    SPANISH
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Portuguese
+                    PORTUGUESE
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="https://github.com/XYOracleNetwork" className="text-white" target="_blank">GitHub</NavLink>
+                <NavLink href="https://github.com/XYOracleNetwork" className="text-dark" target="_blank">GITHUB</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -100,7 +100,7 @@ export default class Header extends Component {
 }
 
 const xyoNav = {
-  backgroundColor: '#232756',
+  backgroundColor: '#ecf0f1',
   boxShadow: '2px 2px 8px -2px #3f3b3b',
   margin: '0'
 }
