@@ -16,6 +16,7 @@
   "license": "MIT",
   "bugs": "https://github.com/xycorp/app-documentation-react/issues",
   "dependencies": {
+    "@xyo-network/web-base-bootstrap": "^0.1.105"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,14 +35,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
-    "prop-types": "^15.7.2",
-    "react-scripts": "2.1.8",
-    "typescript": "^3.4.5",
     "bootstrap": "^4.2.1",
     "child_process": "^1.0.2",
     "concurrent-transform": "^1.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "font-awesome": "^4.7.0",
     "gulp": "^4.0.0",
     "gulp-awspublish": "^4.0.0",
@@ -50,13 +48,16 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "prismjs": "^1.15.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-helmet": "^5.2.0",
     "react-prism": "^4.3.2",
+    "react-scripts": "2.1.8",
     "react-scroll": "^1.7.10",
     "react-test-renderer": "^16.7.0",
     "reactstrap": "^8.0.0",
+    "typescript": "^3.4.5",
     "util": "^0.12.0",
     "yarn": "^1.15.2"
   }
