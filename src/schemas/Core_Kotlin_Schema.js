@@ -380,7 +380,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoSigner",
-            "desc": "Abstract class performing public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
+            "desc": "Performs public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
             "properties": [
               {
                 "name": "privateKey",
@@ -405,7 +405,7 @@ module.exports = [{
                 ],
                 "returns": [
                   {
-                    "type": "Deferred<XyoBuff>",
+                    "type": "Deferred<XyoObjectStructure>",
                     "desc": "deferred cryptographic signature of the data field"
                   }
                 ]
@@ -449,7 +449,7 @@ module.exports = [{
                 "parameters": [
                   {
                     "name": "publicKey",
-                    "type": "XyoBuff"
+                    "type": "XyoObjectStructure"
                   },
                   {
                     "name": "byteArray",
@@ -457,7 +457,7 @@ module.exports = [{
                   },
                   {
                     "name": "signature",
-                    "type": "XyoBuff"
+                    "type": "XyoObjectStructure"
                   }
                 ],
                 "returns": [
