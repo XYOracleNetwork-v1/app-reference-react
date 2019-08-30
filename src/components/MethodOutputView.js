@@ -66,7 +66,7 @@ export default class MethodView extends Component {
                   <div style={outputStyle}>
                     <div>
                       <CodeGrid>{f.name}</CodeGrid>
-                      ({(f.parameters || []).map(param => <CodeGrid>{param.name} {param.type}</CodeGrid>)})
+                      ({(f.parameters || []).map((param) => <CodeGrid>{param.name} {param.type}</CodeGrid>)})
                       <br></br>
                       {f.desc}
                       <br></br>
