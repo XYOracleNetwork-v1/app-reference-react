@@ -739,7 +739,7 @@ module.exports = [{
                 "returns": [
                   {
                     "type": "ByteArray",
-                    "desc": "returns the advertise packet as a "
+                    "desc": "the advertise packet as a "
                   }
                 ]
               }
@@ -1179,7 +1179,7 @@ module.exports = [{
           },
           {
             "name": "XyoOriginChainCreator",
-            "desc": "A base class for all things creating and managing an origin chain",
+            "desc": "main entry point for creating and maintaining an origin chain",
             "properties": [
               {
                 "name": "blockRepository",
