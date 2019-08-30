@@ -226,7 +226,7 @@ module.exports = [{
           },
           {
             "name": "XyoZigZagBoundWitnessSession",
-            "desc": "This object is a class for creating a bound witness with a pipe interface (send and receive), but, does not handle network handshake",
+            "desc": "This object is a class for creating a bound witness with a pipe interface (send and receive), but does not handle network handshake",
             "properties": [
               {
                 "name": "signedPayload",
@@ -405,7 +405,7 @@ module.exports = [{
           },
           {
             "name": "XyoSignerProvider",
-            "desc": "Gives access to a XyoSigner that can preform public key cryptographic functions. Note: all functions in this class are abstract. ",
+            "desc": "Gives access to a XyoSigner that can perform public key cryptographic functions. Note: all functions in this class are abstract. ",
             "properties": [
               {
                 "name": "supportedSignatures",
@@ -596,7 +596,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoHeuristicGetter ",
-            "desc": "Interface for putting data inside a bound witness. An object that implements this protocol can be added to XyoOriginChainCreator to add data to bound witnesses",
+            "desc": "Interface for putting data inside a bound witness. An object that implements this protocol can be added to XyoOriginChainCreator to add data to bound witnesses.",
             "functions": [
               {
                 "name": "getHeuristic",
@@ -612,7 +612,7 @@ module.exports = [{
           },
           {
             "name": "XyoUnixTime",
-            "desc": "Unix time operations for a heuristic using the XyoObjectStructure",
+            "desc": "Unix time operations for a heuristic using the XyoObjectStructure.",
             "properties": [
               {
                 "name": "time",
@@ -634,7 +634,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoLogger ",
-            "desc": "An interface object that handles debug, info, special, and error logs",
+            "desc": "An interface object that handles debug, info, special, and error logs.",
             "functions": [
               {
                 "name": "logDebug",
@@ -700,7 +700,7 @@ module.exports = [{
           },
           {
             "name": "XyoLog ",
-            "desc": "Object for access to the XyoLogger interface",
+            "desc": "Object for access to the XyoLogger interface.",
             "properties": [
               {
                 "name": "XyoLogger",
@@ -717,7 +717,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoAdvertisePacket",
-            "desc": "Helper object to help parse the advertising stage of the network protocol",
+            "desc": "Helper object to help parse the advertising stage of the network protocol.",
             "functions": [
               {
                 "name": "getChoice",
@@ -785,7 +785,7 @@ module.exports = [{
           },
           {
             "name": "XyoChoicePacket",
-            "desc": "Helper object to help parse the choice stage of the network protocol",
+            "desc": "Helper object to help parse the choice stage of the network protocol.",
             "functions": [
               {
                 "name": "getChoice",
@@ -811,7 +811,7 @@ module.exports = [{
           },
           {
             "name": "XyoNetworkHandler",
-            "desc": "Helps send network protocol packets over a XyoNetworkPipe",
+            "desc": "Helps send network protocol packets over a XyoNetworkPipe.",
             "functions": [
               {
                 "name": "sendCataloguePacket",
@@ -846,7 +846,7 @@ module.exports = [{
           },
           {
             "name": "XyoNetworkProcedureCatalog",
-            "desc": "Interface used for advertising and negotiating what a device can do and support",
+            "desc": "Interface used for advertising and negotiating what a device can do and support.",
             "functions": [
               {
                 "name": "canDo",
@@ -877,7 +877,7 @@ module.exports = [{
           },
           {
             "name": "XyoProcedureCatalogFlags",
-            "desc": "Creates bit flags for negotiations between two parties",
+            "desc": "Creates bit flags for negotiations between two parties.",
             "properties": [
               {
                 "name": "Bound Witness",
@@ -961,7 +961,7 @@ module.exports = [{
           },
           {
             "name": "XyoBridgeQueue",
-            "desc": "A class to manage outgoing origin blocks for bridges and sentinels",
+            "desc": "A class to manage outgoing origin blocks for bridges and sentinels.",
             "properties": [
               {
                 "name": "sendLimit",
@@ -1024,7 +1024,7 @@ module.exports = [{
               },
               {
                 "name": "getBlocksToRemove",
-                "desc": "Get the blocks that have exceeded the removeWeight and are out of the queue",
+                "desc": "Get the blocks that have exceeded the removeWeight and are out of the queue.",
                 "parameters": [],
                 "returns": [
                   {
@@ -1053,7 +1053,7 @@ module.exports = [{
           },
           {
             "name": "XyoBridgingOption",
-            "desc": "Implementation of the XyoBoundWitnessOption for bridging blocks when the bridge flag is set in the network handshake",
+            "desc": "Implementation of the XyoBoundWitnessOption for bridging blocks when the bridge flag is set in the network handshake.",
             "properties": [
               {
                 "name": "flag",
@@ -1250,7 +1250,7 @@ module.exports = [{
           },
           {
             "name": "XyoRelayNode",
-            "desc": "A base class for nodes creating data then relaying it between sentinels and bridges",
+            "desc": "A base class for nodes creating data then relaying it between sentinels and bridges.",
             "properties": [
               {
                 "name": "blockRepository",
@@ -1307,7 +1307,7 @@ module.exports = [{
           },
           {
             "name": "XyoOriginChainStateManager",
-            "desc": "A class that manages chain state for use in origin chain creation and getting current state ",
+            "desc": "A class that manages chain state for use in origin chain creation and getting current state.",
             "properties": [
               {
                 "name": "repo",
@@ -1486,6 +1486,7 @@ module.exports = [{
               },
               {
                 "name": "containsOriginBlock",
+                "desc": "Confirmation that the storage provider contains the origin block.",
                 "parameters": [
                   {
                   "name": "originBlockHash",
@@ -1494,8 +1495,7 @@ module.exports = [{
               ],
                 "returns": [
                   {
-                    "type": "",
-                    "desc": "(confirmation that the storage provider contains the origin block)",
+                    "type": ""
                   }
                 ]
               },
@@ -1538,11 +1538,11 @@ module.exports = [{
           },
           {
             "name": "XyoStorageOriginStateRepository",
-            "desc": "An object that provides persistent storage for the XyoOriginChainStateRepository, refer to that interface for methods",
+            "desc": "An object that provides persistent storage for the XyoOriginChainStateRepository, refer to that interface for methods.",
           },
           {
             "name": "XyoInMemoryStorageProvider",
-            "desc": "A simple in-memory persist implementation of the XyoKeyValueStore",
+            "desc": "A simple in-memory persist implementation of the XyoKeyValueStore.",
             "functions": [
               {
                 "name": "containsKey",
@@ -1612,7 +1612,7 @@ module.exports = [{
           },
           {
             "name": "XyoKeyValueStore",
-            "desc": "Provides a persistence layer which aims to persist data in a non-volatile way. Each method throws an XyoStorageException if this is an error in its operations",
+            "desc": "Provides a persistence layer which aims to persist data in a non-volatile way. Each method throws an XyoStorageException if this is an error in its operations.",
             "functions": [
               {
                 "name": "write",
@@ -1642,7 +1642,7 @@ module.exports = [{
               },
               {
                 "name": "getAllKeys",
-                "desc": "returns all the corresponding keys for the values stored.",
+                "desc": "Returns all the corresponding keys for the values stored.",
                 "parameters": [],
                 "returns": []
               },
@@ -1968,7 +1968,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoInterpret",
-            "desc": "An interface schema to interpret a byteArray into an XyoObjectStructure (note structures are part of the objectModel)",
+            "desc": "An interface schema to interpret a byteArray into an XyoObjectStructure (note structures are part of the objectModel).",
             "functions": [
               {
                 "name": "getInstance",
@@ -1989,7 +1989,7 @@ module.exports = [{
           },
           {
             "name": "XyoSchemas",
-            "desc": "Schemas available for the core library",
+            "desc": "Schemas available for the core library.",
             "properties": [
               {
                 "name": "ARRAY_TYPED",

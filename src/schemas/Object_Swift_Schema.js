@@ -182,7 +182,7 @@ module.exports = [{
         },
         {
           "super": "XyoBoundWitness",
-          "desc": "This object is a class for creating a bound witness with a pipe interface  (send and receive), but, does not handle network handshake",
+          "desc": "This object is a class for creating a bound witness with a pipe interface  (send and receive), but does not handle network handshake",
           "name": "XyoZigZagBoundWitnessSession",
           "functions": [
             {
@@ -240,7 +240,7 @@ module.exports = [{
       "name": "crypto-signing",
       "objects": [
         {
-          "desc": "Performs public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair. ",
+          "desc": "Performs public key cryptographic operations. A XyoSigner is obtained from a XyoSignerProvider with newInstance(). If a compatible private key is provided the XyoCryptoSigner will create its keypair using this private key. Otherwise, it will create a random keypair.",
           "name": "XyoSigner",
           "functions": [
             {
@@ -284,7 +284,7 @@ module.exports = [{
       "name": "hashing",
       "objects": [
         {
-          "desc": "Interface/Protocol for hashing funcions. We use the XyoHasher to abstract a hashing algorithm from the XYO protocol ",
+          "desc": "Interface/Protocol for hashing funcions. We use the XyoHasher to abstract a hashing algorithm from the XYO protocol.",
           "name": "XyoHasher",
           "functions": [
             {
@@ -305,7 +305,7 @@ module.exports = [{
           ]
         },
         {
-          "desc": "Implementation of XyoHasher with sha256",
+          "desc": "Implementation of XyoHasher with sha256.",
           "name": "XyoSha256",
           "functions": [
             {
@@ -349,7 +349,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "Unix time operations for a heuristic using the XyoObjectStructure",
+          "desc": "Unix time operations for a heuristic using the XyoObjectStructure.",
           "name": "XyoUnixTime",
           "functions": [
             {
@@ -413,7 +413,7 @@ module.exports = [{
       "objects": [
         {
           "name": "XyoAdvertisePacket",
-          "desc": "Helper object to help parse the advertising stage of the network protocol",
+          "desc": "Helper object to help parse the advertising stage of the network protocol.",
           "properties": [],
           "enumerations": [],
           "functions": [
@@ -441,7 +441,7 @@ module.exports = [{
         },
         {
           "name": "XyoChoicePacket",
-          "desc": "Helper object to help parse the choice stage of the network protocol",
+          "desc": "Helper object to help parse the choice stage of the network protocol.",
           "properties": [],
           "enumerations": [],
           "functions": [
@@ -479,7 +479,7 @@ module.exports = [{
         },                
         {
           "name": "XyoFlagProcedureCatalog",
-          "desc": "Helper object for negotiations in the handshake network protocol",
+          "desc": "Helper object for negotiations in the handshake network protocol.",
           "properties": [
             {
               "name": "canDoForOther",
@@ -550,7 +550,7 @@ module.exports = [{
         },
         {
           "name": "XyoNetworkHandler",
-          "desc": "Helps send network protocol packets over a XyoNetworkPipe",
+          "desc": "Helps send network protocol packets over a XyoNetworkPipe.",
           "properties": [
             {
               "name": "pipe",
@@ -653,7 +653,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "Interface used for advertising and negotiating what a device can do and support",
+          "desc": "Interface used for advertising and negotiating what a device can do and support.",
           "name": "XyoProcedureCatalog",
           "functions": [
             {
@@ -705,7 +705,7 @@ module.exports = [{
       "name": "node",      
       "objects": [
         {
-          "desc": "a struct that takes payloads for an heuristic pair",
+          "desc": "A struct that takes payloads for an heuristic pair.",
           "name": "XyoBoundWitnessHueristicPair",
           "properties": [
             {
@@ -884,7 +884,7 @@ module.exports = [{
         },
         {
           "super": "XyoBoundWitnessOption",
-          "desc": "Implementation of the XyoBoundWitnessOption for bridging blocks when the bridge flag is set in the network handshake",
+          "desc": "Implementation of the XyoBoundWitnessOption for bridging blocks when the bridge flag is set in the network handshake.",
           "name": "XyoBridgingOption",
           "properties": [],
           "functions": [
@@ -958,7 +958,7 @@ module.exports = [{
         },
         {
           "super": "", 
-          "desc": "The main entry point for creating and maintaining an origin chain",
+          "desc": "The main entry point for creating and maintaining an origin chain.",
           "name": "XyoOriginChainCreator",
           "properties": [
               {
@@ -1107,7 +1107,7 @@ module.exports = [{
         },
         {
           "super": "XyoOriginChainCreator, XyoNodeListener",
-          "desc": "An origin chain that knows how to bridge blocks to origin nodes (sentinel/bridge)",
+          "desc": "An origin chain that knows how to bridge blocks to origin nodes (sentinel/bridge).",
           "name": "XyoRelayNode",
         },
       ]
@@ -1233,7 +1233,7 @@ module.exports = [{
       "name": "persist",
       "objects": [
         {
-          "desc": "XYO in memory store storing key-value pairs in memory when testing/simulating any type of persistence, it's also an implementation of the XyoStorageProvider",
+          "desc": "XYO in memory store storing key-value pairs in memory when testing/simulating any type of persistence, it's also an implementation of the XyoStorageProvider.",
           "name": "XyoInMemoryStorage",
           "functions": [
             {
@@ -1290,7 +1290,7 @@ module.exports = [{
         },
         {
           "super": "",
-          "desc": "Abstration for persisting key-value pairs",
+          "desc": "Abstraction for persisting key-value pairs.",
           "name": "XyoStorageProvider",
           "functions": [
             {
@@ -1613,7 +1613,7 @@ module.exports = [{
         },
         {
           "super": "",
-          "desc": "configuration for a repository in xyo for chain state persistence",
+          "desc": "Configuration for a repository in xyo for chain state persistence.",
           "name": "XyoRepositoryConfiguration",
           "properties": [
             {
@@ -1680,7 +1680,7 @@ module.exports = [{
       "name": "schemas",
       "objects": [
         {
-          "desc": "The list of all of the official encoding headers for XYO Serialization"
+          "desc": "The list of all of the official encoding headers for XYO Serialization."
         }
       ]
     }
