@@ -13,6 +13,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoBoundWitness",
+            "desc": "A Bound Witness Object that is independent of origin state. This implements the XYO cryptographic structure.",
             "properties": [
               {
                 "name": "completed ",
@@ -25,10 +26,10 @@ module.exports = [{
                 "type": "Int"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "getFetterOfParty",
+                "desc": "Gets a fetter from a party in a bound witness.",
                 "parameters": [
                   {
                     "name": "hashCreator",
@@ -37,13 +38,13 @@ module.exports = [{
                 ],
                 "returns": [
                   {
-                    "type": "XyoIterableObject",
-                    "desc": "Returns the party's fetter as an XyoIterableObject."
+                    "type": "XyoIterableObject"
                   }
                 ]
               },
               {
                 "name": "getWitnessOfParty",
+                "desc": "Gets a witness from a party in a bound witness.",
                 "parameters": [
                   {
                     "name": "hashCreator",
@@ -59,6 +60,7 @@ module.exports = [{
               },
               {
                 "name": "createFetter",
+                "desc": "Creates a fetter with the given payload and publicKeys.",
                 "parameters": [
                   {
                     "name": "payload",
@@ -72,12 +74,12 @@ module.exports = [{
                 "returns": [
                   {
                     "type": "XyoIterableObject",
-                    "desc": "A created fetter as"
                   }
                 ]
               },
               {
                 "name": "createWitness",
+                "desc": "Creates a witness with the given payload and signatures.",
                 "parameters": [
                   {
                     "name": "payload",
@@ -91,12 +93,12 @@ module.exports = [{
                 "returns": [
                   {
                     "type": "XyoIterableObject",
-                    "desc": "A created witness as"
                   }
                 ]
               },
               {
                 "name": "getHash",
+                "desc": "Gets the hash of the bound witness.",
                 "parameters": [
                   {
                     "name": "hashCreator",
@@ -112,6 +114,7 @@ module.exports = [{
               },
               {
                 "name": "signCurrent",
+                "desc": "Creates a signature of the bound witness.",
                 "parameters": [
                   {
                     "name": "signer",
@@ -129,12 +132,11 @@ module.exports = [{
           },
           {
             "name": "XyoBoundWitnessUtil",
-            "desc": "A helper object to preform operations on bound witnesses.",
-            "properties": [],
-            "enumerations": [],
+            "desc": "This class provides utilities for mutating a bound witness. This is a low level object.",
             "functions": [
               {
                 "name": "removeTypeFromUnsignedPayload",
+                "desc": "Removes a type from the bound witness witnesses and returns a new bound witness object wrought the type.",
                 "parameters": [
                   {
                     "name": "type",
@@ -154,6 +156,7 @@ module.exports = [{
               },
               {
                 "name": "getPartyNumberFromPublicKey",
+                "desc": "Gets the index of the party of the bound witness (What index is their fetter).",
                 "parameters": [
                   {
                     "name": "boundWitness",
@@ -175,12 +178,11 @@ module.exports = [{
           },
           {
             "name": "XyoBoundWitnessVerify",
-            "desc": "Verifies a single bound witness",
-            "properties": [],
-            "enumerations": [],
+            "desc": "A class to verify if a single bound witness is valid (does not validate indexes and hashes).",
             "functions": [
               {
                 "name": "verify",
+                "desc": "Verify a single bound witness.",
                 "parameters": [
                   {
                     "name": "boundWitness",
@@ -198,12 +200,11 @@ module.exports = [{
           },
           {
             "name": "XyoZigZagBoundWitness",
-            "desc": "A zig-zag bound witness protocol sending fetter and witness back and forth",
-            "properties": [],
-            "enumerations": [],
+            "desc": "This object is a class for creating a bound witness with a pipe interface  (send and receive), but, does not handle network handshake",
             "functions": [
               {
                 "name": "incomingData",
+                "desc": "Adds data to the bound witness and returns whats the party should send back.",
                 "parameters": [
                   {
                     "name": "transfer",
@@ -225,7 +226,7 @@ module.exports = [{
           },
           {
             "name": "XyoZigZagBoundWitnessSession",
-            "desc": "Creates an XyoZigZagBoundWitness session",
+            "desc": "This object is a class for creating a bound witness with a pipe interface (send and receive), but, does not handle network handshake",
             "properties": [
               {
                 "name": "signedPayload",
@@ -243,15 +244,8 @@ module.exports = [{
                 "type": "Array<XyoSigner>"
               }
             ],
-            "enumerations": [],
-            "functions": []
           }
         ]
-      },
-      {
-        "desc": "XYO Object Provider",
-        "name": "object provider",
-        "objects": []
       },
       {
         "desc": "Crypto Encrypt",
@@ -260,8 +254,6 @@ module.exports = [{
           {
             "name": "XyoAES",
             "desc": "XyoEncrypter",
-            "properties": [],
-            "enumerations": [],
             "functions": [
               {
                 "name": "encrypt ",
@@ -324,7 +316,6 @@ module.exports = [{
                 "type": "String"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "encrypt",
@@ -393,10 +384,10 @@ module.exports = [{
                 "type": "XyoPublicKey"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "signData",
+                "desc": "Cryptographically signs a given ByteArray so that it can verified with verify().",
                 "parameters": [
                   {
                     "name": "bytes",
@@ -432,20 +423,22 @@ module.exports = [{
                 "type": "Byte"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "disable",
+                "desc": "Removes the signer provider to the mapping.",
                 "parameters": [],
                 "returns": []
               },
               {
                 "name": "enable",
+                "desc": "Adds the signer provider to the mapping.",
                 "parameters": [],
                 "returns": []
               },
               {
                 "name": "verifySign",
+                "desc": "Cryptographically verifies a signature given data, the signature, and a public key that the XyoSigner supports.",
                 "parameters": [
                   {
                     "name": "publicKey",
@@ -469,6 +462,7 @@ module.exports = [{
               },
               {
                 "name": "newInstance",
+                "desc": "Provides a new instance of a XyoSigner for the given algorithm and generates a keypair with the given private key.",
                 "parameters": [
                   {
                     "name": "privateKey",
@@ -478,17 +472,16 @@ module.exports = [{
                 "returns": [
                   {
                     "type": "XyoSigner",
-                    "desc": "new instance of a XyoSigner for the given algorithm, generates a keypair with given private key"
                   }
                 ]
               },
               {
                 "name": "newInstance",
+                "desc": "Provides a new instance of a XyoSigner for the given algorithm and generates a keypair",
                 "parameters": [],
                 "returns": [
                   {
-                    "type": "XyoSigner",
-                    "desc": "Provides a new instance of a XyoSigner for the given algorithm and generates a keypair"
+                    "type": "XyoSigner"
                   }
                 ]
               }
@@ -510,7 +503,6 @@ module.exports = [{
                 "type": "ByteArray"
               }
             ],
-            "enumerations": [],
             "functions": [
                   {
                 "name": "createHash",
@@ -534,13 +526,33 @@ module.exports = [{
             "desc": "Base class for containing and encoding hashes created as a deferred XyoObjectStructure.",
             "properties": [
               {
-                "name": "byteArray",
+                "name": "hash",
                 "desc": "encoded hash",
                 "type": "ByteArray"
               }
             ],
-            "enumerations": [],
-            "functions": []
+          },
+          {
+            "name": "XyoHashProvider",
+            "desc": "A base class for creating hashes.",
+            "functions": [
+                {
+                "name": "createHash",
+                "desc": "Creates a hash given a ByteArray.",
+                "parameters": [
+                  {
+                    "name": "data",
+                    "type": "ByteArray"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XyoHash",
+                    "desc": "a deferred object as "
+                  }
+                ]
+              }              
+            ]
           },
           {
             "name": "XyoSha3",
@@ -557,11 +569,10 @@ module.exports = [{
                 "type": "XyoObjectSchema"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "createHash",
-                "async": "true",
+                "desc": "Creates a hash given a ByteArray.",
                 "parameters": [
                   {
                     "name": "data",
@@ -585,16 +596,15 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoHeuristicGetter ",
-            "properties": [],
-            "enumerations": [],
+            "desc": "Interface for putting data inside a bound witness. An object that implements this protocol can be added to XyoOriginChainCreator to add data to bound witnesses",
             "functions": [
               {
                 "name": "getHeuristic",
+                "desc": "Gets the Heuristic for the getter. If the heuristic is null, the heuristic will not be included in the payload.",
                 "parameters": [],
                 "returns": [
                   {
                     "type": "XyoObjectStructure",
-                    "desc": "returns the heuristic as a "
                   }
                 ]
               }
@@ -602,7 +612,7 @@ module.exports = [{
           },
           {
             "name": "XyoUnixTime",
-            "desc": "a time heuristic that is created using XyoObjectStructure",
+            "desc": "Unix time operations for a heuristic using the XyoObjectStructure",
             "properties": [
               {
                 "name": "time",
@@ -613,24 +623,6 @@ module.exports = [{
                 "name": "byteArray",
                 "desc": "byteArray from heuristic",
                 "type": "ByteArray",
-              }
-            ],
-            "enumerations": [],
-            "functions": [
-              {
-                "name": "getInstance",
-                "parameters": [
-                  {
-                    "name": "byteArray",
-                    "type": "ByteArray"
-                  }
-                ],
-                "returns": [
-                  {
-                    "type": "XyoUnixTime",
-                    "desc": "returns the time heuristic as a "
-                  }
-                ]
               }
             ]
           }
@@ -643,8 +635,6 @@ module.exports = [{
           {
             "name": "XyoLogger ",
             "desc": "An interface object that handles debug, info, special, and error logs",
-            "properties": [],
-            "enumerations": [],
             "functions": [
               {
                 "name": "logDebug",
@@ -718,8 +708,6 @@ module.exports = [{
                 "type": "XyoAsciiLogger"
               }
             ],
-            "enumerations": [],
-            "functions": []
           }
         ]
       },
@@ -729,9 +717,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoAdvertisePacket",
-            "desc": "A packet with a byte buffer for advertising",
-            "properties": [],
-            "enumerations": [],
+            "desc": "Helper object to help parse the advertising stage of the network protocol",
             "functions": [
               {
                 "name": "getChoice",
@@ -747,7 +733,7 @@ module.exports = [{
           },
           {
             "name": "XyoNetworkPipe",
-            "desc": "An abstraction for a network peer to peer connection",
+            "desc": "Network abstraction that can be used for doing bound witnesses with other devices. This library comes with two implementations, a memory pipe used for testing and simulations, and a tcp device with for communicating with tcp/ip devices.",
             "properties": [
               {
                 "name": "initiationData",
@@ -755,7 +741,6 @@ module.exports = [{
                 "type": "XyoAdvertisePacket"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "send",
@@ -800,9 +785,7 @@ module.exports = [{
           },
           {
             "name": "XyoChoicePacket",
-            "desc": "Unsigned packets getting choice and response",
-            "properties": [],
-            "enumerations": [],
+            "desc": "Helper object to help parse the choice stage of the network protocol",
             "functions": [
               {
                 "name": "getChoice",
@@ -828,9 +811,7 @@ module.exports = [{
           },
           {
             "name": "XyoNetworkHandler",
-            "desc": "Handles network packet transmissions",
-            "properties": [],
-            "enumerations": [],
+            "desc": "Helps send network protocol packets over a XyoNetworkPipe",
             "functions": [
               {
                 "name": "sendCataloguePacket",
@@ -865,9 +846,7 @@ module.exports = [{
           },
           {
             "name": "XyoNetworkProcedureCatalog",
-            "desc": "Interface used for advertising what a device can do and support",
-            "properties": [],
-            "enumerations": [],
+            "desc": "Interface used for advertising and negotiating what a device can do and support",
             "functions": [
               {
                 "name": "canDo",
@@ -898,7 +877,7 @@ module.exports = [{
           },
           {
             "name": "XyoProcedureCatalogFlags",
-            "desc": "Creates bit flags for negations between two parties",
+            "desc": "Creates bit flags for negotiations between two parties",
             "properties": [
               {
                 "name": "Bound Witness",
@@ -916,7 +895,6 @@ module.exports = [{
                 "type": "GIVE_ORIGIN_CHAIN"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "flip",
@@ -948,7 +926,7 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoBoundWitnessOption",
-            "desc": "A base class for bound witness options. ",
+            "desc": "Used for putting conditional data inside the bound witness based on negotiation.",
             "properties": [
               {
                 "name": "flag",
@@ -956,10 +934,10 @@ module.exports = [{
                 "type": "ByteArray"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "getPayload",
+                "desc": "Gets the signed data to include in the bound witness.",
                 "parameters": [],
                 "returns": [
                   {
@@ -970,6 +948,7 @@ module.exports = [{
               },
               {
                 "name": "onCompleted",
+                "desc": "This function will be called after the current bound witness has been completed. If the bound witness is null, there was an error creating the bound witness.",
                 "parameters": [
                   {
                     "name": "boundWitness",
@@ -995,10 +974,10 @@ module.exports = [{
                 "type": "Int"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "addBlock",
+                "desc": "Adds an origin block into the bridge queue.",
                 "parameters": [
                   {
                     "name": "blockHash",
@@ -1009,6 +988,7 @@ module.exports = [{
               },
               {
                 "name": "addBlock",
+                "desc": "Adds an origin block into the bridge queue with a weight.",
                 "parameters": [
                   {
                     "name": "blockHash",
@@ -1023,6 +1003,7 @@ module.exports = [{
               },
               {
                 "name": "getBlocksToBridge",
+                "desc": "Gets the current list of origin blocks to send.",
                 "parameters": [],
                 "returns": [
                   {
@@ -1043,6 +1024,7 @@ module.exports = [{
               },
               {
                 "name": "getBlocksToRemove",
+                "desc": "Get the blocks that have exceeded the removeWeight and are out of the queue",
                 "parameters": [],
                 "returns": [
                   {
@@ -1050,41 +1032,12 @@ module.exports = [{
                     "desc": "gets a block to remove based on exceeded weight and are out of the queue"
                   }
                 ]
-              },
-              {
-                "name": "setQueue",
-                "parameters": [
-                  {
-                    "name": "waitForResponse",
-                    "type": "Boolean"
-                  },
-                  {
-                    "name": "exception",
-                    "type": "Exception?"
-                  }
-                ],
-                "returns": []
-              },
-              {
-                "name": "getAllBlocks ",
-                "parameters": [],
-                "returns": []
-              },
-              {
-                "name": "getAllWeights",
-                "parameters": [],
-                "returns": []
-              },
-              {
-                "name": "XyoBridgeJob",
-                "parameters": [],
-                "returns": []
               }
             ]
           },
           {
             "name": "XyoBridgeQueueItem",
-            "desc": "an object for the bridge queue",
+            "desc": "Simple object that ties a block hash to the number of times it's been offloaded by the bridge queue.",
             "properties": [
               {
                 "name": "weight",
@@ -1097,12 +1050,10 @@ module.exports = [{
                 "type": "Int"
               }
             ],
-            "enumerations": [],
-            "functions": []
           },
           {
             "name": "XyoBridgingOption",
-            "desc": "A bound witness option which depends on the XyoProcedureCatalogFlags.GIVE_ORIGIN_CHAIN setting. If the flag is set, will call the bridge queue to get the latest bridge blocks.",
+            "desc": "Implementation of the XyoBoundWitnessOption for bridging blocks when the bridge flag is set in the network handshake",
             "properties": [
               {
                 "name": "flag",
@@ -1110,7 +1061,6 @@ module.exports = [{
                 "type": "ByteArray"
               },
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "onCompleted",
@@ -1136,17 +1086,17 @@ module.exports = [{
           },
           {
             "name": "XyoNodeListener",
-            "desc": "Listener for XYO Nodes. A primary object that drives XYO operations",
-            "properties": [],
-            "enumerations": [],
+            "desc": "A node listener, added through the .addListener() method from XyoOriginChainCreator to receive callbacks to when a bound witness starts, occurs, discovered, and/or fails.",
             "functions": [
               {
                 "name": "onBoundWitnessStart",
+                "desc": "This function will be called on every bound witness start.",
                 "parameters": [],
                 "returns": []
               },
               {
                 "name": "onBoundWitnessDiscovered",
+                "desc": "This function will be called on evey time a bound witness discovered for the first time successfully.",
                 "parameters": [
                   {
                     "name": "boundWitness",
@@ -1157,6 +1107,7 @@ module.exports = [{
               },
               {
                 "name": "onBoundWitnessEndFailure",
+                "desc": "This function will be called on evey time a bound witness did not end successfully.",
                 "parameters": [
                   {
                     "name": "error",
@@ -1167,6 +1118,7 @@ module.exports = [{
               },
               {
                 "name": "onBoundWitnessEndSuccess",
+                "desc": "This function will be called every time a bound witness is completed successfully.",
                 "parameters": [
                   {
                     "name": "boundWitness",
@@ -1179,7 +1131,7 @@ module.exports = [{
           },
           {
             "name": "XyoOriginChainCreator",
-            "desc": "main entry point for creating and maintaining an origin chain",
+            "desc": "A base class for all things creating an managing an origin chain (e.g. Sentinel, Bridge).",
             "properties": [
               {
                 "name": "blockRepository",
@@ -1197,10 +1149,10 @@ module.exports = [{
                 "type": "XyoOriginChainStateManager"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "addHeuristic",
+                "desc": "Adds a heuristic to be used when creating bound witnesses.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1215,6 +1167,7 @@ module.exports = [{
               },
               {
                 "name": "removeHeuristic",
+                "desc": "Removes a heuristic from the current heuristic pool.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1225,6 +1178,7 @@ module.exports = [{
               },
               {
                 "name": "addListener",
+                "desc": "Adds a Node Listener to listen for bound witness creations.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1239,6 +1193,7 @@ module.exports = [{
               },
               {
                 "name": "removeListener",
+                "desc": "Removes a listener from the current listener pool.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1249,6 +1204,7 @@ module.exports = [{
               },
               {
                 "name": "selfSignOriginChain",
+                "desc": "Self signs an origin block to the devices origin chain.",
                 "parameters": [
                   {
                     "name": "flag",
@@ -1317,10 +1273,10 @@ module.exports = [{
                 "type": "XyoBridgeQueue"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "init",
+                "desc": "Starts the relay node",
                 "parameters": [],
                 "returns": []
               }
@@ -1334,12 +1290,11 @@ module.exports = [{
         "objects": [
           {
             "name": "XyoOriginBoundWitnessUtil",
-            "desc": "An utility object for getting origin related items out of a bound witness.",
-            "properties": [],
-            "enumerations": [],
+            "desc": "Helper object helps parse origin chain related information out of a single bound witness.",
             "functions": [
               {
                 "name": "getBridgedBlocks",
+                "desc": "Gets the bridged blocks from a bound witness.",
                 "parameters": [
                   {
                     "name": "boundWitness",
@@ -1385,7 +1340,6 @@ module.exports = [{
                 "type": "Array<XyoSigner>"
               }
             ],
-            "enumerations": [],
             "functions": [
               {
                 "name": "removeOldestSigner",
@@ -1423,8 +1377,6 @@ module.exports = [{
           {
             "name": "XyoStorageBridgeQueueRepository",
             "desc": "Persist storage for bridge queues.",
-            "properties": [],
-            "enumerations": [],
             "functions": [{
                 "name": "getQueue",
                 "parameters": [],
@@ -1522,7 +1474,6 @@ module.exports = [{
                 "type": "XyoHash.XyoHashProvider"
               }
             ],
-            "enumerations": [],
             "functions": [{
                 "name": "removeOriginBlock",
                 "parameters": [
@@ -1588,15 +1539,10 @@ module.exports = [{
           {
             "name": "XyoStorageOriginStateRepository",
             "desc": "An object that provides persistent storage for the XyoOriginChainStateRepository, refer to that interface for methods",
-            "properties": [],
-            "enumerations": [],
-            "functions": []
           },
           {
             "name": "XyoInMemoryStorageProvider",
             "desc": "A simple in-memory persist implementation of the XyoKeyValueStore",
-            "properties": [],
-            "enumerations": [],
             "functions": [
               {
                 "name": "containsKey",
@@ -1667,11 +1613,10 @@ module.exports = [{
           {
             "name": "XyoKeyValueStore",
             "desc": "Provides a persistence layer which aims to persist data in a non-volatile way. Each method throws an XyoStorageException if this is an error in its operations",
-            "properties": [],
-            "enumerations": [],
             "functions": [
               {
                 "name": "write",
+                "desc": "Writes to the persist layer.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1686,6 +1631,7 @@ module.exports = [{
               },
               {
                 "name": "read",
+                "desc": "Read from persist layer.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1696,11 +1642,13 @@ module.exports = [{
               },
               {
                 "name": "getAllKeys",
+                "desc": "returns all the corresponding keys for the values stored.",
                 "parameters": [],
                 "returns": []
               },
               {
                 "name": "delete ",
+                "desc": "Deletes the value for the corresponding key.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1711,6 +1659,7 @@ module.exports = [{
               },
               {
                 "name": "containsKey ",
+                "desc": "Checks if a key exists in persist.",
                 "parameters": [
                   {
                     "name": "key",
@@ -1731,8 +1680,6 @@ module.exports = [{
                 "type": "String"
               }
             ],
-            "enumerations": [],
-            "functions": []
           },
           {
             "name": "XyoWeakReferenceCaching",
@@ -1867,8 +1814,6 @@ module.exports = [{
           {
             "name": "XyoOriginBlockRepository",
             "desc": "An interface that removes an origin block from the navigator and from persist, each method throws an XyoStorageException in the case of an error in operation.",
-            "properties": [],
-            "enumerations": [],
             "functions": [{
                 "name": "removeOriginBlock",
                 "parameters": [
@@ -1932,8 +1877,6 @@ module.exports = [{
           {
             "name": "XyoOriginChainStateRepository",
             "desc": "An interface that is used to keep track of the state when creating the origin chain.",
-            "properties": [],
-            "enumerations": [],
             "functions": [
               {
                 "name": "getIndex",
@@ -2026,8 +1969,6 @@ module.exports = [{
           {
             "name": "XyoInterpret",
             "desc": "An interface schema to interpret a byteArray into an XyoObjectStructure (note structures are part of the objectModel)",
-            "properties": [],
-            "enumerations": [],
             "functions": [
               {
                 "name": "getInstance",
