@@ -25,8 +25,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [kotlinBleProductState.id, swiftCoreObjectState.id, nodePkgObjectState.id, kotlinObjectState.id],
-      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform, nodePkgObjectState.platform, kotlinObjectState.platform],
+      products: [kotlinBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
+      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
       platformViews: [],
       methods: []
     }
@@ -53,11 +53,11 @@ class App extends Component {
       })
     }
     
-    if (e.target.id === nodePkgObjectState.id) {
-      this.setState({
-        methods: nodePkgObjectState.modules
-      })
-    }
+    // if (e.target.id === nodePkgObjectState.id) {
+    //   this.setState({
+    //     methods: nodePkgObjectState.modules
+    //   })
+    // }
     if (e.target.id === kotlinObjectState.id) {
       this.setState({
         methods: kotlinObjectState.modules
@@ -76,13 +76,13 @@ class App extends Component {
       })
     }
 
-    if (e.target.id === 'web') {
-      this.setState({
-        methods: nodePkgObjectState.modules
-      })
-    }
+    // if (e.target.id === 'web') {
+    //   this.setState({
+    //     methods: nodePkgObjectState.modules
+    //   })
+    // }
 
-    if (e.target.id === 'java') {
+    if (e.target.id === 'kotlin') {
       this.setState({
         methods: kotlinObjectState.modules
       })
@@ -97,7 +97,6 @@ class App extends Component {
           <MainHeader />
           <Header 
             methods={this.state.methods} 
-            platform={this.state.platforms} 
             product={this.state.products} 
             onClick={this.handleClick}
             />
@@ -115,11 +114,9 @@ class App extends Component {
                   this.state.methods === nodePkgObjectState.modules ? 
                   <NodeMethodOutputView
                   methods={this.state.methods}
-                  platform={this.state.platforms}
                   /> : 
                   <MethodView
                   methods={this.state.methods} 
-                  platform={this.state.platforms}
                   />
                 }
             </Col>

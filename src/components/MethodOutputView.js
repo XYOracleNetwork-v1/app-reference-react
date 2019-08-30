@@ -49,9 +49,7 @@ export default class MethodView extends Component {
                 {object.enumerations ? <h5>Enumerations</h5> : <p></p>}
                 {(object.enumerations || []).map(e => (
                   <div style={xyoBlueText}>
-                    <p>name</p>
                     <CodeGrid><a name={`${object.name}`} href='https://reference.xyo.network/'>{e.name}</a></CodeGrid>
-                    <p>values</p>
                     {(e.values || []).map(val =>
                       <div>
                         <CodeGrid>{val.name}</CodeGrid>
