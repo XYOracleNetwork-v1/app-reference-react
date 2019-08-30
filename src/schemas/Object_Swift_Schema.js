@@ -13,7 +13,7 @@ module.exports = [{
       "objects": [
         {
           "super": "XyoIterableStructure",
-          "desc": "A class with methods to get info and sign bound witnesses ",
+          "desc": "A object that constructs and parses a bound witness. This is the foundation of the core library. ",
           "name": "XyoBoundWitness",
           "functions": [
             {
@@ -137,7 +137,7 @@ module.exports = [{
         },
         {
           "name": "XyoBoundWitnessUtil",
-          "desc": "bound witness utilities ",
+          "desc": "This class provides utilities for mutating a bound witness. This is a low level object. ",
           "functions": [
             {
               "name": "removeIdFromUnsignedPayload",
@@ -182,8 +182,8 @@ module.exports = [{
         },
         {
           "super": "XyoBoundWitness",
-          "desc": "initiates a bound witness for transfer of data ",
-          "name": "XyoZigZagBoundWitness",
+          "desc": "This object is a class for creating a bound witness with a pipe interface  (send and receive), but, does not handle network handshake",
+          "name": "XyoZigZagBoundWitnessSession",
           "functions": [
             {
               "name": "init",
@@ -284,11 +284,11 @@ module.exports = [{
       "name": "hashing",
       "objects": [
         {
-          "desc": "creates a hash as an XyoObjectStructure ",
+          "desc": "Interface/Protocol for hashing funcions. We use the XyoHasher to abstract a hashing algorithm from the XYO protocol ",
           "name": "XyoHasher",
           "functions": [
             {
-              "name": "",
+              "name": "hash",
               "parameters": [
                 {
                   "name": "data : ",
@@ -305,7 +305,7 @@ module.exports = [{
           ]
         },
         {
-          "desc": "creates a sha256 hash from an XyoObjectStructure using XyoHasher",
+          "desc": "Implementation of XyoHasher with sha256",
           "name": "XyoSha256",
           "functions": [
             {
@@ -332,11 +332,12 @@ module.exports = [{
       "name": "heuristics",
       "objects": [
         {
-          "desc": "gets a heuristic as an XyoObjectStructure",
+          "desc": "Interface for putting data inside a bound witness. An object that implements this protocol can be added to XyoOriginChainCreator to add data to bound witnesses",
           "name": "XyoHeuristicGetter",
           "functions": [
             {
             "name": "getHeuristic",
+            "desc": "Gets the Heuristic for the getter. If the heuristic is null, the heuristic will not be included in the payload.",
             "parameters": [],
             "returns": [
                 {
@@ -348,7 +349,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "unix time operations for a heuristic using the XyoObjectStructure",
+          "desc": "Unix time operations for a heuristic using the XyoObjectStructure",
           "name": "XyoUnixTime",
           "functions": [
             {
@@ -389,7 +390,7 @@ module.exports = [{
           ]           
         },
         {
-          "desc": "XYO unix time getter using XyoHeuristicGetter",
+          "desc": "An implementation of XyoHeuristicGetter that puts time in a bound witness.",
           "name": "XyoUnixTimeGetter",
           "functions": [
             {
@@ -412,7 +413,7 @@ module.exports = [{
       "objects": [
         {
           "name": "XyoAdvertisePacket",
-          "desc": "A packet with a byte buffer for advertising",
+          "desc": "Helper object to help parse the advertising stage of the network protocol",
           "properties": [],
           "enumerations": [],
           "functions": [
@@ -440,7 +441,7 @@ module.exports = [{
         },
         {
           "name": "XyoChoicePacket",
-          "desc": "packets getting choice and response",
+          "desc": "Helper object to help parse the choice stage of the network protocol",
           "properties": [],
           "enumerations": [],
           "functions": [
@@ -478,7 +479,7 @@ module.exports = [{
         },                
         {
           "name": "XyoFlagProcedureCatalog",
-          "desc": "flags using XyoProcedureCatalog",
+          "desc": "Helper object for negotiations in the handshake network protocol",
           "properties": [
             {
               "name": "canDoForOther",
@@ -549,7 +550,7 @@ module.exports = [{
         },
         {
           "name": "XyoNetworkHandler",
-          "desc": "Handles network packet transmissions",
+          "desc": "Helps send network protocol packets over a XyoNetworkPipe",
           "properties": [
             {
               "name": "pipe",
@@ -603,7 +604,7 @@ module.exports = [{
           ]
         },                        
         {
-          "desc": "protocol for piping in XYO",
+          "desc": "Network abstraction that can be used for doing bound witnesses with other devices. This library comes with two implementations, a memory pipe used for testing and simulations, and a tcp device with for communicating with tcp/ip devices.",
           "name": "XyoNetworkPipe",
           "functions": [
             {
@@ -652,7 +653,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "protocol for an XYO Procedure Catalog",
+          "desc": "Interface used for advertising and negotiating what a device can do and support",
           "name": "XyoProcedureCatalog",
           "functions": [
             {
@@ -734,7 +735,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "protocol for bound witness option",
+          "desc": "Used for putting conditional data inside the bound witness based on negotiation.",
           "name": "XyoBoundWitnessOption",
           "functions": [
             {
@@ -768,7 +769,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "a queue for an XYO bridge which holds hashes and values",
+          "desc": "A queue for an XYO bridge which holds hashes of blocks to offload.",
           "name": "XyoBridgeQueue",
           "properties": [
             {
@@ -852,7 +853,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "item to be placed into an XYOBridgeQueue",
+          "desc": "Simple object that ties a block hash to the number of times it's been offloaded by the bridge queue.",
           "name": "XyoBridgeQueueItem",
           "properties": [
             {
@@ -883,7 +884,7 @@ module.exports = [{
         },
         {
           "super": "XyoBoundWitnessOption",
-          "desc": "initiates XYO bridging options with flag selectors and bound witness pairs",
+          "desc": "Implementation of the XyoBoundWitnessOption for bridging blocks when the bridge flag is set in the network handshake",
           "name": "XyoBridgingOption",
           "properties": [],
           "functions": [
@@ -920,7 +921,7 @@ module.exports = [{
           ]          
         },
         {
-          "desc": "a node listener, added through the .addListener method from XyoOriginChainCreator",
+          "desc": "A node listener, added through the .addListener() method from XyoOriginChainCreator to receive callbacks to when a bound witness starts, occurs, discovered, and/or fails.",
           "name": "XyoNodeListener",
           "functions": [
             {
@@ -957,7 +958,7 @@ module.exports = [{
         },
         {
           "super": "", 
-          "desc": "the main entry point for creating and maintaining an origin chain",
+          "desc": "The main entry point for creating and maintaining an origin chain",
           "name": "XyoOriginChainCreator",
           "properties": [
               {
@@ -994,6 +995,7 @@ module.exports = [{
               },
               {
                 "name": "addHeuristic",
+                "desc": "Adds a heuristic to be used when creating bound witnesses.",
                 "parameters": [
                   {
                     "name": "key : ",
@@ -1008,6 +1010,7 @@ module.exports = [{
               },
               {
                 "name": "removeHeuristic",
+                "desc": "Removes a heuristic from the current heuristic pool.",
                 "parameters": [
                   {
                     "name": "key : ",
@@ -1018,6 +1021,7 @@ module.exports = [{
               },
               {
                 "name": "addListener",
+                "desc": "Adds a Node Listener to listen for bound witness creations.",
                 "parameters": [
                   {
                     "name": "key : ",
@@ -1032,6 +1036,7 @@ module.exports = [{
               },
               {
                 "name": "removeListener",
+                "desc": "Removes a listener from the current listener pool.",
                 "parameters": [
                   {
                     "name": "key : ",
@@ -1042,6 +1047,7 @@ module.exports = [{
               },
               {
                 "name": "selfSignOriginChain",
+                "desc": "Self signs an origin block to the devices origin chain.",
                 "parameters": [],
                 "returns": [
                   {
@@ -1101,7 +1107,7 @@ module.exports = [{
         },
         {
           "super": "XyoOriginChainCreator, XyoNodeListener",
-          "desc": "a relay node for bound witness information which executes listening functions for the origin chain",
+          "desc": "An origin chain that knows how to bridge blocks to origin nodes (sentinel/bridge)",
           "name": "XyoRelayNode",
         },
       ]
@@ -1111,12 +1117,12 @@ module.exports = [{
       "name": "origin",
       "objects": [
         {
-          "super": "",
-          "desc": "Struct to help with the orgin related utilities of an origin chain",
+          "desc": "Helper object helps parse origin chain related information out of a single bound witness.",
           "name": "XyoOriginBoundWitnessUtil",
           "functions": [
             {
               "name": "getBridgedBlocks",
+              "desc": "Gets the bridged blocks from a bound witness.",
               "parameters": [
                 {
                   "name": "boundWitness",
@@ -1133,7 +1139,7 @@ module.exports = [{
           ]
         },
         {
-          "desc": "updates the XyoOriginChainStateRepository to reflect the current root state of the node ",
+          "desc": "Updates the XyoOriginChainStateRepository to reflect the current root state of the node, the origin chain state is where the previous hash, the index, the signers are held for the origin chain.",
           "name": "XyoOriginChainState",
           "properties": [
             {
@@ -1227,7 +1233,7 @@ module.exports = [{
       "name": "persist",
       "objects": [
         {
-          "desc": "XYO in memory storage using the XYOStorageProvider",
+          "desc": "XYO in memory store storing key-value pairs in memory when testing/simulating any type of persistence, it's also an implementation of the XyoStorageProvider",
           "name": "XyoInMemoryStorage",
           "functions": [
             {
@@ -1284,7 +1290,7 @@ module.exports = [{
         },
         {
           "super": "",
-          "desc": "primary methods for the XyoInMemoryStorageProvider",
+          "desc": "Abstration for persisting key-value pairs",
           "name": "XyoStorageProvider",
           "functions": [
             {
@@ -1344,13 +1350,14 @@ module.exports = [{
       "name": "repositories",
       "objects": [        
         {
-          "desc": "Repository to facilitate the persistence of a queue",
+          "desc": "A repository to facilitate the persistence of a queue, or a series of weights and hashes. It is optional to implement a caching mechanism behind this repo, but it is highly recommended. This repository does not need to persist any data until the commit() function is called. No getter should have a default value.",
           "name": "XyoBridgeQueueRepository",
           "functions": [
             {
               "name": "getQueue",
+              "desc": "This function is called every time blocks need to be cleaned from the queue. It is called so that weights can determine if a hash needs to be removed from the queue.",
               "parameters": [
-            ],
+              ],
               "returns": [
                 {
                   "type": "[XyoBridgeQueueItem]",
@@ -1360,42 +1367,46 @@ module.exports = [{
             },
             {
               "name": "setQueue",
+              "desc": "This function is not currently called in the XYO core, and is only called by certain unit tests. Although it should be implemented for future use.",
               "parameters": [
                 {
-                "name": "queue : ",
-                "type": "[XyoBridgeQueueItem]"
+                  "name": "queue : ",
+                  "type": "[XyoBridgeQueueItem]"
                 }
-            ],
+              ],
               "returns": []
             },
             {
               "name": "addQueueItem",
+              "desc": "This function is called every time a new bound witness is discovered to add to the queue. It does not matter where this item is added in the queue.",
               "parameters": [
                 {
-                "name": "item : ",
-                "type": "XyoBridgeQueueItem"
+                  "name": "item : ",
+                  "type": "XyoBridgeQueueItem"
                 }
-            ],
+              ],
               "returns": []
             },
             {
               "name": "removeQueueItems",
+              "desc": "This function should remove all of the queue items by their hash. If a hash does not exist, skip over it. This function is called after every successful bridge is made to keep the storage light.",
               "parameters": [
                 {
-                "name": "hashes : ",
-                "type": "[XyoObjectStructure]"
+                  "name": "hashes : ",
+                  "type": "[XyoObjectStructure]"
                 }
-            ],
+              ],
               "returns": []
             },
             {
               "name": "getLowestWeight",
+              "desc": "This function should get the lowest weight queue items and return them. It should return the number of parameter n, if the repo does not have n queue items, it should return the entire queue. This function is called every time the device is getting ready to bridge.",
               "parameters": [
                 {
-                "name": "n : ",
-                "type": "Int"
+                  "name": "n : ",
+                  "type": "Int"
                 }
-            ],
+              ],
               "returns": [
                 {
                   "type": "[XyoBridgeQueueItem]",
@@ -1405,23 +1416,31 @@ module.exports = [{
             },
             {
               "name": "incrementWeights",
+              "desc": "This function is called every time after a successful bridge event to increment their weights by weight += 1.",
               "parameters": [
                 {
-                "name": "hashes : ",
-                "type": "[XyoObjectStructure]"
+                  "name": "hashes : ",
+                  "type": "[XyoObjectStructure]"
                 }
-            ],
+              ],
+              "returns": []
+            },
+            {
+              "name": "commit",
+              "desc": "This function is called after every bound witness to persist the state of the queue, if there is non caching implemented, there is no reason to implement this method.",
+              "parameters": [],
               "returns": []
             }
           ]          
         },
         {
           "super": "",
-          "desc": "A repository to store origin blocks in a persistent manner",
+          "desc": "A repository to store origin blocks in a persistent manner. These functions are called as often as a device does bound witnesses. This repo should be optimized for containsOriginBlock() as it is called the most.",
           "name": "XyoOriginBlockRepository",
           "functions": [
             {
               "name": "removeOriginBlock",
+              "desc": "This function should remove an origin block by a its hash from the repository and update the persisted state.",
               "parameters": [
                 {
                 "name": "originBlockHash : ",
@@ -1432,6 +1451,7 @@ module.exports = [{
             },
             {
               "name": "getOriginBlock",
+              "desc": "This function gets an origin block by its hash.",
               "parameters": [
                 {
                 "name": "originBlockHash : ",
@@ -1447,6 +1467,7 @@ module.exports = [{
             },
             {
               "name": "containsOriginBlock",
+              "desc": "This function should check if an origin block is found in the repo. This should be optimized given this it is called often.",
               "parameters": [
                 {
                 "name": "originBlockHash : ",
@@ -1461,22 +1482,24 @@ module.exports = [{
             },
             {
               "name": "addOriginBlock",
+              "desc": "This function adds an origin block to the repo.",
               "parameters": [
                 {
-                "name": "originBlock : ",
-                "type": "XyoBoundWitness"
+                  "name": "originBlock : ",
+                  "type": "XyoBoundWitness"
                 }
-            ],
+              ],
               "returns": []
             }
           ]          
         },
         {
-          "desc": "A repository to facilitate the storage of origin chain state related items",
+          "desc": "A repository to facilitate the storage of origin chain state related items. It is optional to implement a caching mechanism behind this repo, but it is highly recomended. This repo does not need to persist any data until the commit() function is called. No getter should have a defualt value.",
           "name": "XyoOriginChainStateRepository",
           "functions": [
             {
               "name": "getIndex",
+              "desc": "This function gets the index from the repo, and should return null if none exists. This function is called before every bound witness.",
               "parameters": [],
               "returns": [
                 {
@@ -1487,16 +1510,18 @@ module.exports = [{
             },
             {
               "name": "putIndex",
+              "desc": "This function should persist the state of the index after the commit() function is called. This function is called before every bound witness.",
               "parameters": [
                 {
-                "name": "index : ",
-                "type": "XyoObjectStructure"
+                  "name": "index : ",
+                  "type": "XyoObjectStructure"
                 }
-            ],
+              ],
               "returns": []
             },
             {
               "name": "getPreviousHash",
+              "desc": "This function gets the previous hash from the repo, and should return null if none exists. This function is called before every bound witness.",
               "parameters": [],
               "returns": [
                 {
@@ -1507,31 +1532,34 @@ module.exports = [{
             },
             {
               "name": "putPreviousHash",
+              "desc": "This function should persist the state of the previous hash after the commit() function is called. This function is called before every bound witness.",
               "parameters": [
                 {
-                "name": "hash : ",
-                "type": "XyoObjectStructure"
+                  "name": "hash : ",
+                  "type": "XyoObjectStructure"
                 }
-            ],
+              ],
               "returns": []
             },
             {
               "name": "getSigners",
+              "desc": "This function should get all of the current signers that are being persisted. This function is called before every bound witness.",
               "parameters": [],
               "returns": [
                 {
-                  "type": "[XyoSigner]",
-                  "desc": "all of the current signers that are being persisted"
+                  "type": "[XyoSigner]"
                 }
               ]
             },
             {
               "name": "removeOldestSigner",
+              "desc": "This function should remove getSigners()[0], or not remove the oldest signer if none are in the repo. This function is called whenever a user is roatating keys.",
               "parameters": [],
               "returns": []
             },
             {
               "name": "putSigner",
+              "desc": "This function should add a signer to the end of the signer list. This function is only called when a user wants to rotate kets.",
               "parameters": [
                 {
                   "name": "signer : ",
@@ -1542,6 +1570,7 @@ module.exports = [{
             },
             {
               "name": "commit",
+              "desc": "This function is called after every bound witness to persist the state, if there is non caching implemented, there is no reason to implement this method.",
               "parameters": [],
               "returns": []
             },
@@ -1598,8 +1627,7 @@ module.exports = [{
           ],          
         },
         {
-          "super": "",
-          "desc": "Persists the state of tcp peers",
+          "desc": "This repository is meant to persist the state of tcp peers, although this is not called in the XYO core, it may be used by other nodes and applications to persist the nodes that they know about.",
           "name": "XyoTcpPeerRepository",
           "functions": [
             {
@@ -1650,7 +1678,11 @@ module.exports = [{
     {
       "desc": "XyoSchemas Available",
       "name": "schemas",
-      "objects": []
+      "objects": [
+        {
+          "desc": "The list of all of the official encoding headers for XYO Serialization"
+        }
+      ]
     }
   ],
 }]
