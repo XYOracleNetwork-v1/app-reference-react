@@ -2,7 +2,7 @@ module.exports = [{
   "id": "sdk-core-kotlin",
     "name": "Core XYO Kotlin SDK",
     "locale": "EN",
-    "platform": "java",
+    "platform": "kotlin",
     "lang": "Kotlin",
     "type": "SDK",
     "desc": "Generalized Bluetooth Library with additional support for XY and XYO devices",

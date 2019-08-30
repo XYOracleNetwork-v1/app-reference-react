@@ -27,14 +27,14 @@ export default class Header extends Component {
     })
   }
 
-  renderNavPlatformItems = () => {
-    const { platform, onClick } = this.props
+  // renderNavPlatformItems = () => {
+  //   const { platform, onClick } = this.props
 
-    return platform.map(platform => (
-      <DropdownItem key={platform} onClick={onClick} id={platform}>{platform}</DropdownItem>
-      )
-    )
-  }
+  //   return platform.map(platform => (
+  //     <DropdownItem key={platform} onClick={onClick} id={platform}>{platform}</DropdownItem>
+  //     )
+  //   )
+  // }
 
   renderNavProductItems = () => {
     const { product, onClick } = this.props
@@ -62,15 +62,7 @@ export default class Header extends Component {
                   {this.renderNavProductItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
-                <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="text-dark">
-                  PLATFORMS
-                </DropdownToggle>
-                <DropdownMenu right>
-                  {this.renderNavPlatformItems()}
-                </DropdownMenu>
-              </UncontrolledDropdown>
-                <UncontrolledDropdown nav inNavbar>
+                {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret className="text-dark">
                   LOCALE
                 </DropdownToggle>
@@ -87,7 +79,7 @@ export default class Header extends Component {
                     PORTUGUESE
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               <NavItem>
                 <NavLink href="https://github.com/XYOracleNetwork" className="text-dark" target="_blank">GITHUB</NavLink>
               </NavItem>
