@@ -16,91 +16,383 @@ module.exports = [{
           "super": "XYBase",
           "properties": [
             {
-              "desc": "hash for the hashCode function.",
-              "name": "hash",
-              "type": "Int"
+              "desc": "size for init, to get the buffer, and to get the data.",
+              "name": "size",
+              "type": "buffer"
             },              
-          ], 
+            {
+              "name": "type",
+              "type": "Byte"
+            },              
+            {
+              "name": "data",
+              "type": "ByteArray"
+            },              
+          ],
+          "enumerations": [
+            {
+              "name": "AdTypes",
+              "values": [
+                {
+                  "name": "Flags",
+                },
+                {
+                  "name": "Incomplete16BitServiceUuids",
+                },
+                {
+                  "name": "Complete16BitServiceUuids",
+                },
+                {
+                  "name": "Incomplete32BitServiceUuids",
+                },
+                {
+                  "name": "Complete32BitServiceUuids",
+                },
+                {
+                  "name": "Incomplete128BitServiceUuids",
+                },
+                {
+                  "name": "Complete128BitServiceUuids",
+                },
+                {
+                  "name": "ShortenedLocalName",
+                },
+                {
+                  "name": "CompleteLocalName",
+                },
+                {
+                  "name": "TxPowerLevel",
+                },
+                {
+                  "name": "ClassOfDevice",
+                },
+                {
+                  "name": "SimplePairingHashC",
+                },
+                {
+                  "name": "SimplePairingHashC192",
+                },
+                {
+                  "name": "SimpleParingRandomizerR",
+                },
+                {
+                  "name": "SimpleParingRandomizerR192",
+                },
+                {
+                  "name": "DeviceId",
+                },
+                {
+                  "name": "SecurityManagerTkValue",
+                },
+                {
+                  "name": "SecurityManagerOutOfBandFlags",
+                },
+                {
+                  "name": "SlaveConnectionIntervalRange",
+                },
+                {
+                  "name": "ListOf16BitServiceSolicitationUuids",
+                },
+                {
+                  "name": "ListOf128BitServiceSolicitationUuids",
+                },
+                {
+                  "name": "ServiceData",
+                },
+                {
+                  "name": "ServiceData16BitUuid",
+                },
+                {
+                  "name": "PublicTargetAddress",
+                },
+                {
+                  "name": "RandomTargetAddress",
+                },
+                {
+                  "name": "Appearance",
+                },
+                {
+                  "name": "AdvertisingInterval",
+                },
+                {
+                  "name": "LeBluetoothDeviceAddress",
+                },
+                {
+                  "name": "LeRole",
+                },
+                {
+                  "name": "SimpleParingHashC256",
+                },
+                {
+                  "name": "SimpleParingRandomizerR256",
+                },
+                {
+                  "name": "ListOf32BitServiceSolicitationUuids",
+                },
+                {
+                  "name": "ServiceData32BitUuid",
+                },
+                {
+                  "name": "ServiceData128BitUuid",
+                },
+                {
+                  "name": "LeSecureConnectionsConfirmationValue",
+                },
+                {
+                  "name": "LeSecureConnectionsRandomValue",
+                },
+                {
+                  "name": "Uri",
+                },
+                {
+                  "name": "IndoorPositioning",
+                },
+                {
+                  "name": "TransportDiscoveryData",
+                },
+                {
+                  "name": "LeSupportedFeatures",
+                },
+                {
+                  "name": "ChannelMapUpdateIndication",
+                },
+                {
+                  "name": "PbAdv",
+                },
+                {
+                  "name": "MeshMessage",
+                },
+                {
+                  "name": "MeshBeacon",
+                },
+                {
+                  "name": "ThreeDInformationData",
+                },
+                {
+                  "name": "ManufacturerSpecificData",
+                },
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "name": "equals",
+              "desc": "Returns a check that the hashcodes are equal when advertising",
+              "parameters": [
+                {
+                  "name": "other : ",
+                  "type": "Any?"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Boolean"
+                }
+              ],
+            },
+            {
+              "name": "hashCode",
+              "desc": "Returns a hash as an integer",
+              "parameters": [],
+              "returns": [
+                {
+                  "type": "Int",
+                  "desc": "hash"
+                }
+              ],
+            },
+            {
+              "name": "toString",
+              "desc": "Returns ByteArray data in a string format for advertising",
+              "parameters": [],
+              "returns": [
+                {
+                  "type": "String",
+                  "desc": "Bytes: data content to a "
+                }
+              ],
+            },
+          ] 
         },
       ],
+    },
+    {
+      "desc": "Bluetooth Implementations",
+      "name": "bluetooth",
+      "objects": [
+        {
+          "name": "BluetoothIntentReceiverListener",
+          "functions": [
+            {
+              "name": "actionAclConnected",
+              "desc": "ACL connection action.",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionAclDisconnected",
+              "desc": "ACL disconnection action.",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionAclDisconnectRequested",
+              "desc": "ACL disconnection request.",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionBondStateChanged",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionClassChanged",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionFound",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionNameChanged",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionPairingRequest",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "actionUuid",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraBondState",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraClass",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraDevice",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraName",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraRssi",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraPairingKey",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+            {
+              "name": "extraPairingVagrant",
+              "parameters": [
+                {
+                  "name": "intent : ",
+                  "type": "Intent?"
+                },
+              ]
+            },                           
+          ]
+        }
+      ]
     },
     {
       "desc": "Device Specific Client Implementations",
       "name": "devices",
       "objects": [
         {
-          "enumerations": [
-            {
-              "name": "StayAwake",
-              "values": [
-                {
-                  "name": "Off"
-                },
-                {
-                  "name": "On"
-                }
-              ]
-            }
-          ],
-          "name": "XY2BluetoothDevice",
-          "super": "XYFinderBluetoothDevice"
-        },
-        {
-          "enumerations": [
-            {
-              "name": "ButtonPress",
-              "values": [
-                {
-                  "name": "Single"
-                },
-                {
-                  "name": "Double"
-                },
-                {
-                  "name": "Long"
-                }
-              ]
-            },
-            {
-              "name": "StayAwake",
-              "values": [
-                {
-                  "name": "Off"
-                },
-                {
-                  "name": "On"
-                }
-              ]
-            }
-          ],
-          "name": "XY3BluetoothDevice",
-          "properties": [
-            {
-              "desc": "The lock code that XY4+ devices are shipped with.",
-              "name": "DefaultLockCode",
-              "static": true,
-              "type": "ByteArray"
-            },
-            {
-              "desc": "Comparator that compares two devices based on distance",
-              "name": "compareDistance",
-              "templateTypes": [
-                "XYFinderBluetoothDevice"
-              ],
-              "type": "Comparator"
-            }
-          ],
-          "super": "XYFinderBluetoothDevice"
-        },
-        {
           "name": "XY4BluetoothDevice",
           "super": "XYFinderBluetoothDevice",
           "properties": [
             {
-              "desc": "A Global Listener for XYO.",
-              "name": "Listener",
-              "static": true,
-              "type": "XYFinderBluetoothDevice Listener"
+              "name": "context",
+              "type": "Context"
+            },
+            {
+              "name": "scanResult",
+              "type": "XYScanResult"
+            },
+            {
+              "name": "hash",
+              "type": "String"
             },
           ],
           "enumerations": [
