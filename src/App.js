@@ -5,7 +5,8 @@ import Header from './components/Header'
 import MainHeader from './components/MainHeader'
 import SideNav from './components/SideNav'
 import MethodView from './components/MethodOutputView'
-import sdkBle from './schemas/BLE_Schema'
+import sdkKotlinBle from './schemas/BLE_Kotlin_Schema'
+import sdkSwiftBle from './schemas/BLE_Swift_Schema'
 import swiftObject from './schemas/Object_Swift_Schema'
 import nodeObject from './schemas/Node_Package_Schema'
 
@@ -13,7 +14,8 @@ import kotlinObject from './schemas/Core_Kotlin_Schema'
 import { Container, Col, Row } from 'reactstrap'
 import NodeMethodOutputView from './components/NodeMethodOutputView'
 
-const kotlinBleProductState = sdkBle[0]
+const kotlinBleProductState = sdkKotlinBle[0]
+const swiftBleProductState = sdkSwiftBle[0]
 const swiftCoreObjectState = swiftObject[0]
 const nodePkgObjectState = nodeObject[0]
 const kotlinObjectState = kotlinObject[0]
@@ -25,8 +27,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [kotlinBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
-      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
+      products: [kotlinBleProductState.id, swiftBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
+      platforms: [kotlinBleProductState.platform, swiftBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
       platformViews: [],
       methods: []
     }
@@ -50,6 +52,12 @@ class App extends Component {
     if (e.target.id === kotlinBleProductState.id) {
       this.setState({
         methods: kotlinBleProductState.modules
+      })
+    }
+
+    if (e.target.id === swiftBleProductState.id) {
+      this.setState({
+        methods: swiftBleProductState.modules
       })
     }
     
