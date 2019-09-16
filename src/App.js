@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import './assets/App.css'
-import Layout from './components/Layout'
-import Header from './components/Header'
-import MainHeader from './components/MainHeader'
-import SideNav from './components/SideNav'
-import MethodView from './components/MethodOutputView'
-import sdkKotlinBle from './schemas/BLE_Kotlin_Schema'
-import sdkSwiftBle from './schemas/BLE_Swift_Schema'
-import swiftObject from './schemas/Object_Swift_Schema'
-import nodeObject from './schemas/Node_Package_Schema'
+import React, { Component } from 'react'; 
+import './assets/App.css';
+import Layout from './components/Layout';
+import Header from './components/Header';
+import MainHeader from './components/MainHeader';
+import SideNav from './components/SideNav';
+import MethodView from './components/MethodOutputView';
+import sdkKotlinBle from './schemas/BLE_Kotlin_Schema';
+import sdkSwiftBle from './schemas/BLE_Swift_Schema';
+import swiftObject from './schemas/Object_Swift_Schema';
+import nodeObject from './schemas/Node_Package_Schema';
 
-import kotlinObject from './schemas/Core_Kotlin_Schema'
-import { Container, Col, Row } from 'reactstrap'
-import NodeMethodOutputView from './components/NodeMethodOutputView'
+import kotlinObject from './schemas/Core_Kotlin_Schema';
+import { Container, Col, Row } from 'reactstrap';
+import NodeMethodOutputView from './components/NodeMethodOutputView';
 
-const kotlinBleProductState = sdkKotlinBle[0]
-const swiftBleProductState = sdkSwiftBle[0]
-const swiftCoreObjectState = swiftObject[0]
-const nodePkgObjectState = nodeObject[0]
-const kotlinObjectState = kotlinObject[0]
+const kotlinBleProductState = sdkKotlinBle[0];
+const swiftBleProductState = sdkSwiftBle[0];
+const swiftCoreObjectState = swiftObject[0];
+const nodePkgObjectState = nodeObject[0];
+const kotlinObjectState = kotlinObject[0];
 
 class App extends Component {
   

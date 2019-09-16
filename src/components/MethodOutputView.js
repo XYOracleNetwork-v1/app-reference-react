@@ -1,8 +1,61 @@
 import React, { Component } from 'react'
 import { Col, Row } from 'reactstrap'
 
+const CodeGrid = props => {
+  return (
+    <code style={codePad}> {props.children} </code>
+  )
+}
+
+const outputStyle = {
+  backgroundColor: "black",
+  color: "white",
+  padding: "25px"
+}
+
+const colAppStyle = {
+  padding: "25px"
+}
+
+const xyoBlueText = {
+  color: "#58a0d7",
+  padding: "10px"
+}
+
+const xyoPinkText = {
+  color: "#ec417b",
+  fontSize: "16px",
+  paddingTop: "10px",
+  paddingBottom: "5px"
+}
+
+const xyoOrangeText = {
+  color: "#f37047"
+}
+
+const classPadding = {
+  paddingBottom: "15px",
+}
+
+const smallPadding = {
+  paddingTop: "15px"
+}
+
+const codePad = {
+  paddingBottom: "30px"
+}
+
+const returnGrid = {
+  paddingTop: "40px"
+}
+
+const superText = {
+  paddingTop: "0px",
+  paddingBottom: "20px"
+}
+
 const negativeMargin = {
-  'marginBottom':'-1em'
+  marginBottom: "-1em"
 }
 
 export default class MethodView extends Component {
@@ -96,57 +149,4 @@ export default class MethodView extends Component {
       </div>
     )
   }
-}
-
-const CodeGrid = props => {
-  return (
-    <code style={codePad}> {props.children} </code>
-  )
-}
-
-const outputStyle = {
-  backgroundColor: 'black',
-  color: 'white',
-  padding: '25px'
-}
-
-const colAppStyle = {
-  padding: '25px'
-}
-
-const xyoBlueText = {
-  color: '#58a0d7',
-  padding: '10px'
-}
-
-const xyoPinkText = {
-  color: '#ec417b',
-  fontSize: '16px',
-  paddingTop: '10px',
-  paddingBottom: '5px'
-}
-
-const xyoOrangeText = {
-  color: '#f37047'
-}
-
-const classPadding = {
-  paddingBottom: '15px',
-}
-
-const smallPadding = {
-  paddingTop: '15px'
-}
-
-const codePad = {
-  paddingBottom: '30px'
-}
-
-const returnGrid = {
-  paddingTop: '40px'
-}
-
-const superText = {
-  paddingTop: '0px',
-  paddingBottom: '20px'
 }
