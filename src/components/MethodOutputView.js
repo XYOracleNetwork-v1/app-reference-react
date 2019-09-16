@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Col, Row } from 'reactstrap'
+import React, { Component } from "react"
+import { Col, Row } from "reactstrap"
 
 const CodeGrid = props => {
   return (
@@ -78,7 +78,7 @@ export default class MethodView extends Component {
             <Row className="border-bottom">
               <Col className="col-12 col-sm-6" style={colAppStyle}>
                 <div>
-                  <h5 key={`${method}`} style={classPadding}><a name={`${object.name}`} href='https://reference.xyo.network/'> {object.name} </a> </h5>
+                  <h5 key={`${method}`} style={classPadding}><a name={`${object.name}`} href="https://reference.xyo.network/"> {object.name} </a> </h5>
                   {object.super ? <h6 style={xyoPinkText}>Super Class</h6> : <p></p>}
                   <p key={`${object.name}`} style={superText}>{object.super}</p>
                   {object.desc ? <h6 className="text-info">What it does</h6> : <p></p>}
@@ -87,11 +87,11 @@ export default class MethodView extends Component {
                   <div>
                     {(object.properties || []).map(property => (
                       <div>
-                        <h4 style={{paddingTop: '20px', paddingBottom: '20px', fontWeight: 'bold'}}>{property.name}</h4>
+                        <h4 style={{paddingTop: "20px", paddingBottom: "20px", fontWeight: "bold"}}>{property.name}</h4>
                         <h5 style={xyoPinkText}>Type</h5>
-                        <p style={{paddingLeft: '20px'}}>{property.type}</p>
+                        <p style={{paddingLeft: "20px"}}>{property.type}</p>
                         {property.desc ? <h5 style={xyoPinkText}>Description</h5> : <p></p>}
-                        <p style={{ paddingLeft: '20px', paddingBottom: '30px' }}>{property.desc}</p>
+                        <p style={{ paddingLeft: "20px", paddingBottom: "30px" }}>{property.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -102,7 +102,7 @@ export default class MethodView extends Component {
                   {object.enumerations ? <h5>Enumerations</h5> : <p></p>}
                   {(object.enumerations || []).map(e => (
                     <div style={xyoBlueText}>
-                      <CodeGrid><a name={`${object.name}`} href='https://reference.xyo.network/'>{e.name}</a></CodeGrid>
+                      <CodeGrid><a name={`${object.name}`} href="https://reference.xyo.network/">{e.name}</a></CodeGrid>
                       {(e.values || []).map(val =>
                         <div>
                           <CodeGrid>{val.name}</CodeGrid>
