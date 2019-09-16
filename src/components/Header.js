@@ -56,7 +56,7 @@ export default class Header extends Component {
             <Nav navbar className="navbar-inverse">
               <UncontrolledDropdown nav inNavbar setActiveFromChild>
                 <DropdownToggle nav caret className="text-dark">
-                  PRODUCTS
+                  Products
                 </DropdownToggle>
                 <DropdownMenu right>
                   {this.renderNavProductItems()}
@@ -81,7 +81,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown> */}
               <NavItem>
-                <NavLink href="https://github.com/XYOracleNetwork" className="text-dark" target="_blank">GITHUB</NavLink>
+                <NavLink href="https://github.com/XYOracleNetwork" className="text-dark" target="_blank">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

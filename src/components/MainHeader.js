@@ -34,16 +34,16 @@ export default class MainHeader extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>  
                 <Nav navbar className="ml-auto navbar-inverse bg-inverse">
                   <NavItem>
-                  <NavLink href="https://developers.xyo.network/docs/en/getting-started/" className="text-dark" >GETTING STARTED</NavLink>
+                  <NavLink href="https://developers.xyo.network/docs/en/getting-started/" className="text-dark" >Getting Started</NavLink>
                   </NavItem>
                   <NavItem>
-                  <NavLink href="https://developers.xyo.network/docs/en/Introduction/" className="text-dark">GUIDES</NavLink>
+                  <NavLink href="https://developers.xyo.network/docs/en/getting-started/" className="text-dark">Guides</NavLink>
                   </NavItem>
                   <NavItem>
-                  <NavLink href="http://reference.xyo.network/" className="text-dark">REFERENCE</NavLink>
+                  <NavLink href="http://reference.xyo.network/" className="text-dark">Reference</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="https://developers.xyo.network/help/" className="text-dark" target="_blank">HELP</NavLink>
+                    <NavLink href="https://developers.xyo.network/help/" className="text-dark" target="_blank">Help</NavLink>
                   </NavItem>
                 </Nav>
             </Collapse>

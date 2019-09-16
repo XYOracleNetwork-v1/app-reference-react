@@ -1,22 +1,24 @@
-import React, { Component } from 'react'
-import './assets/App.css'
-import Layout from './components/Layout'
-import Header from './components/Header'
-import MainHeader from './components/MainHeader'
-import SideNav from './components/SideNav'
-import MethodView from './components/MethodOutputView'
-import sdkBle from './schemas/BLE_Schema'
-import swiftObject from './schemas/Object_Swift_Schema'
-import nodeObject from './schemas/Node_Package_Schema'
+import React, { Component } from "react"; 
+import "./assets/App.css";
+import Layout from "./components/Layout";
+import Header from "./components/Header";
+import MainHeader from "./components/MainHeader";
+import SideNav from "./components/SideNav";
+import MethodView from "./components/MethodOutputView";
+import sdkKotlinBle from "./schemas/BLE_Kotlin_Schema";
+import sdkSwiftBle from "./schemas/BLE_Swift_Schema";
+import swiftObject from "./schemas/Object_Swift_Schema";
+import nodeObject from "./schemas/Node_Package_Schema";
 
-import kotlinObject from './schemas/Core_Kotlin_Schema'
-import { Container, Col, Row } from 'reactstrap'
-import NodeMethodOutputView from './components/NodeMethodOutputView'
+import kotlinObject from "./schemas/Core_Kotlin_Schema";
+import { Container, Col, Row } from "reactstrap";
+import NodeMethodOutputView from "./components/NodeMethodOutputView";
 
-const kotlinBleProductState = sdkBle[0]
-const swiftCoreObjectState = swiftObject[0]
-const nodePkgObjectState = nodeObject[0]
-const kotlinObjectState = kotlinObject[0]
+const kotlinBleProductState = sdkKotlinBle[0];
+const swiftBleProductState = sdkSwiftBle[0];
+const swiftCoreObjectState = swiftObject[0];
+const nodePkgObjectState = nodeObject[0];
+const kotlinObjectState = kotlinObject[0];
 
 class App extends Component {
   
@@ -25,8 +27,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [kotlinBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
-      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
+      products: [kotlinBleProductState.id, swiftBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
+      platforms: [kotlinBleProductState.platform, swiftBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
       platformViews: [],
       methods: []
     }
@@ -52,6 +54,12 @@ class App extends Component {
         methods: kotlinBleProductState.modules
       })
     }
+
+    if (e.target.id === swiftBleProductState.id) {
+      this.setState({
+        methods: swiftBleProductState.modules
+      })
+    }
     
     // if (e.target.id === nodePkgObjectState.id) {
     //   this.setState({
@@ -64,25 +72,25 @@ class App extends Component {
       })
     }
     
-    if (e.target.id === 'Android') {
+    if (e.target.id === "Android") {
       this.setState({
         methods: kotlinBleProductState.modules
       })
     }
 
-    if (e.target.id === 'iOS') {
+    if (e.target.id === "iOS") {
       this.setState({
         methods: swiftCoreObjectState.modules
       })
     }
 
-    // if (e.target.id === 'web') {
+    // if (e.target.id === "web") {
     //   this.setState({
     //     methods: nodePkgObjectState.modules
     //   })
     // }
 
-    if (e.target.id === 'kotlin') {
+    if (e.target.id === "kotlin") {
       this.setState({
         methods: kotlinObjectState.modules
       })
@@ -91,7 +99,7 @@ class App extends Component {
   
   render() {
     return (
-      <div className='app'>
+      <div className="app">
       <Layout>
         <div className="fixed-top">
           <MainHeader />
@@ -129,7 +137,7 @@ class App extends Component {
 }
 
 const containerStyle = {
-  marginTop: '5rem'
+  marginTop: "5rem"
 }
 
 export default App
