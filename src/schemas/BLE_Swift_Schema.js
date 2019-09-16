@@ -1292,8 +1292,311 @@ module.exports = [{
             "name": "XYFinderDeviceBase",
             "desc": "The base XYFinder class",
             "super": "XYBluetoothDeviceBase,  XYFinderDevice",
+            "properties": [
+              {
+                "name": "location",
+                "type": "XYLocationCoordinate2D"
+              },
+              {
+                "name": "isRegistered",
+                "type": "Bool"
+              },
+              {
+                "name": "batteryLevel",
+                "type": ""
+              },
+              {
+                "name": "firmware",
+                "type": "String"
+              },
+            ],
+            "functions": [
+              {
+                "name": "attachPeripheral",
+                "desc": "",
+                "parameters": [
+                  {
+                    "name": "",
+                    "type": "",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "Bool"
+                  }
+                ],
+              },
+              {
+                "name": "getServiceUuid",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "CBUUID"
+                  }
+                ],
+              },
+              {
+                "name": "getRegistrationFlag",
+                "desc": "",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "startMonitorTimer",
+                "desc": "If while we are monitoring the device we detect it has exited, we start a timer as a device may have just triggered the exit while still being close by. Once the timer expires before it enters, we fire the notification",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "cancelMonitorTimer",
+                "desc": "If the device enters while monitoring, we always cancel the timer and report it is back",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "detected",
+                "desc": "",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "verifyExit",
+                "desc": "",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "subscribeToButtonPress",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "unsubscribeToButtonPress",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "updateLocation",
+                "desc": "",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "updateBatteryLevel",
+                "desc": "",
+                "parameters": [],
+                "returns": [],
+              },
+              {
+                "name": "find",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "stayAwake",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "isAwake",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "fallAsleep",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "lock",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "unlock",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+              {
+                "name": "version",
+                "desc": "",
+                "parameters": [],
+                "returns": [
+                  {
+                    "type": "XYBluetoothResult"
+                  }
+                ],
+              },
+            ],
+          },
+          {
+            "name": "XYFinderDeviceEvent",
+            "desc": "Event notifications for XYBluetoothDevice",
             "properties": [],
-            "functions": [],
+            "enumerations": [
+              {
+                "name": "XYFinderEvent",
+                "values": [
+                  {
+                    "name": "connected",
+                  },
+                  { 
+                    "name": "alreadyConnected",
+                  },
+                  {                    
+                    "name": "connectionError",
+                  },
+                  {
+                    "name": "reconnected",
+                  },
+                  { 
+                    "name": "disconnected",
+                  },
+                  { 
+                    "name": "buttonPressed",
+                  },
+                  {                    
+                    "name": "detected",
+                  },
+                  {                    
+                    "name": "entered",
+                  },
+                  { 
+                    "name": "exiting",
+                  },
+                  {
+                    "name": "exited",
+                  },
+                  {
+                    "name": "updated",
+                  },
+                  {
+                    "name": "timedOut",
+                  },
+                ]
+              },
+              {
+                "name": "XYFinderTimeoutEvent",
+                "values": [
+                  {
+                    "name": "connection",
+                  },
+                  {
+                    "name": "getOperation",
+                  },
+                  {
+                    "name": "setOperation",
+                  },
+                  {
+                    "name": "notifyOperation",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            "name": "XYFinderDeviceEventManager",
+            "desc": "A class to help manage device event subscription",
+            "properties": [],
+            "functions": [
+              {
+                "name": "report",
+                "desc": "Notify those directives that want all events and those that subscribe to the event's device",
+                "parameters": [
+                  {
+                    "name": "events",
+                    "type": "[XYFinderEventNotification]",
+                  }
+                ],
+              },
+              {
+                "name": "subscribe",
+                "desc": "Equivalent to subscribing to every device's events",
+                "parameters": [
+                  {
+                    "name": "events",
+                    "type": "[XYFinderEvent]",
+                  },
+                  {
+                    "name": "handler",
+                    "type": "XYFinderDeviceEventNotifier",
+                  },
+                ],
+              },
+              {
+                "name": "subscribe",
+                "desc": "Subscribe to a single device's events. This will simply filter when it comes to reporting to the handlers",
+                "parameters": [
+                  {
+                    "name": "events",
+                    "type": "[XYFinderEvent]",
+                  },
+                  {
+                    "name": "device",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "handler",
+                    "type": "XYFinderDeviceEventNotifier",
+                  },
+                ],
+              },
+              {
+                "name": "unsubscribe",
+                "desc": "Unsubscribe from all events",
+                "parameters": [
+                  {
+                    "name": "events",
+                    "type": "[XYFinderEvent]",
+                  },
+                  {
+                    "name": "referenceKey",
+                    "type": "UUID",
+                  },
+                ],
+              },
+            ]
           },         
        ],
      },
@@ -1301,7 +1604,83 @@ module.exports = [{
        "desc": "Base device creators",
        "name": "creators",
        "objects": [
-
+          {
+            "name": "XYDeviceCreator",
+            "desc": "Protocol for XY BLE device creation",
+            "properties": [
+              {
+                "name": "family",
+                "type": "XYDeviceFamily"
+              },
+            ],
+            "functions": [
+              {
+                "name": "createFromIBeacon",
+                "desc": "using iBeacon",
+                "parameters": [
+                  {
+                    "name": "iBeacon",
+                    "type": "XYIBeaconDefinition",
+                  },
+                  {
+                    "name": "rssi",
+                    "type": "Int",
+                  },
+                ],
+              },
+              {
+                "name": "createFromId",
+                "desc": "using id string value",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "type": "String",
+                  }
+                ],
+              },
+            ],
+          },
+          {
+            "name": "XYGPSBluetoothDeviceCreator",
+            "desc": "Base class for XY GPS BLE device creation",
+            "super": "XYDeviceCreator",
+            "functions": [
+              {
+                "name": "createFromIBeacon",
+                "desc": "using iBeacon",
+                "parameters": [
+                  {
+                    "name": "iBeacon",
+                    "type": "XYIBeaconDefinition",
+                  },
+                  {
+                    "name": "rssi",
+                    "type": "Int",
+                  },
+                ],
+              },
+              {
+                "name": "createFromId",
+                "desc": "using id string value",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "type": "String",
+                  }
+                ],
+              },
+              {
+                "name": "enable",
+                "desc": "adds or removes a creator by UUID",
+                "parameters": [
+                  {
+                    "name": "enable",
+                    "type": "Bool",
+                  }
+                ],
+              },
+            ],
+          },
        ],
      },
      {
