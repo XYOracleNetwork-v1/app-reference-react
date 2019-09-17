@@ -1681,13 +1681,254 @@ module.exports = [{
               },
             ],
           },
+          {
+            "name": "XYMobileBluetoothDeviceCreator",
+            "desc": "Base class for XY mobile BLE device creation",
+            "super": "XYDeviceCreator",
+            "functions": [
+              {
+                "name": "createFromIBeacon",
+                "parameters": [
+                  {
+                    "name": "iBeacon",
+                    "type": "XYIBeaconDefinition",
+                  },
+                  {
+                    "name": "rssi",
+                    "type": "Int",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XYMobileBluetoothDevice"
+                  }
+                ], 
+              },
+              {
+                "name": "createFromId",
+                "parameters": [
+                  {
+                    "name": "id",
+                    "type": "String",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XYMobileBluetoothDevice"
+                  }
+                ], 
+              },
+              {
+                "name": "enable",
+                "parameters": [
+                  {
+                    "name": "enable",
+                    "type": "Bool",
+                  }
+                ],
+                "returns": [], 
+              },
+            ],
+          },
        ],
      },
      {
        "desc": "Gatt Primitives",
        "name": "gatt",
        "objects": [
-
+          {
+            "name": "GattServiceDescriptor",
+            "desc": "A descriptor for a service, used as the key value for a dictionary in GattDeviceDescriptor",
+            "super": "Hashable",
+            "functions": [
+              {
+                "name": "hash",
+                "parameters": [
+                  {
+                    "name": "into",
+                    "type": "inout Hasher",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "uuid.hash"
+                  }
+                ], 
+              },
+              {
+                "name": "==",
+                "parameters": [
+                  {
+                    "name": "lhs",
+                    "type": "GattServiceDescriptor",
+                  },
+                  {
+                    "name": "rhs",
+                    "type": "GattServiceDescriptor",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "Bool"
+                  }
+                ], 
+              },
+            ],
+          },
+          {
+            "name": "GattCharacteristicDescriptor",
+            "desc": "A descriptor for a service, used as the key value for a dictionary in GattDeviceDescriptor",
+          },
+          {
+            "name": "GattDeviceDescriptor",
+            "desc": "The dictionary container for all the services and respective characteristics that a device advertises",
+          },
+          {
+            "name": "GattRequest",
+            "desc": "A 'single use' object for discovering a requested service/characteristic from a peripheral and either getting that value (returned as a Data promise) or setting a value.",
+            "super": "NSObject",
+            "enumerations": [
+              {
+                "name": "GattRequestStatus",
+                "values": [
+                  {
+                    "name": "disconnected",
+                  },
+                  {
+                    "name": "discoveringServices",
+                  },
+                  {
+                    "name": "discoveringCharacteristics",
+                  },
+                  {
+                    "name": "reading",
+                  },
+                  {
+                    "name": "writing",
+                  },
+                  {
+                    "name": "notifying",
+                  },
+                  {
+                    "name": "timedOut",
+                  },
+                  {
+                    "name": "completed",
+                  },
+                ],
+              }
+            ]
+          },
+          {
+            "name": "XYServiceCharacteristic",
+            "desc": "Protocol which defines a service and a characteristic, implemented as enumerations in the various Service files",
+            "properties": [
+              {
+                "name": "serviceDisplayName",
+                "type": "String",
+              },
+              {
+                "name": "serviceUuid",
+                "type": "CBUUID",
+              },
+              {
+                "name": "characteristicUuid",
+                "type": "CBUUID",
+              },
+              {
+                "name": "characteristicType",
+                "type": "XYServiceCharacteristicType",
+              },
+              {
+                "name": "displayName",
+                "type": "String",
+              },
+              {
+                "name": "values",
+                "type": "[XYServiceCharacteristic]",
+              },
+            ],
+            "enumerations": [
+              {
+                "name": "XYServiceCharacteristicType",
+                "values": [
+                  {
+                    "name": "string",
+                  },
+                  {
+                    "name": "integer",
+                  },
+                  {
+                    "name": "byte",
+                  },
+                ],
+              }
+            ],
+            "functions": [
+              {
+                "name": "get",
+                "parameters": [
+                  {
+                    "name": "device",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "timeout",
+                    "type": "DispatchTimeInterval",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "GattRequest"
+                  }
+                ], 
+              },              
+              {
+                "name": "set",
+                "parameters": [
+                  {
+                    "name": "device",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "value",
+                    "type": "XYBluetoothResult",
+                  },
+                  {
+                    "name": "timeout",
+                    "type": "DispatchTimeInterval",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "GattRequest"
+                  }
+                ], 
+              },              
+              {
+                "name": "notify",
+                "parameters": [
+                  {
+                    "name": "device",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "enabled",
+                    "type": "Bool",
+                  },
+                  {
+                    "name": "timeout",
+                    "type": "DispatchTimeInterval",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "GattRequest"
+                  }
+                ], 
+              },              
+            ],
+          },
        ],
      },
    ]
