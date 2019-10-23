@@ -104,6 +104,32 @@ module.exports = [{
       "desc": "XYO Client",
       "objects": [
         {
+          "name": "XyoClient",
+          "desc": "Abstract class for client operations in bound witnessing and bridging",
+          "properties": [
+            {
+              "name": "relayNode",
+              "type": "XyoRelayNode",
+              "desc": "Node to create data then relay using client over Ble.",
+            },
+            {
+              "name": "procedureCatalog",
+              "type": "XyoProcedureCatalog",
+              "desc": "Procedure Catalog to what client can do over Ble.",
+            },
+            {
+              "name": "autoBoundWitnesses",
+              "type": "Boolean",
+              "desc": "Set to automatically start and complete bound witnesses",
+            },
+            {
+              "name": "knownBridges",
+              "type": "List<String>",
+              "desc": "List of bridges that can be set by client, or use of default.",
+            },
+          ],
+        },
+        {
           "name": "XyoBleClient",
           "desc": "Ble client for bound witnessing and bridging",
           "properties": [
