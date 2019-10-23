@@ -2,17 +2,22 @@ module.exports = [{
   "id": "sdk-xyo-android",
   "name": "XYO Android SDK",
   "locale": "EN",
-  "platform": "iOS",
+  "platform": "android",
   "lang": "Kotlin",
   "type": "SDK",
   "desc": "High level SDK for XYO integration in Android",
   "modules": [
     {
-      "name": "builder",
-      "desc": "XYO Node Builder",
+      "name": "sdk",
+      "desc": "",
       "objects": [
         {
-          "name": "XYONodeBuilder",
+          "name": "XyoSdk",
+          "desc": "",
+          "properties": [],
+        },
+        {
+          "name": "XyoNodeBuilder",
           "desc": "Class that builds an XYONode with set properties using XYO Client and Server",
           "properties": [],
           "functions": [
@@ -33,7 +38,94 @@ module.exports = [{
               ]
             },
           ],
-        }
+        },
+        {
+          "name": "XyoNode",
+          "desc": "Node structure for builder to set storage, network, and bound witness listeners.",
+          "properties": [
+            {
+              "name": "networks",
+              "type": "Map<String, XyoNetwork>",
+            }
+          ],
+          "functions": [
+            {
+              "name": "setAllListeners",
+              "desc": "Set all listeners for client and server.",
+              "parameters": [
+                {
+                  "name": "name : ",
+                  "type": "String,",
+                },
+                {
+                  "name": "listener : ",
+                  "type": "XyoBoundWitness",
+                },
+              ],
+            }
+          ], 
+        },
+        {
+          "name": "XyoBoundWitnessTarget",
+          "desc": "Protocol for setting bound witnessing with instructions.",
+          "properties": [
+            {
+              "name": "publicKey",
+              "type": "String",
+              "desc": "A base58 converted key for signed origin state."
+            },
+            {
+              "name": "relayNode",
+              "type": "XyoRelayNode",
+              "desc": "Node to create data then relay over Ble."
+            },
+            {
+              "name": "procedureCatalog",
+              "type": "XyoProcedureCatalog",
+              "desc": "Procedure Catalog to what client or server can do over Ble."
+            },
+            {
+              "name": "acceptBridging",
+              "type": "Boolean",
+              "desc": "Set to accept bound witnesses with bridged payloads.",
+            },
+            {
+              "name": "autoBridge",
+              "type": "Boolean",
+              "desc": "Set to bridge claims when auto bound witnessing.",
+            },
+          ],
+          "functions": [
+            {
+              "name": "boundWitnessStarted",
+              "desc": "Listen for the start of a bound witness.",
+              "parameters": [
+                {
+                  "name": "source : ",
+                  "type": "Any?",
+                },
+              ],
+            },
+            {
+              "name": "boundWitnessCompleted",
+              "desc": "Listen for the completion of a bound witness.",
+              "parameters": [
+                {
+                  "name": "source : ",
+                  "type": "Any?,",
+                },
+                {
+                  "name": "boundWitness : ",
+                  "type": "XyoBoundWitness?,",
+                },
+                {
+                  "name": "error : ",
+                  "type": "String",
+                },
+              ],
+            },
+          ],
+        },
       ]
     },
     {
