@@ -9,6 +9,8 @@ import sdkKotlinBle from "./schemas/BLE_Kotlin_Schema";
 import sdkSwiftBle from "./schemas/BLE_Swift_Schema";
 import swiftObject from "./schemas/Object_Swift_Schema";
 import nodeObject from "./schemas/Node_Package_Schema";
+import androidObject from "./schemas/XYO_Android_Schema";
+import sdkXyoSwift from "./schemas/XYO_Swift_SDK";
 
 import kotlinObject from "./schemas/Core_Kotlin_Schema";
 import { Container, Col, Row } from "reactstrap";
@@ -19,6 +21,8 @@ const swiftBleProductState = sdkSwiftBle[0];
 const swiftCoreObjectState = swiftObject[0];
 const nodePkgObjectState = nodeObject[0];
 const kotlinObjectState = kotlinObject[0];
+const androidObjectState = androidObject[0];
+const xyoSwiftObjectState = sdkXyoSwift[0];
 
 class App extends Component {
   
@@ -27,8 +31,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [kotlinBleProductState.id, swiftBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
-      platforms: [kotlinBleProductState.platform, swiftBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
+      products: [androidObjectState.id, xyoSwiftObjectState.id, kotlinBleProductState.id, swiftBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
+      platforms: [androidObjectState.platform, xyoSwiftObjectState.platform, kotlinBleProductState.platform, swiftBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
       platformViews: [],
       methods: []
     }
@@ -58,6 +62,18 @@ class App extends Component {
     if (e.target.id === swiftBleProductState.id) {
       this.setState({
         methods: swiftBleProductState.modules
+      })
+    }
+
+    if (e.target.id === androidObjectState.id) {
+      this.setState({
+        methods: androidObjectState.modules
+      })
+    }
+
+    if (e.target.id === xyoSwiftObjectState.id) {
+      this.setState({
+        methods: xyoSwiftObjectState.modules
       })
     }
     

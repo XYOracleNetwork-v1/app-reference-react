@@ -12,6 +12,31 @@ module.exports = [{
        "name": "devices",
        "objects": [
          {
+          "name": "XYDeviceConnectManager",
+          "desc": "class to manage device connections",
+          "functions": [],
+         },
+         {
+          "name": "XYCentralAgent",
+          "desc": "An agent that allows for adding connecting to the Central in an XYBluetoothDevice connection block or other promise chain",
+          "functions": [
+            {
+              "name": "powerOn",
+              "desc": "sets the delegate key and powers up the central",
+            },
+            {
+              "name": "stateChanged",
+              "desc": "method to handle central power up",
+              "parameters": [
+                {
+                  "name": "newState : ",
+                  "type": "CBManagerState"
+                }
+              ],
+            }
+          ],
+        },
+         {
            "name": "XY4BluetoothDevice",
            "super": "XYFinderDeviceBase",
            "properties": [
@@ -953,11 +978,11 @@ module.exports = [{
                 "name": "update",
                 "parameters": [
                   {
-                    "name": "rssi",
+                    "name": "rssi : ",
                     "type": "Int"
                   },
                   {
-                    "name": "powerLevel",
+                    "name": "powerLevel : ",
                     "type": "UInt8"
                   },
                 ],
@@ -972,7 +997,7 @@ module.exports = [{
                 "name": "verifyExit",
                 "parameters": [
                   {
-                    "name": "callback",
+                    "name": "callback : ",
                     "type": "Bool",
                   }
                 ],
@@ -1161,7 +1186,7 @@ module.exports = [{
                 "desc": "Handler for button press unsubscribe",
                 "parameters": [
                   {
-                    "name": "referenceKey",
+                    "name": "referenceKey : ",
                     "type": "UUID"
                   }
                 ],
@@ -1176,7 +1201,7 @@ module.exports = [{
                 "desc": "Handle location updates",
                 "parameters": [
                   {
-                    "name": "newLocation",
+                    "name": "newLocation : ",
                     "type": "XYLocationCoordinate2D"
                   }
                 ],
@@ -1187,7 +1212,7 @@ module.exports = [{
                 "desc": "Updates to battery level",
                 "parameters": [
                   {
-                    "name": "newLevel",
+                    "name": "newLevel : ",
                     "type": "Int"
                   }
                 ],
@@ -1216,7 +1241,7 @@ module.exports = [{
                 "desc": "",
                 "parameters": [
                   {
-                    "name": "song",
+                    "name": "song : ",
                     "type": "XYFinderSong"
                   }
                 ],
@@ -1545,7 +1570,7 @@ module.exports = [{
                 "desc": "Notify those directives that want all events and those that subscribe to the event's device",
                 "parameters": [
                   {
-                    "name": "events",
+                    "name": "events : ",
                     "type": "[XYFinderEventNotification]",
                   }
                 ],
@@ -1555,11 +1580,11 @@ module.exports = [{
                 "desc": "Equivalent to subscribing to every device's events",
                 "parameters": [
                   {
-                    "name": "events",
+                    "name": "events : ",
                     "type": "[XYFinderEvent]",
                   },
                   {
-                    "name": "handler",
+                    "name": "handler : ",
                     "type": "XYFinderDeviceEventNotifier",
                   },
                 ],
@@ -1569,15 +1594,15 @@ module.exports = [{
                 "desc": "Subscribe to a single device's events. This will simply filter when it comes to reporting to the handlers",
                 "parameters": [
                   {
-                    "name": "events",
+                    "name": "events : ",
                     "type": "[XYFinderEvent]",
                   },
                   {
-                    "name": "device",
+                    "name": "device : ",
                     "type": "XYBluetoothDevice",
                   },
                   {
-                    "name": "handler",
+                    "name": "handler : ",
                     "type": "XYFinderDeviceEventNotifier",
                   },
                 ],
@@ -1587,11 +1612,11 @@ module.exports = [{
                 "desc": "Unsubscribe from all events",
                 "parameters": [
                   {
-                    "name": "events",
+                    "name": "events : ",
                     "type": "[XYFinderEvent]",
                   },
                   {
-                    "name": "referenceKey",
+                    "name": "referenceKey : ",
                     "type": "UUID",
                   },
                 ],
@@ -1619,11 +1644,11 @@ module.exports = [{
                 "desc": "using iBeacon",
                 "parameters": [
                   {
-                    "name": "iBeacon",
+                    "name": "iBeacon : ",
                     "type": "XYIBeaconDefinition",
                   },
                   {
-                    "name": "rssi",
+                    "name": "rssi : ",
                     "type": "Int",
                   },
                 ],
@@ -1633,7 +1658,7 @@ module.exports = [{
                 "desc": "using id string value",
                 "parameters": [
                   {
-                    "name": "id",
+                    "name": "id : ",
                     "type": "String",
                   }
                 ],
@@ -1650,11 +1675,11 @@ module.exports = [{
                 "desc": "using iBeacon",
                 "parameters": [
                   {
-                    "name": "iBeacon",
+                    "name": "iBeacon : ",
                     "type": "XYIBeaconDefinition",
                   },
                   {
-                    "name": "rssi",
+                    "name": "rssi : ",
                     "type": "Int",
                   },
                 ],
@@ -1664,7 +1689,7 @@ module.exports = [{
                 "desc": "using id string value",
                 "parameters": [
                   {
-                    "name": "id",
+                    "name": "id : ",
                     "type": "String",
                   }
                 ],
@@ -1674,10 +1699,59 @@ module.exports = [{
                 "desc": "adds or removes a creator by UUID",
                 "parameters": [
                   {
-                    "name": "enable",
+                    "name": "enable : ",
                     "type": "Bool",
                   }
                 ],
+              },
+            ],
+          },
+          {
+            "name": "XYMobileBluetoothDeviceCreator",
+            "desc": "Base class for XY mobile BLE device creation",
+            "super": "XYDeviceCreator",
+            "functions": [
+              {
+                "name": "createFromIBeacon",
+                "parameters": [
+                  {
+                    "name": "iBeacon : ",
+                    "type": "XYIBeaconDefinition",
+                  },
+                  {
+                    "name": "rssi : ",
+                    "type": "Int",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XYMobileBluetoothDevice"
+                  }
+                ], 
+              },
+              {
+                "name": "createFromId",
+                "parameters": [
+                  {
+                    "name": "id : ",
+                    "type": "String",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XYMobileBluetoothDevice"
+                  }
+                ], 
+              },
+              {
+                "name": "enable",
+                "parameters": [
+                  {
+                    "name": "enable : ",
+                    "type": "Bool",
+                  }
+                ],
+                "returns": [], 
               },
             ],
           },
@@ -1687,8 +1761,576 @@ module.exports = [{
        "desc": "Gatt Primitives",
        "name": "gatt",
        "objects": [
-
+          {
+            "name": "GattServiceDescriptor",
+            "desc": "A descriptor for a service, used as the key value for a dictionary in GattDeviceDescriptor",
+            "super": "Hashable",
+            "functions": [
+              {
+                "name": "hash",
+                "parameters": [
+                  {
+                    "name": "into : ",
+                    "type": "inout Hasher",
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "uuid.hash"
+                  }
+                ], 
+              },
+              {
+                "name": "==",
+                "parameters": [
+                  {
+                    "name": "lhs : ",
+                    "type": "GattServiceDescriptor",
+                  },
+                  {
+                    "name": "rhs : ",
+                    "type": "GattServiceDescriptor",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "Bool"
+                  }
+                ], 
+              },
+            ],
+          },
+          {
+            "name": "GattCharacteristicDescriptor",
+            "desc": "A descriptor for a service, used as the key value for a dictionary in GattDeviceDescriptor",
+          },
+          {
+            "name": "GattDeviceDescriptor",
+            "desc": "The dictionary container for all the services and respective characteristics that a device advertises",
+          },
+          {
+            "name": "GattRequest",
+            "desc": "A 'single use' object for discovering a requested service/characteristic from a peripheral and either getting that value (returned as a Data promise) or setting a value.",
+            "super": "NSObject",
+            "enumerations": [
+              {
+                "name": "GattRequestStatus",
+                "values": [
+                  {
+                    "name": "disconnected",
+                  },
+                  {
+                    "name": "discoveringServices",
+                  },
+                  {
+                    "name": "discoveringCharacteristics",
+                  },
+                  {
+                    "name": "reading",
+                  },
+                  {
+                    "name": "writing",
+                  },
+                  {
+                    "name": "notifying",
+                  },
+                  {
+                    "name": "timedOut",
+                  },
+                  {
+                    "name": "completed",
+                  },
+                ],
+              }
+            ]
+          },
+          {
+            "name": "XYServiceCharacteristic",
+            "desc": "Protocol which defines a service and a characteristic, implemented as enumerations in the various Service files",
+            "properties": [
+              {
+                "name": "serviceDisplayName",
+                "type": "String",
+              },
+              {
+                "name": "serviceUuid",
+                "type": "CBUUID",
+              },
+              {
+                "name": "characteristicUuid",
+                "type": "CBUUID",
+              },
+              {
+                "name": "characteristicType",
+                "type": "XYServiceCharacteristicType",
+              },
+              {
+                "name": "displayName",
+                "type": "String",
+              },
+              {
+                "name": "values",
+                "type": "[XYServiceCharacteristic]",
+              },
+            ],
+            "enumerations": [
+              {
+                "name": "XYServiceCharacteristicType",
+                "values": [
+                  {
+                    "name": "string",
+                  },
+                  {
+                    "name": "integer",
+                  },
+                  {
+                    "name": "byte",
+                  },
+                ],
+              }
+            ],
+            "functions": [
+              {
+                "name": "get",
+                "parameters": [
+                  {
+                    "name": "device : ",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "timeout : ",
+                    "type": "DispatchTimeInterval",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "GattRequest"
+                  }
+                ], 
+              },              
+              {
+                "name": "set",
+                "parameters": [
+                  {
+                    "name": "device : ",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "value : ",
+                    "type": "XYBluetoothResult",
+                  },
+                  {
+                    "name": "timeout : ",
+                    "type": "DispatchTimeInterval",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "GattRequest"
+                  }
+                ], 
+              },              
+              {
+                "name": "notify",
+                "parameters": [
+                  {
+                    "name": "device : ",
+                    "type": "XYBluetoothDevice",
+                  },
+                  {
+                    "name": "enabled : ",
+                    "type": "Bool",
+                  },
+                  {
+                    "name": "timeout : ",
+                    "type": "DispatchTimeInterval",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "GattRequest"
+                  }
+                ], 
+              },              
+            ],
+          },
        ],
+     },
+     {
+        "name": "peripheral",
+        "desc": "Peripheral methods",
+        "objects": [
+          {
+            "name": "XYPeripheral",
+            "desc": "A wrapper around CBPeripheral, used also to mark any devices for restore or delete if the app is killed in the background",
+            "properties": [
+              {
+                "name": "peripheral",
+                "type": "CBPeripheral",
+              },
+              {
+                "name": "advertisementData",
+                "type": "[String]",
+              },
+              {
+                "name": "rssi",
+                "type": "Int",
+              },
+            ],
+            "functions": [
+              {
+                "name": "==",
+                "parameters": [
+                  {
+                    "name": "lhs : ",
+                    "type": "Peripheral",
+                  },
+                  {
+                    "name": "rhs : ",
+                    "type": "Peripheral",
+                  },
+                ],
+                "returns": [
+                  {
+                    "type": "Bool",
+                  }
+                ]
+              },
+              {
+                "name": "hash",
+                "parameters": [
+                  {
+                    "name": "inout : ",
+                    "type": "Hasher",
+                  }
+                ]
+              },
+              {
+                "name": "hashValue",
+                "returns": [
+                  {
+                     "type": "Int"    
+                  }
+                ]
+              },
+            ],
+          }
+        ]
+     },
+     {
+        "name": "cache",
+        "desc": "cache for devices",
+        "objects": [
+          {
+            "name": "XYDeviceCache",
+            "desc": "A cache for devices that have been found via the XYLocation manager.",
+            "functions": [
+              {
+                "name": "removeAll",
+                "desc": "removes all devices from cache"
+              },
+              {
+                "name": "remove",
+                "desc": "removes one device from cache",
+                "parameters": [
+                  {
+                    "name": "index : ",
+                    "type": "String",
+                  }
+                ],
+              },
+              {
+                "name": "count",
+                "desc": "returns the number of devices in cache",
+                "returns": [
+                  {
+                    "type": "Int",
+                  }
+                ],
+              }, 
+              {
+                "name": "subscript",
+                "desc": "method containing the getter and setter for device cache",
+                "parameters": [
+                  {
+                    "name": "index : ",
+                    "type": "String"
+                  }
+                ],
+                "returns": [
+                  {
+                    "type": "XYBluetoothDevice"
+                  }
+                ],
+              },
+            ], 
+          },
+        ],
+     },
+     {
+        "name": "geocode",
+        "desc": "geocode for devices",
+        "objects": [
+          {
+            "name": "XYGeocode",
+            "desc": "class for converting geographic coordinates to place name using Swift CLGeocoder and CLLocation manager",
+            "functions": [
+              {
+                "name": "geocodeLocation",
+                "desc": "handles conversion of coordinate to place name",
+                "parameters": [
+                  {
+                    "name": "latitude : ",
+                    "type": "Float"
+                  },
+                  {
+                    "name": "longitude : ",
+                    "type": "Float"
+                  },
+                  {
+                    "name": "callback : ",
+                    "type": "location method for conversion"
+                  },
+                ],
+              }
+            ],
+          }
+        ],
+     },
+     {
+        "name": "location",
+        "desc": "location protocols for devices",
+        "objects": [
+          {
+            "name": "XYLocationDelegate",
+            "desc": "protocol to delegate device location operations",
+            "functions": [
+              {
+                "name": "didRangeBeacons",
+                "parameters": [
+                  {
+                    "name": "beacons : ",
+                    "type": "[XYBluetoothDevice]"
+                  },
+                  {
+                    "name": "for family : ",
+                    "type": "XYDeviceFamily"
+                  },
+                ],
+              },
+              {
+                "name": "deviceEntered",
+                "parameters": [
+                  {
+                    "name": "device : ",
+                    "type": "XYBluetoothDevice"
+                  }
+                ],
+              },
+              {
+                "name": "deviceExited",
+                "parameters": [
+                  {
+                    "name": "device : ",
+                    "type": "XYBluetoothDevice"
+                  }
+                ],
+              },
+              {
+                "name": "deviceExiting",
+                "parameters": [
+                  {
+                    "name": "device : ",
+                    "type": "XYBluetoothDevice"
+                  }
+                ],
+              },
+              {
+                "name": "locationsUpdated",
+                "parameters": [
+                  {
+                    "name": "locations : ",
+                    "type": "[XYLocationCoordinate2D]"
+                  }
+                ],
+              },
+            ],
+          },
+          {
+            "name": "XYLocation",
+            "super": "NSObject",
+            "desc": "a class to handle location operations including delegation",
+            "functions": [
+
+            ],
+          }
+        ],
+     },
+     {
+        "name": "scan",
+        "desc": "scan protocols for devices",
+        "objects": [
+          {
+            "name": "XYSmartScanDelegate",
+            "desc": "protocol to delegate scanning per device type",
+            "enumerations": [
+              {
+                "name": "XYSmartScanStatus",
+                "values": [
+                  {
+                    "name": "none",
+                  },
+                  {
+                    "name": "enabled",
+                  },
+                  {
+                    "name": "bluetoothUnavailable",
+                  },
+                  {
+                    "name": "bluetoothDisabled",
+                  },
+                  {
+                    "name": "backgroundLocationDisabled",
+                  },
+                  {
+                    "name": "locationDisabled",
+                  },
+                ],
+              },
+              {
+                "name": "XYSmartScanMode",
+                "values": [
+                  {
+                    "name": "initializing"
+                  },
+                  {
+                    "name": "foreground"
+                  },
+                  {
+                    "name": "background"
+                  },
+                ]
+              },
+            ],            
+            "functions": [
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "status : ",
+                    "type": "XYSmartScanStatus",
+                  }
+                ],
+              },
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "location : ",
+                    "type": "XYLocationCoordinate2D",
+                  }
+                ],                
+              },
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "detected device : ",
+                    "type": "XYBluetoothDevice"
+                  },
+                  {
+                    "name": "rssi : ",
+                    "type": "Int"
+                  },
+                  {
+                    "name": "family : ",
+                    "type": "XYDeviceFamily"
+                  },
+                ],                
+              },
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "detected devices : ",
+                    "type": "[XYBluetoothDevice]"
+                  },
+                  {
+                    "name": "family : ",
+                    "type": "XYDeviceFamily"
+                  },
+                ],                
+              },
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "entered device : ",
+                    "type": "XYBluetoothDevice",
+                  }
+                ],                
+              },
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "exiting device : ",
+                    "type": "XYBluetoothDevice",
+                  }
+                ],                
+              },
+              {
+                "name": "smartScan",
+                "parameters": [
+                  {
+                    "name": "exited device : ",
+                    "type": "XYBluetoothDevice",
+                  }
+                ],                
+              },
+            ],
+          },
+          {
+            "name": "XYSmartScan",
+            "desc": "class for scanning for devices",
+            "functions": [
+              {
+                "name": "start",
+                "desc": "start the scan, for iOS use location manager for iBeacon",
+                "parameters": [
+                  {
+                    "name": "for families : ",
+                    "type": "[XYDeviceFamily]"
+                  },
+                  {
+                    "name": "mode : ",
+                    "type": "XYSmartScanMode"
+                  },
+                ], 
+              },
+              {
+                "name": "stop",
+                "desc": "stop the scan",
+                "parameters": [], 
+              },
+              {
+                "name": "setDelegate",
+                "desc": "set the XYSmartScanDelegate",
+                "parameters": [], 
+              },
+              {
+                "name": "removeDelegate",
+                "desc": "remove the XYSmartScanDelegate",
+                "parameters": [], 
+              },
+              {
+                "name": "invalidateSession",
+                "desc": "if not a valid session, do not cache or create a connection instance",
+                "parameters": [], 
+              },
+            ],
+          },
+        ],
      },
    ]
 }];

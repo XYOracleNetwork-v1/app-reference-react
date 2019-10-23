@@ -174,7 +174,40 @@ module.exports = [{
               ]
             }
           ],
-          "functions": [] 
+          "functions": [
+            {
+              "name": "equals",
+              "desc": "checking equality for hashCode for enum",
+              "parameters": [
+                {
+                  "name": "other : ",
+                  "type": "Any"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "Boolean"
+                }
+              ],
+            },
+            {
+              "name": "hashCode",
+              "desc": "hash for bytes in ad",
+              "returns": [
+                {
+                  "type": "Int"
+                }
+              ],
+            },
+            {
+              "name": "toString",
+              "returns": [
+                {
+                  "type": "String",
+                }
+              ],
+            },
+          ] 
         },
       ],
     },
@@ -187,7 +220,7 @@ module.exports = [{
           "functions": [
             {
               "name": "actionAclConnected",
-              "desc": "Intent - make intent notes here",
+              "desc": "action to confirm connection through ACL protocol",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -197,6 +230,7 @@ module.exports = [{
             },                           
             {
               "name": "actionAclDisconnected",
+              "desc": "action to confirm disconnection through ACL protocol",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -206,6 +240,7 @@ module.exports = [{
             },                           
             {
               "name": "actionAclDisconnectRequested",
+              "desc": "action to request disconnection through ACL protocol",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -215,6 +250,7 @@ module.exports = [{
             },                           
             {
               "name": "actionBondStateChanged",
+              "desc": "action to change bond state",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -224,6 +260,7 @@ module.exports = [{
             },                           
             {
               "name": "actionClassChanged",
+              "desc": "action to change class state",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -233,6 +270,7 @@ module.exports = [{
             },                           
             {
               "name": "actionFound",
+              "desc": "find activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -242,6 +280,7 @@ module.exports = [{
             },                           
             {
               "name": "actionNameChanged",
+              "desc": "change name of activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -251,6 +290,7 @@ module.exports = [{
             },                           
             {
               "name": "actionPairingRequest",
+              "desc": "activity to request pairing",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -260,6 +300,7 @@ module.exports = [{
             },                           
             {
               "name": "actionUuid",
+              "desc": "uuid activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -269,6 +310,7 @@ module.exports = [{
             },                           
             {
               "name": "extraBondState",
+              "desc": "extra bond state activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -278,6 +320,7 @@ module.exports = [{
             },                           
             {
               "name": "extraClass",
+              "desc": "extra class activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -287,6 +330,7 @@ module.exports = [{
             },                           
             {
               "name": "extraDevice",
+              "desc": "extra device activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -296,6 +340,7 @@ module.exports = [{
             },                           
             {
               "name": "extraName",
+              "desc": "extra name activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -305,6 +350,7 @@ module.exports = [{
             },                           
             {
               "name": "extraRssi",
+              "desc": "extra rssi activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -314,6 +360,7 @@ module.exports = [{
             },                           
             {
               "name": "extraPairingKey",
+              "desc": "extra pairing key activity",
               "parameters": [
                 {
                   "name": "intent : ",
@@ -323,6 +370,7 @@ module.exports = [{
             },                           
             {
               "name": "extraPairingVagrant",
+              "desc": "extra pairing vagrant activity",
               "parameters": [
                 {
                   "name": "intent : ",
