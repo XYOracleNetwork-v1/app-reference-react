@@ -533,7 +533,7 @@ module.exports = [{
       "objects": [
         {
           "name": "XyoServer",
-          "desc": "Protocol for ",
+          "desc": "Protocol for server operations, starts listening for bound witnesses.",
           "properties": [
             {
               "name": "listen",
@@ -571,7 +571,7 @@ module.exports = [{
             },
             {
               "name": "advertiser",
-              "type": "XyoBluetoothServer?",
+              "type": "XyoBluetoothServer",
             },
           ],
           "functions": [
@@ -599,17 +599,17 @@ module.exports = [{
             },
             {
               "name": "startListening",
-              "desc": "",
+              "desc": "Starts the advertiser.",
             },
             {
               "name": "stopListening",
-              "desc": ""
+              "desc": "Stops the advertiser."
             },          
           ],
         },
         {
           "name": "XyoTcpipServer",
-          "desc": "",
+          "desc": "Server operations for ble based on the XyoServer protocol for tcpip.",
           "properties": [
             {
               "name": "delegate",
