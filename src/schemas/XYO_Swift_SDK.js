@@ -23,7 +23,7 @@ module.exports = [{
           "functions": [
             {
               "name": "build",
-              "desc": "Builds an XyoNode with default properties.",
+              "desc": "Builds an XyoNode with defaults.",
               "parameters": [],
               "returns": [
                 {
@@ -145,7 +145,7 @@ module.exports = [{
         },
         {
           "name": "BoundWitnessDelegate",
-          "desc": "Protocol for a bound witness delegate functions",
+          "desc": "Protocol for a bound witness delegate.",
           "functions": [
             {
               "name": "getPayloadData",
@@ -245,18 +245,13 @@ module.exports = [{
           "desc": "Network protocol for BLE based on XYONetwork protocol",
           "properties": [
             {
-              "name": "type",
-              "type": "XyoNetworkType",
-              "desc": "Enumeration that will be set for node building, bound witness and bridging.",
-            },
-            {
               "name": "client",
-              "type": "XyoClient",
+              "type": "XyoBleClient",
               "desc": "The client for node building, bound witness and bridging.",
             },
             {
               "name": "server",
-              "type": "XyoServer",
+              "type": "XyoBleServer",
               "desc": "The server for node building, bound witness and bridging.",
             },
           ],
@@ -282,18 +277,13 @@ module.exports = [{
           "desc": "Network protocol for TcpIp based on XYONetwork protocol",
           "properties": [
             {
-              "name": "type",
-              "type": "XyoNetworkType",
-              "desc": "Enumeration that will be set for node building, bound witness and bridging.",
-            },
-            {
               "name": "client",
-              "type": "XyoClient",
+              "type": "XyoTcpipClient",
               "desc": "The client for node building, bound witness and bridging.",
             },
             {
               "name": "server",
-              "type": "XyoServer",
+              "type": "XyoTcpipServer",
               "desc": "The server for node building, bound witness and bridging.",
             },
           ],
@@ -344,15 +334,18 @@ module.exports = [{
           "properties": [
             {
               "name": "knownBridges",
-              "type": "[String]?",
+              "type": "[String]",
+              "desc": "An array of bridges both default and/or set by the user.",
             },
             {
               "name": "relayNode",
               "type": "XyoRelayNode",
+              "desc": "Node to create data then relay using client over Ble.",
             },
             {
               "name": "procedureCatalog",
               "type": "XyoProcedureCatalog",
+              "desc": "Procedure Catalog to what client can do over Ble.",
             },
             {
               "name": "delegate",
@@ -361,18 +354,22 @@ module.exports = [{
             {
               "name": "acceptBridging",
               "type": "Bool",
+              "desc": "Set to accept bridged bound witnesses",
             },
             {
               "name": "autoBoundWitness",
               "type": "Bool",
+              "desc": "Set to automatically start and complete bound witnesses",
             },
             {
               "name": "autoBridge",
               "type": "Bool",
+              "desc": "Set for automatic bridging of bound witnesses",
             },
             {
               "name": "scan",
               "type": "Bool",
+              "desc": "When set will either start or stop scan for devices."
             },
           ],
           "functions": [
@@ -449,15 +446,18 @@ module.exports = [{
           "properties": [
             {
               "name": "knownBridges",
-              "type": "[String]?",
+              "type": "[String]",
+              "desc": "An array of bridges both default and/or set by the user.",
             },
             {
               "name": "relayNode",
               "type": "XyoRelayNode",
+              "desc": "Node to create data then relay using client over Tcpip.",
             },
             {
               "name": "procedureCatalog",
               "type": "XyoProcedureCatalog",
+              "desc": "Procedure Catalog to what client can do over Tcpip.",
             },
             {
               "name": "delegate",
@@ -466,14 +466,17 @@ module.exports = [{
             {
               "name": "acceptBridging",
               "type": "Bool",
+              "desc": "Set to accept bridged bound witnesses",
             },
             {
               "name": "autoBoundWitness",
               "type": "Bool",
+              "desc": "Set to automatically start and complete bound witnesses",
             },
             {
               "name": "autoBridge",
               "type": "Bool",
+              "desc": "Set for automatic bridging of bound witnesses",
             },
             {
               "name": "scan",
@@ -509,8 +512,14 @@ module.exports = [{
               "returns": [],
             },            
             {
+              "name": "startBridging",
+              "desc": "Start auto bridging and set semaphore. It will execute bridge() function after bound witness discovery.",
+              "parameters": [],
+              "returns": [],
+            },            
+            {
               "name": "bridge",
-              "desc": "",
+              "desc": "If semaphore and knownBridges exist, this bridges a bound witness over a socket peer-to-peer.",
               "parameters": [],
               "returns": [],
             },            
@@ -524,7 +533,7 @@ module.exports = [{
       "objects": [
         {
           "name": "XyoServer",
-          "desc": "Protocol for ",
+          "desc": "Protocol for server operations, starts listening for bound witnesses.",
           "properties": [
             {
               "name": "listen",
@@ -562,7 +571,7 @@ module.exports = [{
             },
             {
               "name": "advertiser",
-              "type": "XyoBluetoothServer?",
+              "type": "XyoBluetoothServer",
             },
           ],
           "functions": [
@@ -590,17 +599,17 @@ module.exports = [{
             },
             {
               "name": "startListening",
-              "desc": "",
+              "desc": "Starts the advertiser.",
             },
             {
               "name": "stopListening",
-              "desc": ""
+              "desc": "Stops the advertiser."
             },          
           ],
         },
         {
           "name": "XyoTcpipServer",
-          "desc": "",
+          "desc": "Server operations for ble based on the XyoServer protocol for tcpip.",
           "properties": [
             {
               "name": "delegate",
