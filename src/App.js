@@ -1,22 +1,28 @@
-import React, { Component } from 'react'
-import './App.css'
-import Layout from './components/Layout'
-import Header from './components/Header'
-import MainHeader from './components/MainHeader'
-import SideNav from './components/SideNav'
-import MethodView from './components/MethodOutputView'
-import sdkBle from './BLE_Schema'
-import swiftObject from './Object_Swift_Schema'
-import nodeObject from './Node_Package_Schema'
+import React, { Component } from "react"; 
+import "./assets/App.css";
+import Layout from "./components/Layout";
+import Header from "./components/Header";
+import MainHeader from "./components/MainHeader";
+import SideNav from "./components/SideNav";
+import MethodView from "./components/MethodOutputView";
+import sdkKotlinBle from "./schemas/BLE_Kotlin_Schema";
+import sdkSwiftBle from "./schemas/BLE_Swift_Schema";
+import swiftObject from "./schemas/Object_Swift_Schema";
+import nodeObject from "./schemas/Node_Package_Schema";
+import androidObject from "./schemas/XYO_Android_Schema";
+import sdkXyoSwift from "./schemas/XYO_Swift_SDK";
 
-import kotlinObject from './Core_Kotlin_Schema'
-import { Container, Col, Row } from 'reactstrap'
-import NodeMethodOutputView from './components/NodeMethodOutputView'
+import kotlinObject from "./schemas/Core_Kotlin_Schema";
+import { Container, Col, Row } from "reactstrap";
+import NodeMethodOutputView from "./components/NodeMethodOutputView";
 
-const kotlinBleProductState = sdkBle[0]
-const swiftCoreObjectState = swiftObject[0]
-const nodePkgObjectState = nodeObject[0]
-const kotlinObjectState = kotlinObject[0]
+const kotlinBleProductState = sdkKotlinBle[0];
+const swiftBleProductState = sdkSwiftBle[0];
+const swiftCoreObjectState = swiftObject[0];
+const nodePkgObjectState = nodeObject[0];
+const kotlinObjectState = kotlinObject[0];
+const androidObjectState = androidObject[0];
+const xyoSwiftObjectState = sdkXyoSwift[0];
 
 class App extends Component {
   
@@ -25,8 +31,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: [kotlinBleProductState.id, swiftCoreObjectState.id, nodePkgObjectState.id, kotlinObjectState.id],
-      platforms: [kotlinBleProductState.platform, swiftCoreObjectState.platform, nodePkgObjectState.platform, kotlinObjectState.platform],
+      products: [androidObjectState.id, xyoSwiftObjectState.id, kotlinBleProductState.id, swiftBleProductState.id, swiftCoreObjectState.id, kotlinObjectState.id],
+      platforms: [androidObjectState.platform, xyoSwiftObjectState.platform, kotlinBleProductState.platform, swiftBleProductState.platform, swiftCoreObjectState.platform, kotlinObjectState.platform],
       platformViews: [],
       methods: []
     }
@@ -52,37 +58,55 @@ class App extends Component {
         methods: kotlinBleProductState.modules
       })
     }
-    
-    if (e.target.id === nodePkgObjectState.id) {
+
+    if (e.target.id === swiftBleProductState.id) {
       this.setState({
-        methods: nodePkgObjectState.modules
+        methods: swiftBleProductState.modules
       })
     }
+
+    if (e.target.id === androidObjectState.id) {
+      this.setState({
+        methods: androidObjectState.modules
+      })
+    }
+
+    if (e.target.id === xyoSwiftObjectState.id) {
+      this.setState({
+        methods: xyoSwiftObjectState.modules
+      })
+    }
+    
+    // if (e.target.id === nodePkgObjectState.id) {
+    //   this.setState({
+    //     methods: nodePkgObjectState.modules
+    //   })
+    // }
     if (e.target.id === kotlinObjectState.id) {
       this.setState({
         methods: kotlinObjectState.modules
       })
     }
     
-    if (e.target.id === 'Android') {
+    if (e.target.id === "Android") {
       this.setState({
         methods: kotlinBleProductState.modules
       })
     }
 
-    if (e.target.id === 'iOS') {
+    if (e.target.id === "iOS") {
       this.setState({
         methods: swiftCoreObjectState.modules
       })
     }
 
-    if (e.target.id === 'web') {
-      this.setState({
-        methods: nodePkgObjectState.modules
-      })
-    }
+    // if (e.target.id === "web") {
+    //   this.setState({
+    //     methods: nodePkgObjectState.modules
+    //   })
+    // }
 
-    if (e.target.id === 'java') {
+    if (e.target.id === "kotlin") {
       this.setState({
         methods: kotlinObjectState.modules
       })
@@ -91,13 +115,12 @@ class App extends Component {
   
   render() {
     return (
-      <div className='app'>
+      <div className="app">
       <Layout>
         <div className="fixed-top">
           <MainHeader />
           <Header 
             methods={this.state.methods} 
-            platform={this.state.platforms} 
             product={this.state.products} 
             onClick={this.handleClick}
             />
@@ -115,11 +138,9 @@ class App extends Component {
                   this.state.methods === nodePkgObjectState.modules ? 
                   <NodeMethodOutputView
                   methods={this.state.methods}
-                  platform={this.state.platforms}
                   /> : 
                   <MethodView
                   methods={this.state.methods} 
-                  platform={this.state.platforms}
                   />
                 }
             </Col>
@@ -132,7 +153,7 @@ class App extends Component {
 }
 
 const containerStyle = {
-  marginTop: '5rem'
+  marginTop: "5rem"
 }
 
 export default App
