@@ -9,11 +9,6 @@ import {
   Collapse
 } from 'reactstrap'
 
-<<<<<<< HEAD
-=======
-import logo from '../XYO_full_colored.png'
-
->>>>>>> master
 export default class MainHeader extends Component {
   constructor(props) {
     super(props)
@@ -39,7 +34,6 @@ export default class MainHeader extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>  
                 <Nav navbar className="ml-auto navbar-inverse bg-inverse">
                   <NavItem>
-<<<<<<< HEAD
                   <NavLink href="https://developers.xyo.network/docs/en/getting-started/" className="text-dark" >Getting Started</NavLink>
                   </NavItem>
                   <NavItem>
@@ -50,18 +44,6 @@ export default class MainHeader extends Component {
                   </NavItem>
                   <NavItem>
                     <NavLink href="https://developers.xyo.network/help/" className="text-dark" target="_blank">Help</NavLink>
-=======
-                  <NavLink href="https://developers.xyo.network/docs/en/getting-started/" className="text-dark" >GETTING STARTED</NavLink>
-                  </NavItem>
-                  <NavItem>
-                  <NavLink href="https://developers.xyo.network/docs/en/Introduction/" className="text-dark">GUIDES</NavLink>
-                  </NavItem>
-                  <NavItem>
-                  <NavLink href="http://reference.xyo.network/" className="text-dark">REFERENCE</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="https://developers.xyo.network/help/" className="text-dark" target="_blank">HELP</NavLink>
->>>>>>> master
                   </NavItem>
                 </Nav>
             </Collapse>

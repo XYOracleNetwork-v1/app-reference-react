@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from "react"
 import { Col, Row } from "reactstrap"
 
@@ -54,10 +53,6 @@ const superText = {
   paddingTop: "0px",
   paddingBottom: "20px"
 }
-=======
-import React, { Component } from 'react'
-import { Col, Row } from 'reactstrap'
->>>>>>> master
 
 const negativeMargin = {
   marginBottom: "-1em"
@@ -83,7 +78,6 @@ export default class MethodView extends Component {
             <Row className="border-bottom">
               <Col className="col-12 col-sm-6" style={colAppStyle}>
                 <div>
-<<<<<<< HEAD
                   <h5 key={`${method}`} style={classPadding}><a name={`${object.name}`} href="https://reference.xyo.network/"> {object.name} </a> </h5>
                   {object.super ? <h6 style={xyoPinkText}>Super Class</h6> : <p></p>}
                   <p key={`${object.name}`} style={superText}>{object.super}</p>
@@ -92,29 +86,6 @@ export default class MethodView extends Component {
                   {object.properties ? <h5 style={xyoOrangeText}>Properties</h5> : <div></div>}
                   <div>
                     {(object.properties || []).map(property => (
-=======
-                  {(object.properties || []).map(property => (
-                    <div>
-                      <p style={{paddingTop: '20px', paddingBottom: '20px', fontWeight: 'bold'}}>{property.name}</p>
-                      <h5 style={xyoPinkText}>Type</h5>
-                      <p style={{paddingLeft: '20px'}}>{property.type}</p>
-                      {property.desc ? <h5 style={xyoPinkText}>Description</h5> : <p></p>}
-                      <p style={{ paddingLeft: '20px', paddingBottom: '30px' }}>{property.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Col>
-            <Col className="bg-dark" style={outputStyle}>
-              <div style={smallPadding}>
-                {object.enumerations ? <h5>Enumerations</h5> : <p></p>}
-                {(object.enumerations || []).map(e => (
-                  <div style={xyoBlueText}>
-                    <p>name</p>
-                    <CodeGrid><a name={`${object.name}`} href='https://reference.xyo.network/'>{e.name}</a></CodeGrid>
-                    <p>values</p>
-                    {(e.values || []).map(val =>
->>>>>>> master
                       <div>
                         <h4 style={{paddingTop: "20px", paddingBottom: "20px", fontWeight: "bold"}}>{property.name}</h4>
                         <h5 style={xyoPinkText}>Type</h5>

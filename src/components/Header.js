@@ -56,29 +56,13 @@ export default class Header extends Component {
             <Nav navbar className="navbar-inverse">
               <UncontrolledDropdown nav inNavbar setActiveFromChild>
                 <DropdownToggle nav caret className="text-dark">
-<<<<<<< HEAD
                   Products
-=======
-                  PRODUCTS
->>>>>>> master
                 </DropdownToggle>
                 <DropdownMenu right>
                   {this.renderNavProductItems()}
                 </DropdownMenu>
               </UncontrolledDropdown>
-<<<<<<< HEAD
                 {/* <UncontrolledDropdown nav inNavbar>
-=======
-                <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="text-dark">
-                  PLATFORMS
-                </DropdownToggle>
-                <DropdownMenu right>
-                  {this.renderNavPlatformItems()}
-                </DropdownMenu>
-              </UncontrolledDropdown>
-                <UncontrolledDropdown nav inNavbar>
->>>>>>> master
                 <DropdownToggle nav caret className="text-dark">
                   LOCALE
                 </DropdownToggle>
@@ -97,11 +81,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown> */}
               <NavItem>
-<<<<<<< HEAD
                 <NavLink href="https://github.com/XYOracleNetwork" className="text-dark" target="_blank">GitHub</NavLink>
-=======
-                <NavLink href="https://github.com/XYOracleNetwork" className="text-dark" target="_blank">GITHUB</NavLink>
->>>>>>> master
               </NavItem>
             </Nav>
           </Collapse>
