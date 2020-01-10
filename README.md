@@ -7,9 +7,7 @@
 
 [![Build Status](https://travis-ci.com/XYOracleNetwork/app-reference-react.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/app-reference-react)
 
-[![DepShield Badge](https://depshield.sonatype.org/badges/XYOracleNetwork/app-reference-react/depshield.svg)](https://depshield.github.io)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/app-reference-react&utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-reference-react/maintainability)[![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/app-reference-react?branch=master&token=41f39dddecd8d4811f5ffc8ce240a6e3cee44046)](https://bettercodehub.com/)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/app-reference-react&utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-reference-react/maintainability)
 
 Table of Contents
 
