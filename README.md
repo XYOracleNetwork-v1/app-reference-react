@@ -7,6 +7,9 @@
 
 ![](https://github.com/XYOracleNetwork/app-reference-react/workflows/Build/badge.svg?branch=develop) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/app-reference-react&utm_campaign=Badge_Grade) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-reference-react/maintainability)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/XYOracleNetwork/app-reference-react/badge.svg)](https://snyk.io/test/github/XYOracleNetwork/app-reference-react)
+
+
 Table of Contents
 
 -   [Title](#xyo-developer-docs-2.0)
