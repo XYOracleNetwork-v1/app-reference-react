@@ -16,7 +16,7 @@
   "license": "MIT",
   "bugs": "https://github.com/xycorp/app-documentation-react/issues",
   "dependencies": {
-    "@xyo-network/web-base-bootstrap": "^0.1.105"
+    "@xyo-network/web-base-bootstrap": "^1.0.27"
   },
   "scripts": {
     "start": "react-scripts start",
