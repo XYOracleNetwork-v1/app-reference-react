@@ -8,8 +8,8 @@ it('renders without crashing', () => {
   shallow(<App />);
 });
 
-// it('renders a layout', () => {
-//   const wrapper = shallow(<App />)
-//   const layout = <Layout></Layout>
-//   expect(wrapper.contains(layout)).toEqual(true)
-// })
+it('renders a layout', () => {
+  const wrapper = shallow(<App />)
+  const layout = <Layout></Layout>
+  expect(wrapper.contains(layout)).toEqual(true)
+});
