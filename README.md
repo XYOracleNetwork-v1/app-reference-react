@@ -3,9 +3,9 @@
 [![logo]](https://xyo.network)
 
 
-# XYO Developer Docs 2.0
+# XYO SDK Reference
 
-![](https://github.com/XYOracleNetwork/app-reference-react/workflows/Build/badge.svg?branch=develop) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/app-reference-react&utm_campaign=Badge_Grade) [![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/app-reference-react?branch=master)](https://bettercodehub.com/) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-reference-react/maintainability) [![DepShield Badge](https://depshield.sonatype.org/badges/XYOracleNetwork/app-reference-react/depshield.svg)](https://depshield.github.io) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=XYOracleNetwork_app-reference-react&metric=alert_status)](https://sonarcloud.io/dashboard?id=XYOracleNetwork_app-reference-react) [![Known Vulnerabilities](https://snyk.io/test/github/XYOracleNetwork/app-reference-react/badge.svg)](https://snyk.io/test/github/XYOracleNetwork/app-reference-react)
+![](https://github.com/XYOracleNetwork/app-reference-react/workflows/Build/badge.svg?branch=develop) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/673364f7e6c34a18af70f27faaff2f57)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/app-reference-react&utm_campaign=Badge_Grade) [![BCH compliance](https://bettercodehub.com/edge/badge/XYOracleNetwork/app-reference-react?branch=master)](https://bettercodehub.com/) [![Maintainability](https://api.codeclimate.com/v1/badges/f3dd4f4d35e1bd9eeabc/maintainability)](https://codeclimate.com/github/XYOracleNetwork/app-reference-react/maintainability) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=XYOracleNetwork_app-reference-react&metric=alert_status)](https://sonarcloud.io/dashboard?id=XYOracleNetwork_app-reference-react) [![Known Vulnerabilities](https://snyk.io/test/github/XYOracleNetwork/app-reference-react/badge.svg)](https://snyk.io/test/github/XYOracleNetwork/app-reference-react)
 
 
 Table of Contents
