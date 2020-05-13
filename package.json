@@ -20,7 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && gulp publish"
+    "deploy": "react-scripts build && gulp publish",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,7 +34,8 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@xyo-network/web-base-bootstrap": "^1.0.30"
+    "@xyo-network/web-base-bootstrap": "^1.0.30",
+    "snyk": "^1.320.3"
   },
   "devDependencies": {
     "bootstrap": "^4.4.1",
@@ -60,5 +63,6 @@
     "typescript": "^3.7.4",
     "util": "^0.12.1",
     "yarn": "^1.22.0"
-  }
+  },
+  "snyk": true
 }
