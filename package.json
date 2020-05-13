@@ -34,7 +34,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@xyo-network/web-base-bootstrap": "^1.0.30",
+    "@xyo-network/web-base-bootstrap": "^1.0.31",
     "snyk": "^1.320.3"
   },
   "devDependencies": {
