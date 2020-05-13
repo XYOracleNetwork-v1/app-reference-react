@@ -45,7 +45,7 @@
     "gulp-awspublish": "^4.1.1",
     "gulp-cloudfront-invalidate": "^0.1.5",
     "install": "^0.13.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.0",
     "prismjs": "^1.18.0",
     "prop-types": "^15.7.2",
