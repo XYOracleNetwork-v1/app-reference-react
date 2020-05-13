@@ -15,9 +15,6 @@
   "author": "Phillip Lorenzo",
   "license": "MIT",
   "bugs": "https://github.com/xycorp/app-documentation-react/issues",
-  "dependencies": {
-    "@xyo-network/web-base-bootstrap": "^1.0.27"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,6 +31,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "dependencies": {
+    "@xyo-network/web-base-bootstrap": "^1.0.30"
+  },
   "devDependencies": {
     "bootstrap": "^4.4.1",
     "child_process": "^1.0.2",
