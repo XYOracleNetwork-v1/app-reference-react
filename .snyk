@@ -484,3 +484,5 @@ patch:
         patched: '2020-05-13T17:32:37.280Z'
     - '@xyo-network/web-base-bootstrap > lodash':
         patched: '2020-05-13T17:32:37.280Z'
+    - '@xyo-network/web-base-bootstrap > gulp-sass > lodash':
+        patched: '2020-05-13T19:07:16.948Z'
