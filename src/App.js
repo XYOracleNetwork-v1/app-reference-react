@@ -8,18 +8,18 @@ import MethodView from "./components/MethodOutputView";
 import sdkKotlinBle from "./schemas/BLE_Kotlin_Schema";
 import sdkSwiftBle from "./schemas/BLE_Swift_Schema";
 import swiftObject from "./schemas/Object_Swift_Schema";
-import nodeObject from "./schemas/Node_Package_Schema";
+// import nodeObject from "./schemas/Node_Package_Schema";
 import androidObject from "./schemas/XYO_Android_Schema";
 import sdkXyoSwift from "./schemas/XYO_Swift_SDK";
 
 import kotlinObject from "./schemas/Core_Kotlin_Schema";
 import { Container, Col, Row } from "reactstrap";
-import NodeMethodOutputView from "./components/NodeMethodOutputView";
+// import NodeMethodOutputView from "./components/NodeMethodOutputView";
 
 const kotlinBleProductState = sdkKotlinBle[0];
 const swiftBleProductState = sdkSwiftBle[0];
 const swiftCoreObjectState = swiftObject[0];
-const nodePkgObjectState = nodeObject[0];
+// const nodePkgObjectState = nodeObject[0];
 const kotlinObjectState = kotlinObject[0];
 const androidObjectState = androidObject[0];
 const xyoSwiftObjectState = sdkXyoSwift[0];
@@ -134,15 +134,9 @@ class App extends Component {
                 />
             </Col>
             <Col className="xs-6 border-left">
-                {
-                  this.state.methods === nodePkgObjectState.modules ? 
-                  <NodeMethodOutputView
-                  methods={this.state.methods}
-                  /> : 
-                  <MethodView
-                  methods={this.state.methods} 
-                  />
-                }
+              <MethodView
+                methods={this.state.methods} 
+              />
             </Col>
           </Row>  
         </Container>
